@@ -1,9 +1,44 @@
-== README
+***************************** Application  Notes    ************************************
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+When first Deploy?
+How to store Passwords during Deploy?
 
-Things you may want to cover:
+Add bootstrap 
+add jquery
+add fontawesome
+Fix turbolinks 
+Do I ned to specify ruby version in rbenv app file?
+
+When make use cases?
+
+
+
+
+
+***************************** Application todo list ************************************
+
+1 Implement adding removing and editing users
+    seed
+    index
+    show 
+    edit
+    delete
+    create
+ a) Owner can add and remove new users
+
+  
+
+
+2 Implement session management as a authentication
+ a) User can eddit itself 
+
+3 Widen the user model about address, phone nr, etc. and group as owner or moderator
+
+4 Implement basic autorization
+  a) plan what can and what not
+
+
+***************************** Application Details ************************************
 
 * Ruby version
 
@@ -21,8 +56,3 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
