@@ -9,6 +9,9 @@ gem 'mysql2', '>= 0.3.13', '< 0.5'
 gem 'sass-rails', '~> 5.0'
 # Use Bootstrap 3
 gem 'bootstrap-sass', '~> 3.3.6'
+# Awesome Fonts Sas
+gem 'font-awesome-sass', '~> 4.7.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
