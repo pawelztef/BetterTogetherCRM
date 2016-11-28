@@ -7,12 +7,14 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <% if flash[:notice] %>
-      <div class="notice"> <%= flash[:notice] %> </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert"> <%= flash[:alert] %> </div>
-    <% end %>
+    <%# <% if flash[:notice] %1> %>
+      <%#   <div class="notice"> <%= flash[:notice] %1> </div> %>
+      <%# <% end %1> %>
+    <%# <% if flash[:alert] %1> %>
+      <%#   <div class="alert"> <%= flash[:alert] %1> </div> %>
+      <%# <% end %1> %>
+
+    <%= gflash %> 
 
     <%= yield %>
 

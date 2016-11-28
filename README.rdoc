@@ -26,7 +26,8 @@ When make use cases?
      with javascript
      -validation from users from added
       gem simple-form
-     -validation for flash messages added
++    -validation for flash messages added
+      gem gritter
      
 
 2 Implement session management as a authentication
