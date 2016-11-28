@@ -44,6 +44,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Custom Flash Messages
 gem "gritter", "1.2.0"
 
+# Nicer Validation Messages and form helpers
+gem "simple_form"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
