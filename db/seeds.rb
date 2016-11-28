@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 #
+
+user = User.create(first_name: "pawel", last_name: "stachowicz", email: "pawel@pawel.com", password: "password", ownership: true)
 10.times do
   uers = User.create( 
     first_name: Faker::Name.first_name,

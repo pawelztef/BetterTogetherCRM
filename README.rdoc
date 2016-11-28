@@ -3,39 +3,43 @@
 When first Deploy?
 How to store Passwords during Deploy?
 
-Add bootstrap 
-add jquery
-add fontawesome
 Fix turbolinks 
 Do I ned to specify ruby version in rbenv app file?
 
 When make use cases?
 
 
-
-
-
 ***************************** Application todo list ************************************
 
 1 Implement adding removing and editing users
-    seed
-    index
-    show 
-    edit
-    delete
-    create
- a) Owner can add and remove new users
++ a) basic views 
+    seed +
+    index +
+    show  ---- DECIDE that is necessary
+    edit + 
+    delete +
+    create +
 
-  
++ b) implement validation 
 
+  c) implement errors
+     with javascript
+     -validation from users from added
+      gem simple-form
+     -validation for flash messages added
+     
 
 2 Implement session management as a authentication
- a) User can eddit itself 
+  a) User can eddit itself 
 
-3 Widen the user model about address, phone nr, etc. and group as owner or moderator
-
-4 Implement basic autorization
+3 Implement basic autorization
   a) plan what can and what not
+
+  b) Owner can add and remove new users
+    in conjunction with authorization 
+    should be implemented after session management
+
+4 Widen the user model about address, phone nr, etc. and group as owner or moderator
 
 
 ***************************** Application Details ************************************
@@ -54,5 +58,5 @@ When make use cases?
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+  * Deployment instructions
 
