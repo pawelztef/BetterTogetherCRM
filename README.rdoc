@@ -1,12 +1,17 @@
 ***************************** Application  Notes    ************************************
 
-When first Deploy?
 How to store Passwords during Deploy?
 
 Fix turbolinks 
+
+Fix validation in simple-form for login page as well require hints
+
+Style gritter messages
+
 Do I ned to specify ruby version in rbenv app file?
 
 When make use cases?
+  after first deploy
 
 
 ***************************** Application todo list ************************************
@@ -30,8 +35,7 @@ When make use cases?
   +     gem gritter
      
 
-2 Implement session management as a authentication
-  a) User can eddit itself 
++ 2 Implement session management as a authentication
 
 3 Implement basic autorization
   a) plan what can and what not
@@ -39,8 +43,15 @@ When make use cases?
   b) Owner can add and remove new users
     in conjunction with authorization 
     should be implemented after session management
+    
+  c) User can eddit only itself 
 
-4 Widen the user model about address, phone nr, etc. and group as owner or moderator
+4 First Deploy
+  phusion passenger standalone version
+  digitalocean
+  capistrano - no?
+
+5 Widen the user model about address, phone nr, etc. and group as owner or moderator
 
 
 ***************************** Application Details ************************************
