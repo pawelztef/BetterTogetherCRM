@@ -12,22 +12,22 @@ When make use cases?
 ***************************** Application todo list ************************************
 
 1 Implement adding removing and editing users
-+ a) basic views 
-    seed +
-    index +
-    show  ---- DECIDE that is necessary
-    edit + 
-    delete +
-    create +
+  + a) basic views 
+  +   seed +
+  +   index +
+  +   show  ---- DECIDE that is necessary
+  +   edit + 
+  +   delete +
+  +   create +
 
-+ b) implement validation 
+  + b) implement validation 
 
-  c) implement errors
-     with javascript
-     -validation from users from added
-      gem simple-form
-+    -validation for flash messages added
-      gem gritter
+  + c) implement errors
+  +    with javascript
+  +    -validation from users from added
+  +     gem simple-form
+  +    -validation for flash messages added
+  +     gem gritter
      
 
 2 Implement session management as a authentication
