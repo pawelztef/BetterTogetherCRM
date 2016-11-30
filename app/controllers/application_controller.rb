@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authorize
+  helper_method :current_moderator
 
   def current_moderator
     @moderator ||= User.find(session[:current_moderator]['id']) if session[:current_moderator]

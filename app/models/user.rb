@@ -5,13 +5,24 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true,
-                        uniqueness: true
+    uniqueness: true
   validates :email, presence: true,
-                    uniqueness: true,
-                    # format: {with: EMAIL_REGEX},
-                    confirmation: true
+    uniqueness: true,
+    # format: {with: EMAIL_REGEX},
+    confirmation: true
 
   def fullname
     "#{self.first_name} #{self.last_name}"
   end
+
+  def owner?
+    if self.ownership
+      return true 
+    else
+      return false
+    end
+  end
+
+
+
 end

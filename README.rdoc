@@ -16,7 +16,7 @@ When make use cases?
 
 ***************************** Application todo list ************************************
 
-1 Implement adding removing and editing users
++ 1 Implement adding removing and editing users
   + a) basic views 
   +   seed +
   +   index +
@@ -38,13 +38,9 @@ When make use cases?
 + 2 Implement session management as a authentication
 
 3 Implement basic autorization
-  a) plan what can and what not
-
-  b) Owner can add and remove new users
-    in conjunction with authorization 
-    should be implemented after session management
-    
-  c) User can eddit only itself 
+      a) Owner can add remove new users exept editing passwords
+      b) User can eddit his passwords proper validation should be presented
+      c) proper links should be implemented ????
 
 4 First Deploy
   phusion passenger standalone version

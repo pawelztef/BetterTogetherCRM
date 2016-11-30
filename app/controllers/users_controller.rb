@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    usr = User.find current_moderator.id 
+    @users = usr.owner? ? User.all : [usr]
   end
 
   def show
