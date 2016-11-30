@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_owner, only: [:new, :create]
+  before_action :secure_consistency, only: [:edit, :update, :destroy]
 
   def index
     usr = User.find current_moderator.id 
@@ -32,11 +34,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      # redirect_to users_url, notice: 'User was succesfully updated.'
       gflash :success => 'User was succesfully updated.'
       redirect_to users_url
     else
-      # flash[:alert] = 'There was a problem while updating user.'
       gflash :now, :error =>'There was a problem while updating user.'
       render :new
     end
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    # redirect_to users_url, notice: 'User was succesfully deleted'
     gflash :success => 'User was succesfully updated.'
     redirect_to users_url
   end
@@ -56,6 +55,14 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find params[:id]
+  end
+
+  def secure_consistency
+    if @user != current_moderator && !current_moderator.owner?
+      # byebug
+      gflash warning: 'You are not authorized'
+      redirect_to '/'
+    end
   end
 
 end
