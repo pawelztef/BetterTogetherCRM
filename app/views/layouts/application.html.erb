@@ -7,16 +7,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%# <% if flash[:notice] %1> %>
-      <%#   <div class="notice"> <%= flash[:notice] %1> </div> %>
-      <%# <% end %1> %>
-    <%# <% if flash[:alert] %1> %>
-      <%#   <div class="alert"> <%= flash[:alert] %1> </div> %>
-      <%# <% end %1> %>
 
-    <%= gflash %> 
+    <%= welcome_msg %> 
     <%= logout_link %> 
 
+    <%= gflash %> 
     <%= yield %>
 
   </body>
