@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def require_owner
     unless current_moderator.owner?
-      gflash notice: "You need to have onwer premissions"
+      gflash warning: "You are not authorized"
       redirect_to '/'
     end
   end
