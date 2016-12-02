@@ -31,7 +31,7 @@ class VolunteersController < ApplicationController
       gflash success: 'Volunteer was successfully updated.'
       redirect_to volunteers_url
     else
-      gflash error: 'There was a problem while creating volunteer.'
+      gflash error: 'There was a problem while updating volunteer.'
       render 'new'
     end
   end

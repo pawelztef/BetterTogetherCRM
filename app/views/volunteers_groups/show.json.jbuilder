@@ -1,0 +1,1 @@
+json.partial! "volunteers_groups/volunteers_group", volunteers_group: @volunteers_group

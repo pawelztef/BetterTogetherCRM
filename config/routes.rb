@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :volunteers_groups
   root 'users#index'
 
   get '/login' => 'sessions#new'
