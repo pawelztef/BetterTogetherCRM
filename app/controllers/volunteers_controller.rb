@@ -17,43 +17,37 @@ class VolunteersController < ApplicationController
 
   def create
     @volunteer = Volunteer.new(volunteer_params)
-    respond_to do |format|
-      if @volunteer.save
-        format.html { redirect_to @volunteer, notice: 'Volunteer was successfully created.' }
-        format.json { render :show, status: :created, location: @volunteer }
-      else
-        format.html { render :new }
-        format.json { render json: @volunteer.errors, status: :unprocessable_entity }
-      end
+    if @volunteer.save
+      gflash success: 'Volunteer was successfully created.'
+      redirect_to volunteers_url
+    else
+      gflash error: 'There was a problem while creating volunteer.'
+      render 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @volunteer.update(volunteer_params)
-        format.html { redirect_to @volunteer, notice: 'Volunteer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @volunteer }
-      else
-        format.html { render :edit }
-        format.json { render json: @volunteer.errors, status: :unprocessable_entity }
-      end
+    if @volunteer.update(volunteer_params)
+      gflash success: 'Volunteer was successfully updated.'
+      redirect_to volunteers_url
+    else
+      gflash error: 'There was a problem while creating volunteer.'
+      render 'new'
     end
   end
 
   def destroy
     @volunteer.destroy
-    respond_to do |format|
-      format.html { redirect_to volunteers_url, notice: 'Volunteer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    gflash success: 'Volunteer was successfully deleted.'
+    redirect_to volunteers_url
   end
 
   private
-    def set_volunteer
-      @volunteer = Volunteer.find(params[:id])
-    end
+  def set_volunteer
+    @volunteer = Volunteer.find(params[:id])
+  end
 
-    def volunteer_params
-      params.require(:volunteer).permit(:first_name, :last_name, :email, :phone1, :phone2)
-    end
+  def volunteer_params
+    params.require(:volunteer).permit(:first_name, :last_name, :email, :phone1, :phone2)
+  end
 end

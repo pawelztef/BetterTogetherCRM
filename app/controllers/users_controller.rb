@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    gflash :success => 'User was succesfully updated.'
+    gflash :success => 'User was succesfully deleted.'
     redirect_to users_url
   end
 

@@ -47,31 +47,40 @@ When make use cases?
                                                                                           /*   digitalocean */
                                                                                           /*   capistrano - no? */
 
-  4 Add volunteer model and views etc.
++ 4 Add volunteer model and views etc.
   + a) adding scaffold
 
-    b) add validation 
+  + b) add validation 
       + - database  validation
       + - model validation
       + - form validation errors through simple_form gem
-        - refactor flash messages in volunteer_controller
+      + - refactor flash messages in volunteer_controller
 
-    c) ensure about authentication
-        - refresh that was learned about authentication and authorization
-          How it works? hmm?
+  + c) ensure about authentication
+      + - refresh that was learned about authentication and authorization
+      +   How it works? hmm?
 
-  5 Create Group Scaffold.
-  6 Associate between group and volunteer
-  7 add address model
-  8 associate addres  model  with user and volunter
-  9 Validation for uniqueness 
-  10 OPTIONAL some tests
-  11 add indexes on models
-  12 add necessary plugings
-    pagination
-  13 add prototype of navigation
-     consider bootstrap theme. If it's ok implement basic styles
-  
+  5 Create Group.
+     a) adding scaffold
+
+     b) add validation 
+         - database  validation
+         - model validation
+         - form validation errors through simple_form gem
+         - refactor flash messages in volunteer_controller
+
+
+    6 Associate between group and volunteer
+    7 add address model
+    8 associate addres  model  with user and volunter
+    9 Validation for uniqueness 
+    10 OPTIONAL some tests
+    11 add indexes on models
+    12 add necessary plugings
+      pagination
+    13 add prototype of navigation
+       consider bootstrap theme. If it's ok implement basic styles
+    
   
 
 
