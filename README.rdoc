@@ -40,7 +40,7 @@ When make use cases?
 + 3 Implement basic autorization
       + a) Owner can add remove new users
       + b) User can eddit his passwords proper validation should be presented
-      c) proper links should be implemented ????
+      + c) proper links should be implemented 
 
                                                                                           /* 4 First Deploy */
                                                                                           /*   phusion passenger standalone version */
@@ -51,9 +51,9 @@ When make use cases?
   + a) adding scaffold
 
     b) add validation 
-        - database  validation
-        - model validation
-        - form validation errors through simple_form gem
+      + - database  validation
+      + - model validation
+      + - form validation errors through simple_form gem
         - refactor flash messages in volunteer_controller
 
     c) ensure about authentication
@@ -64,10 +64,12 @@ When make use cases?
   6 Associate between group and volunteer
   7 add address model
   8 associate addres  model  with user and volunter
-  9 add indexes on models
-  10 add necessary plugings
+  9 Validation for uniqueness 
+  10 OPTIONAL some tests
+  11 add indexes on models
+  12 add necessary plugings
     pagination
-  11 add prototype of navigation
+  13 add prototype of navigation
      consider bootstrap theme. If it's ok implement basic styles
   
   
@@ -95,4 +97,8 @@ When make use cases?
 * Services (job queues, cache servers, search engines, etc.)
 
   * Deployment instructions
+    
+    --Simple_form gem--
+      after bundle  install ** rails g simple_form:install --bootstrap **
+    
 

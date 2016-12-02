@@ -1,5 +1,6 @@
 <%# <%= render 'application_partials/validation_errors', object: @user %1> %> 
 <%= simple_form_for @user, html: {class: 'from-horizontal'} do |f| %>
+  <%= f.error_notification %>
 
   <%= f.input :first_name if current_moderator.owner? %> 
   <%= f.input :last_name if current_moderator.owner? %> 
