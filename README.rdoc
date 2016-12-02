@@ -18,41 +18,69 @@ When make use cases?
 
 + 1 Implement adding removing and editing users
   + a) basic views 
-  +   seed +
-  +   index +
-  +   show  ---- DECIDE that is necessary
-  +   edit + 
-  +   delete +
-  +   create +
+  +     seed +
+  +     index +
+  +     show  ---- DECIDE that is necessary
+  +     edit + 
+  +     delete +
+  +     create +
 
   + b) implement validation 
 
   + c) implement errors
-  +    with javascript
-  +    -validation from users from added
+  +     with javascript
+  +     -validation from users from added
   +     gem simple-form
-  +    -validation for flash messages added
+  +     -validation for flash messages added
   +     gem gritter
      
 
 + 2 Implement session management as a authentication
 
-3 Implement basic autorization
-      a) Owner can add remove new users exept editing passwords
-      b) User can eddit his passwords proper validation should be presented
++ 3 Implement basic autorization
+      + a) Owner can add remove new users
+      + b) User can eddit his passwords proper validation should be presented
       c) proper links should be implemented ????
 
-4 First Deploy
-  phusion passenger standalone version
-  digitalocean
-  capistrano - no?
+                                                                                          /* 4 First Deploy */
+                                                                                          /*   phusion passenger standalone version */
+                                                                                          /*   digitalocean */
+                                                                                          /*   capistrano - no? */
 
-5 Widen the user model about address, phone nr, etc. and group as owner or moderator
+  4 Add volunteer model and views etc.
+  + a) adding scaffold
+
+    b) add validation 
+        - database  validation
+        - model validation
+        - form validation errors through simple_form gem
+        - refactor flash messages in volunteer_controller
+
+    c) ensure about authentication
+        - refresh that was learned about authentication and authorization
+          How it works? hmm?
+
+  5 Create Group Scaffold.
+  6 Associate between group and volunteer
+  7 add address model
+  8 associate addres  model  with user and volunter
+  9 add indexes on models
+  10 add necessary plugings
+    pagination
+  11 add prototype of navigation
+     consider bootstrap theme. If it's ok implement basic styles
+  
+  
+
 
 
 ***************************** Application Details ************************************
 
 * Ruby version
+    2.2.3p173 
+
+* Rails version
+    4.2.5 
 
 * System dependencies
 

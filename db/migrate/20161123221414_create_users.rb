@@ -9,5 +9,6 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
   def down
-    drop_table :users end
+    drop_table :users 
+  end
 end
