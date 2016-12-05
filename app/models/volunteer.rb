@@ -1,11 +1,9 @@
 class Volunteer < ActiveRecord::Base
 
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :volunteers_groups, through: :memberships
 
-  
-
-
+  accepts_nested_attributes_for :memberships #, allow_destroy: true
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   validates :first_name, presence: true

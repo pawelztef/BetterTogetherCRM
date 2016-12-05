@@ -6,6 +6,7 @@ class VolunteersController < ApplicationController
   end
 
   def show
+    @membership = @volunteer.volunteers_groups.all
   end
 
   def new
@@ -48,6 +49,6 @@ class VolunteersController < ApplicationController
   end
 
   def volunteer_params
-    params.require(:volunteer).permit(:first_name, :last_name, :email, :phone1, :phone2)
+    params.require(:volunteer).permit(:first_name, :last_name, :email, :phone1, :phone2, :volunteers_group_ids => [])
   end
 end

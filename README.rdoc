@@ -65,12 +65,23 @@ When make use cases?
 
      b) add validation 
       +  - database  validation
-         - model validation
-         - form validation errors through simple_form gem
-         - refactor flash messages in volunteer_controller
+      +  - model validation
+      +  - form validation errors through simple_form gem
+      +  - refactor flash messages in volunteer_controller
+
 
 
 + 6 Associate between group and volunteer
+
+      PRIMO - update to seeds data
+
+      a) particular group sub-page (show) display all belonging volnteers
+          - volunteer can be updated via checkbox 
+      b) vulunteer form allows to assign to group
+      c) group can't be deleted if not empty
+      d) delete volunteer removing his membership in group
+
+
     7 add address model
     8 associate addres  model  with user and volunter
     9 Validation for uniqueness 
