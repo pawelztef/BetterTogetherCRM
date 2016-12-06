@@ -7,6 +7,10 @@ class VolunteersController < ApplicationController
 
   def show
     @membership = @volunteer.volunteers_groups.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

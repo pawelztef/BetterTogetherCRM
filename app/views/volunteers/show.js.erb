@@ -1,0 +1,7 @@
+$('body').append('<%= j render("show") %>');
+$("#volunteerShowModal").modal('show');
+$(".closeVolunteer").on("click", function() {
+  $("#volunteerShowModal").modal('hide');
+});
+
+

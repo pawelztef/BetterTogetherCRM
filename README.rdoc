@@ -14,6 +14,7 @@ When make use cases?
   after first deploy
 
 
+
 ***************************** Application todo list ************************************
 
 + 1 Implement adding removing and editing users
@@ -73,18 +74,35 @@ When make use cases?
 
 + 6 Associate between group and volunteer
 
-      PRIMO - update to seeds data
+    + PRIMO - update to seeds data
 
-      a) particular group sub-page (show) display all belonging volnteers
-          - volunteer can be updated via checkbox 
-      b) vulunteer form allows to assign to group
-      c) group can't be deleted if not empty
-      d) delete volunteer removing his membership in group
+    + a) particular group sub-page (show) display all belonging volnteers
+    + b) vulunteer form allows to assign to group
+    + c) group can't be deleted if not empty
+    + d) delete volunteer removing his membership in group
+    + e) volunteers index
 
 
-    7 add address model
-    8 associate addres  model  with user and volunter
-    9 Validation for uniqueness 
+
+!!!!! Backlog !!!!!!!
+
+Owner can't delete itself
+
+!!!!!!!!!!!!!!!!!!!!!
+
+
+    7 add location model
+     a) add a geolocation fundation
+        - install gem geocoder
+        - create location model
+        - add validation
+        - add full_street_address method
+        
+     b) associate location model with user and volunteer
+        - add polymorphic assotiation
+        - update views
+
+ ?? 9 Validation for uniqueness ??
     10 OPTIONAL some tests
     11 add indexes on models
     12 add necessary plugings

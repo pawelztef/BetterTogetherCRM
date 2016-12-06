@@ -1,23 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @volunteers_group.name %>
-</p>
+    <p>
+    <strong>Name:</strong>
+    <%= @volunteers_group.name %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @volunteers_group.description %>
-</p>
+    <p>
+    <strong>Description:</strong>
+    <%= @volunteers_group.description %>
+    </p>
 
-<p>
-  <strong>Members:</strong>
-</p>
-<ul>
-  <% @members.each do |member| %>
-    <li> <%= member.fullname %> </li>
-  <% end %> 
-</ul>
+    <p>
+    <strong>Members:</strong>
+    </p>
+    <ul>
+      <% @members.each do |member| %>
+        <li> <%= member.fullname %> </li>
+      <% end %> 
+    </ul>
 
-<%= link_to 'Edit', edit_volunteers_group_path(@volunteers_group) %> |
-<%= link_to 'Back', volunteers_groups_path %>
+    <%= link_to 'Edit', edit_volunteers_group_path(@volunteers_group), class: 'closeVolunteer' %> |
+    <%= link_to 'Back', volunteers_groups_path, class: 'closeVolunteer' %>
+  </div>
+</div>

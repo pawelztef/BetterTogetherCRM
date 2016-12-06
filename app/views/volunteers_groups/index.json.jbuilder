@@ -1,1 +1,0 @@
-json.array! @volunteers_groups, partial: 'volunteers_groups/volunteers_group', as: :volunteers_group
