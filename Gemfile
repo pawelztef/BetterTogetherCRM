@@ -51,6 +51,10 @@ gem "simple_form"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'minitest-reporters', '1.0.5'
+  gem 'mini_backtrace', '0.1.3'
+  # Lorem Ipsum helper
+  gem 'faker'
 end
 
 group :development do
@@ -60,7 +64,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  # Lorem Ipsum helper
-  gem 'faker'
 end
 

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202160835) do
+ActiveRecord::Schema.define(version: 20161206125624) do
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "line1",      limit: 255, null: false
+    t.string   "line2",      limit: 255
+    t.string   "city",       limit: 255, null: false
+    t.string   "county",     limit: 255, null: false
+    t.string   "code",       limit: 255
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "volunteer_id",        limit: 4

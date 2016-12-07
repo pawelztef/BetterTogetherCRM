@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line1: 127 Newhaven Bay 
+  line2: 
+  city: Balgriggan
+  county: Co. Dublin 
+  code: K32 RW26 
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  line1: 127  
+  line2: Newhaven Bay 
+  city: Balgriggan
+  county: Dublin
+  code: K32 RW26 
+  latitude: 
+  longitude: 
+
+three:
+  line1: 127 Newhaven 
+  line2: Bay 
+  city: Balgriggan 
+  county: Dublin 
+  code: MyString
+  latitude: 
+  longitude:
+  

@@ -2,7 +2,7 @@
 
 How to store Passwords during Deploy?
 
-Fix turbolinks 
+Fix  turbolinks 
 
 Fix validation in simple-form for login page as well require hints
 
@@ -12,6 +12,13 @@ Do I ned to specify ruby version in rbenv app file?
 
 When make use cases?
   after first deploy
+
+
+!!!!! Backlog !!!!!!!
+
+Owner can't delete itself
+
+!!!!!!!!!!!!!!!!!!!!!
 
 
 
@@ -43,11 +50,6 @@ When make use cases?
       + b) User can eddit his passwords proper validation should be presented
       + c) proper links should be implemented 
 
-                                                                                          /* 4 First Deploy */
-                                                                                          /*   phusion passenger standalone version */
-                                                                                          /*   digitalocean */
-                                                                                          /*   capistrano - no? */
-
 + 4 Add volunteer model and views etc.
   + a) adding scaffold
 
@@ -70,8 +72,6 @@ When make use cases?
       +  - form validation errors through simple_form gem
       +  - refactor flash messages in volunteer_controller
 
-
-
 + 6 Associate between group and volunteer
 
     + PRIMO - update to seeds data
@@ -82,32 +82,24 @@ When make use cases?
     + d) delete volunteer removing his membership in group
     + e) volunteers index
 
-
-
-!!!!! Backlog !!!!!!!
-
-Owner can't delete itself
-
-!!!!!!!!!!!!!!!!!!!!!
-
-
-    7 add location model
+  7 add location model
      a) add a geolocation fundation
+        - create model
+        - add validation
         - install gem geocoder
         - create location model
-        - add validation
         - add full_street_address method
         
      b) associate location model with user and volunteer
         - add polymorphic assotiation
         - update views
 
- ?? 9 Validation for uniqueness ??
-    10 OPTIONAL some tests
-    11 add indexes on models
-    12 add necessary plugings
+??9 Validation for uniqueness ??
+  10 OPTIONAL some tests
+  11 add indexes on models
+  12 add necessary plugings
       pagination
-    13 add prototype of navigation
+  13 add prototype of navigation
        consider bootstrap theme. If it's ok implement basic styles
     
   
@@ -117,12 +109,18 @@ Owner can't delete itself
 ***************************** Application Details ************************************
 
 * Ruby version
-    2.2.3p173 
+   -----2.2.3p173-------      
+    changed to 
+    2.2.5 for testing
 
 * Rails version
     4.2.5 
 
 * System dependencies
+
+   to do not run bundle exec use rbenv plugin called rbenv-binstubs and run in application 
+   folder command: 
+   bundle install --binstubs .bundle/bin
 
 * Configuration
 
@@ -131,6 +129,20 @@ Owner can't delete itself
 * Database initialization
 
 * How to run the test suite
+
+  All guides from Hartl book
+
+  - add into test_helper.rb
+      require "minitest/reporters"
+      Minitest::Reporters.use!
+      
+  - add into config/initializers/bactrace_silencers.rb
+      Rails.backtrace_cleaner.add_silencer  { |line|  line  =~  /rvm/ }
+  
+  - add  line into Guardfile
+    guard :minitest,  spring: true, all_on_start: false do
+
+
 
 * Services (job queues, cache servers, search engines, etc.)
 
