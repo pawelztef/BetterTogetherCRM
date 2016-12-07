@@ -45,8 +45,10 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test "should generate coordinates" do
-    location = locations(:two)
-    assert_not_nil location.latitude
-    assert_not_nil location.longitude
+    location = Location.new(line1: "newhaven", line2: "Bay", city: "Balbriggan",
+                            county: "dublin", code: "333-333")
+    location.save
+    assert location.latitude?
+    assert location.longitude?
   end
 end
