@@ -3,8 +3,7 @@ require 'test_helper'
 class VolunteerTest < ActiveSupport::TestCase
 
   def setup
-    @volunteer = Volunteer.new(id: 1,
-                               first_name: 'Jon',
+    @volunteer = Volunteer.new( first_name: 'Jon',
                                last_name: 'Johnson',
                                email: 'jon@jon.com',
                                phone1: '3333',
@@ -12,9 +11,10 @@ class VolunteerTest < ActiveSupport::TestCase
 
     @location = Location.new(line1: '127 Newhaven',
                              city: 'Balbriggan',
-                             county: 'Dublin',
-                             localizable_id: 1,
-                             localizable_type: 'Volunteer')
+                             county: 'Dublin')
+    @location2 = Location.new(line1: '129 Newhaven',
+                             city: 'Tyrrlestown',
+                             county: 'Dublin')
   end
 
   test 'valid volunteer' do
@@ -45,8 +45,13 @@ class VolunteerTest < ActiveSupport::TestCase
     assert_not_nil @volunteer.fullname
   end
 
-  test 'should have location' do
-    assert @volunteer.locations.count == 1
+  test 'should have only one location' do
+    @volunteer.save
+    @volunteer.location = @location
+    @volunteer.location = @location2
+    size = Array.new
+    size << Location.find_by_localizable_id(@volunteer)
+    assert_equal size.size, 1
   end
 
 

@@ -15,6 +15,7 @@ class VolunteersController < ApplicationController
 
   def new
     @volunteer = Volunteer.new
+    @location = @volunteer.build_location
   end
 
   def edit
@@ -53,6 +54,10 @@ class VolunteersController < ApplicationController
   end
 
   def volunteer_params
-    params.require(:volunteer).permit(:first_name, :last_name, :email, :phone1, :phone2, :volunteers_group_ids => [])
+    params.require(:volunteer).permit(:first_name, :last_name, :email, :phone1, :phone2, 
+                                      location_attributes: [:line1, :line2, :city, :county,
+                                                              :code, :latitude, :longitude,
+                                                              :localizable_id, :localizable_type],
+                                      :volunteers_group_ids => [])
   end
 end

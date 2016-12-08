@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.location.build
   end
 
   def create
@@ -43,14 +44,22 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    gflash :success => 'User was succesfully deleted.'
-    redirect_to users_url
+    if @user.owner?
+      gflash :warning => "Owner can't delete itself"
+      redirect_to users_url
+    else
+      @user.destroy
+      gflash :success => 'User was succesfully deleted.'
+      redirect_to users_url
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password,
+                                 location_attributes: [:line1, :line2, :city, :county,
+                                                       :code, :latitude, :longitude,
+                                                       :localizable_id, :localizable_type],)
   end
 
   def set_user

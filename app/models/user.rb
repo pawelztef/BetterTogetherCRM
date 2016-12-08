@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   # validates :ownership, presence: true
 
   has_secure_password
-  has_many :locations, as: :localizable
+  has_one :location, as: :localizable, dependent: :destroy
+  accepts_nested_attributes_for :location
 
 
   def fullname

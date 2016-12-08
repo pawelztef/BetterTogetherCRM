@@ -43,7 +43,11 @@
 
                   <p>
                   <strong>Address:</strong>
-                  <%= @volunteer.locations.first.full_street_address %>
+                  <%= @volunteer.location.full_street_address %>
+                  </p>
+                  <strong>Coordinates:</strong>
+                  <%= @volunteer.location.latitude %>
+                  <%= @volunteer.location.longitude %>
                   </p>
 
                   <strong>Groups:</strong>

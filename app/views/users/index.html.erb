@@ -5,6 +5,8 @@
       <th>Fullname</th>
       <th>Email</th>
       <th>Created at</th>
+      <th>Address</th>
+      <th colspan="2" >Coordinates</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -14,8 +16,13 @@
         <td> <%= user.fullname %> </td>
         <td> <%= user.email %> </td>
         <td> <%= user.created_at %> </td>
+        <td> <%= user.location.full_street_address %> </td>
+        <td> <%= user.location.latitude %> </td>
+        <td> <%= user.location.longitude %> </td>
         <td> <%= link_to "Edit", edit_user_path(user) %> 
-        <%=  link_to "Delete", user_path(user), method: 'delete' if current_moderator.owner? %> 
+        <% unless user.owner? %>
+          <%=  link_to "Delete", user_path(user), method: 'delete' if current_moderator.owner? %> 
+        <% end %> 
         </td>
       </tr>
     <% end %> 

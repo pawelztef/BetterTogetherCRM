@@ -82,19 +82,19 @@ Owner can't delete itself
     + d) delete volunteer removing his membership in group
     + e) volunteers index
 
-  7 add location model
++ 7 add location model
 
     ** testing added ***
 
     + a) add a geolocation fundation
-      + - create model
-      + - add validation
-      + - install gem geocoder
-      + - add full_street_address method
+    +    - create model
+    +    - add validation
+    +    - install gem geocoder
+    +    - add full_street_address method
         
     + b) associate location model with user and volunteer
-        - add polymorphic assotiation
-        - update views
+    +    - add polymorphic assotiation
+    +    - update views
 
 ??9 Validation for uniqueness ??
   10 OPTIONAL some tests

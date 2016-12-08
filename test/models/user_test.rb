@@ -3,18 +3,18 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(id: 1,
-                     first_name: 'Jon',
+    @user = User.new(first_name: 'Jon',
                      last_name: 'Johnson',
                      email: 'jon@jon.com',
                      password_digest: '3333',
-                     ownership: 0) 
+                     ownership: 1) 
 
     @location = Location.new(line1: '127 Newhaven',
                              city: 'Balbriggan',
-                             county: 'Dublin',
-                             localizable_id: 1,
-                             localizable_type: 'User')
+                             county: 'Dublin')
+    @location2 = Location.new(line1: '129 Newhaven',
+                             city: 'Tyrrlestown',
+                             county: 'Dublin')
   end
 
   test 'valid user' do
@@ -39,15 +39,14 @@ class UserTest < ActiveSupport::TestCase
     refute owner.valid?
   end
 
-  # test 'invalid whitout ownership' do
-  #   owner = users(:owner)
-  #   owner.ownership = nil
-  #   refute owner.valid?
-  # end
-
-
-  test 'should have location' do
-    assert_not_nil @user.locations
+  test 'should have only one location' do
+    @user.id = 3
+    @user.save
+    @user.location = @location
+    @user.location = @location2
+    locArray = Array.new
+    locArray << Location.find_by_localizable_id(@user)
+    assert_equal locArray.size, 1
   end
 
 

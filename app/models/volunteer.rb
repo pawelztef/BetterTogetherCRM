@@ -2,8 +2,9 @@ class Volunteer < ActiveRecord::Base
 
   has_many :memberships, dependent: :destroy
   has_many :volunteers_groups, through: :memberships
-  has_many :locations, as: :localizable
-
+  has_one :location, as: :localizable, dependent: :destroy
+  
+  accepts_nested_attributes_for :location
   accepts_nested_attributes_for :memberships #, allow_destroy: true
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
