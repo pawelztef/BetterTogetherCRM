@@ -86,13 +86,13 @@ Owner can't delete itself
 
     ** testing added ***
 
-     a) add a geolocation fundation
+    + a) add a geolocation fundation
       + - create model
       + - add validation
       + - install gem geocoder
       + - add full_street_address method
         
-     b) associate location model with user and volunteer
+    + b) associate location model with user and volunteer
         - add polymorphic assotiation
         - update views
 

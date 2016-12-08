@@ -38,6 +38,20 @@ class LocationTest < ActiveSupport::TestCase
     assert_not_nil location.errors[:county]
   end
 
+  test "invalid witout localizable_id" do
+    location = locations(:one)
+    location.localizable_id = nil
+    refute location.valid?
+    assert_not_nil location.errors[:county]
+  end
+
+  test "invalid witout localizable_type" do
+    location = locations(:one)
+    location.localizable_type = nil
+    refute location.valid?
+    assert_not_nil location.errors[:county]
+  end
+
   test "should generate string" do
     location = locations(:one)
     str = "#{location.line1} #{location.line2} #{location.city} #{location.code}"

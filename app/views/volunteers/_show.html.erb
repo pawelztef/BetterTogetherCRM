@@ -41,6 +41,11 @@
                   <%= @volunteer.phone2 %>
                   </p>
 
+                  <p>
+                  <strong>Address:</strong>
+                  <%= @volunteer.locations.first.full_street_address %>
+                  </p>
+
                   <strong>Groups:</strong>
                   <ul>
                     <% @membership.each do |mb| %> 

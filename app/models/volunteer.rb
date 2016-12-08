@@ -2,6 +2,7 @@ class Volunteer < ActiveRecord::Base
 
   has_many :memberships, dependent: :destroy
   has_many :volunteers_groups, through: :memberships
+  has_many :locations, as: :localizable
 
   accepts_nested_attributes_for :memberships #, allow_destroy: true
 
