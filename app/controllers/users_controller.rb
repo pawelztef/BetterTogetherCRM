@@ -14,17 +14,15 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.location.build
+    @user.location = Location.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      # redirect_to users_url, notice: 'User was succesfully created.'
       gflash :success => 'User was succesfully created.'
       redirect_to users_url
     else
-      # flash[:alert] = 'There was a problem while creating user.'
       gflash :now, :error =>'There was a problem while creating user.'
       render :new
     end
@@ -45,6 +43,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.owner?
+
       gflash :warning => "Owner can't delete itself"
       redirect_to users_url
     else
@@ -59,7 +58,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :password,
                                  location_attributes: [:line1, :line2, :city, :county,
                                                        :code, :latitude, :longitude,
-                                                       :localizable_id, :localizable_type],)
+                                                       :localizable_id, :localizable_type])
   end
 
   def set_user

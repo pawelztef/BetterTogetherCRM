@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
+  include Reusable
+
+  before_validation :remove_white_spaces, only: [:first_name, :last_name, :email]
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, presence: true, uniqueness: {scope: :last_name}
+  validates :last_name, presence: true, uniqueness: {scope: :first_name}
   validates :email, presence: true,
                     uniqueness: true,
                     # format: {with: EMAIL_REGEX},
