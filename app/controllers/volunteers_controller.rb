@@ -2,7 +2,7 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @volunteers = Volunteer.all
+    @volunteers = Volunteer.all.includes(:location)
   end
 
   def show

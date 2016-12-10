@@ -59,6 +59,8 @@ group :development, :test do
   gem 'mini_backtrace', '0.1.3'
   # Lorem Ipsum helper
   gem 'faker'
+  # performance meausre
+  gem 'rack-mini-profiler'
 end
 
 group :development do

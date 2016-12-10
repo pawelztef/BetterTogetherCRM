@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     usr = User.find current_moderator.id 
-    @users = usr.owner? ? User.all : [usr]
+    @users = usr.owner? ? User.all.includes(:location) : [usr]
   end
 
   def show

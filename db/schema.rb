@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207141727) do
+ActiveRecord::Schema.define(version: 20161210165533) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "line1",            limit: 255, null: false
@@ -27,12 +27,16 @@ ActiveRecord::Schema.define(version: 20161207141727) do
     t.string   "localizable_type", limit: 255
   end
 
+  add_index "locations", ["localizable_id", "localizable_type"], name: "index_locations_on_localizable_id_and_localizable_type", using: :btree
+
   create_table "memberships", force: :cascade do |t|
     t.integer  "volunteer_id",        limit: 4
     t.integer  "volunteers_group_id", limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
+
+  add_index "memberships", ["volunteer_id", "volunteers_group_id"], name: "index_memberships_on_volunteer_id_and_volunteers_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      limit: 255,                 null: false
