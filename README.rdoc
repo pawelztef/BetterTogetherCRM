@@ -96,8 +96,8 @@ Owner can't delete itself
     +    - add polymorphic assotiation
     +    - update views
 
-??9 Validation for uniqueness ??
-  10 OPTIONAL some tests
++ 9 Validation for uniqueness
++ 10 OPTIONAL some tests
   11 add indexes on models
   12 add necessary plugings
       pagination
