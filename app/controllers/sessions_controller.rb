@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   before_action :authorize, except: [:new, :create]
 
+  layout 'login'
+
   def new
   end
 

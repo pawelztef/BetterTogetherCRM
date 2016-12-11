@@ -16,7 +16,7 @@ When make use cases?
 
 !!!!! Backlog !!!!!!!
 
-Owner can't delete itself
+  Use Cases
 
 !!!!!!!!!!!!!!!!!!!!!
 
@@ -98,11 +98,24 @@ Owner can't delete itself
 
 + 9 Validation for uniqueness
 + 10 OPTIONAL some tests
-  11 add indexes on models
-  12 add necessary plugings
-      pagination
-  13 add prototype of navigation
++ 11 add indexes on models
+  12 add prototype of navigation
        consider bootstrap theme. If it's ok implement basic styles
+
+  13 Heroku First Deploy
+  
+  14 add rest models
+     q) dogs with assotiation to owner
+     b) trainings / traings history
+        -design
+        -implement
+        -test
+     c) client with assotiation to type business/donator/or else
+     d) tests 
+     e) deploy
+
+  15 Documentation/Design of Bookkeeping
+     
     
   
 
@@ -113,7 +126,7 @@ Owner can't delete itself
 * Ruby version
    -----2.2.3p173-------      
     changed to 
-    2.2.5 for testing
+    2.2.5 because testing
 
 * Rails version
     4.2.5 
