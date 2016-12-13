@@ -1,18 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>BetterTogether</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT - Dashboard</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
   </head>
   <body>
-
-    <%= render "application_partials/header" %>
-    <%= render "application_partials/sidebar" %>
-
     <%= gflash %> 
-    <%= yield %>
+
+    <section id="container" >
+
+      <%= render "application_partials/header" %>
+      <%= render "application_partials/asside" %>
+
+      <section id="main-content">
+        <section class="wrapper site-min-height">
+
+              <%= yield %>
+
+        </section>
+      </section>
+
+      <footer class="site-footer">
+        <div class="text-center">
+          2016 - BetterTogether
+          <a href="#" class="go-top">
+            <i class="fa fa-angle-up"></i>
+          </a>
+        </div>
+      </footer>
+
+    </section>
+
+
+    <script>
+      <%# //custom select box %>
+      <%# $(function(){ $('select.styled').customSelect(); }); %>
+    </script>
 
   </body>
 </html>

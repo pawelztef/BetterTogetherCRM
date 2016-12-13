@@ -99,8 +99,9 @@ When make use cases?
 + 9 Validation for uniqueness
 + 10 OPTIONAL some tests
 + 11 add indexes on models
-  12 add prototype of navigation
++ 12 add prototype of navigation
        consider bootstrap theme. If it's ok implement basic styles
+       set color anchors 
 
   13 Heroku First Deploy
   
