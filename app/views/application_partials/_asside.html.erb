@@ -7,11 +7,22 @@
       <%# <h5 class="centered">Navigation</h5> %>
 
       <li class="mt">
-        <%= link_to "<i class='fa fa-dashboard'></i><span>Dashboard</span>".html_safe, volunteers_path %> 
+        <%= link_to "<i class='fa fa-dashboard'></i><span>Dashboard</span>".html_safe, users_path %> 
         <%# <a href="index.html"> %>
-        <%#       <i class="fa fa-dashboard"></i> %>
-        <%#       <span>Dashboard</span> %>
-        <%#   </a> %>
+          <%#       <i class="fa fa-dashboard"></i> %>
+          <%#       <span>Dashboard</span> %>
+          <%#   </a> %>
+      </li>
+
+      <li class="sub-menu">
+        <a href="javascript:;" >
+          <i class="fa fa-users"></i>
+          <span>Volunteers</span>
+        </a>
+        <ul class="sub">
+          <li> <%= link_to "All Volunteers", volunteers_path %> </li>
+          <li> <%= link_to "Groups", volunteers_groups_path %> </li>
+        </ul>
       </li>
 
       <li class="sub-menu">

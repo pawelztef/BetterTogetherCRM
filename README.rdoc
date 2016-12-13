@@ -100,7 +100,8 @@ When make use cases?
 + 10 OPTIONAL some tests
 + 11 add indexes on models
 + 12 add prototype of navigation
-       set color anchors 
+     + set color anchors 
+     + basic mixins 
 
   13 Heroku First Deploy
   
