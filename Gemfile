@@ -34,6 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Lorem Ipsum helper
+gem 'faker'
+
 # material styles
 # gem 'bootstrap-material-design-rails'
 
@@ -59,8 +62,6 @@ group :development, :test do
   gem 'byebug'
   gem 'minitest-reporters', '1.0.5'
   gem 'mini_backtrace', '0.1.3'
-  # Lorem Ipsum helper
-  gem 'faker'
   # performance meausre
   gem 'rack-mini-profiler'
 end
