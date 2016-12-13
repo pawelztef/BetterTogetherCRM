@@ -18,4 +18,3 @@
 //= require gritter
 //= require_tree .
 
-

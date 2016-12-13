@@ -1,6 +1,34 @@
 $prim1: #DC143C
 
+$pr1: #68d78a
+$pr2: #bed753
+$pr3: #f35c00
+$pr4: #b9bd88
+$pr5: #3d3f37
+
+
+// orginal colors
+$typo-dark: #797979
+$typo-light: #f2f2f2
+$gray-dark: #424a5d
+$gray-mid: #aeb2b7
+$gray-light: #ddd
+$yell-dark: #c9aa5f
+$yell-light: #ffd777
+$turq: #68dff0
+
+// mixins
+=border-radius($radius: 1px) 
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  border-radius: $radius
+
+
+// basic settings
 html, body, ul, ol
   margin: 0 
   padding: 0
 
+.btn-default
+  +border-radius
