@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'precence of attributes' do
+  end
+
+  describe 'uniqueness of attributes' do
+  end
+
+  describe 'association' do
+    pending("waiting for implementation")
+  end
+
 end

@@ -1,0 +1,21 @@
+/home/pawel/.rbenv/versions/2.2.5/bin/ruby -r ./siteconf20161214-15760-84uszi.rb extconf.rb
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/home/pawel/.rbenv/versions/2.2.5/bin/$(RUBY_BASE_NAME)
+extconf.rb:44:in `<main>': uninitialized constant Config (NameError)
+
+extconf failed, exit code 1

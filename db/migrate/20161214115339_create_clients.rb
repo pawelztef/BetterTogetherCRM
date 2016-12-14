@@ -6,7 +6,7 @@ class CreateClients < ActiveRecord::Migration
       t.string :email, null: false
       t.string :phone1, null: false
       t.string :phone2
-      t.boolean :institution, null: false
+      t.boolean :institution, null: false, default: false
 
       t.timestamps null: false
     end

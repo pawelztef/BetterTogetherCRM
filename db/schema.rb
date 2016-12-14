@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(version: 20161214121039) do
 
   create_table "clients", force: :cascade do |t|
-    t.string   "first_name",  limit: 255, null: false
-    t.string   "last_name",   limit: 255, null: false
-    t.string   "email",       limit: 255, null: false
-    t.string   "phone1",      limit: 255, null: false
+    t.string   "first_name",  limit: 255,                 null: false
+    t.string   "last_name",   limit: 255,                 null: false
+    t.string   "email",       limit: 255,                 null: false
+    t.string   "phone1",      limit: 255,                 null: false
     t.string   "phone2",      limit: 255
-    t.boolean  "institution",             null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.boolean  "institution",             default: false, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "dogs", force: :cascade do |t|

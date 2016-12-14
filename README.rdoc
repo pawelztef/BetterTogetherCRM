@@ -201,7 +201,14 @@ When make use cases?
                                                                                                                       - add  line into Guardfile
                                                                                                                         guard :minitest,  spring: true, all_on_start: false do
 
-  Rspec????
+  Rspec-guard run:
+    $ bundle exec gruard init rspec
+
+  Rspec run:
+    $ rails generate rspec:install
+  to run test run:
+    $ bundle exec rspec 
+    $ rspec
 
 
 
@@ -215,7 +222,8 @@ When make use cases?
       gem 'pg','0.17.1'
       gem 'rails_12factor', '0.0.2'
 
-    run bundle install --without production
+    run:
+     $ bundle install --without production
 
     add settings for serving assets on production in config/application.rb
       config.serve_static_assets = true
