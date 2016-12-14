@@ -21,6 +21,8 @@ When make use cases?
   right menu doesn't work ? 
   add to users model phone attribute
   Assets on Heroku
+  Dog validation  for uniqueness 
+  extract helper fullname methods for models user/volunteeer/client 
 
 !!!!!!!!!!!!!!!!!!!!!
 
@@ -113,24 +115,32 @@ When make use cases?
      a) dogs with assotiation to owner/client
   +      -design
             *what type is the best for repersenting sex of animal
-         -implement
+  +      -implement
             *validation for first_name ,last_name, email, phone1, intitution
             *validation for name, gender, age, breed
          -set new test environment
          -test
+         -seed data
 
-     b) events with assotiation to polymorphic assotiation participators
+     b) dog association to location
+
+     c) client assocaition to location
+
+     d) events with assotiation to polymorphic assotiation participators
   +     -design
         -implement
         -test
+        -seed data
+        
 
-     c) donations model
+     e) donations model
         -desing 
           -transaction id? check this
         -implement
         -test
+        -seed data
       
-     d) deploy
+     f) deploy
 
   15 Bakclog
      a) assets on heroku
@@ -179,19 +189,17 @@ When make use cases?
 
 * Database initialization
 
+
+
 * How to run the test suite
-
-  All guides from Hartl book
-
-  - add into test_helper.rb
-      require "minitest/reporters"
-      Minitest::Reporters.use!
-      
-  - add into config/initializers/bactrace_silencers.rb
-      Rails.backtrace_cleaner.add_silencer  { |line|  line  =~  /rvm/ }
-  
-  - add  line into Guardfile
-    guard :minitest,  spring: true, all_on_start: false do
+                                                                                                                      All guides from Hartl book
+                                                                                                                      - add into test_helper.rb
+                                                                                                                          require "minitest/reporters"
+                                                                                                                          Minitest::Reporters.use!
+                                                                                                                      - add into config/initializers/bactrace_silencers.rb
+                                                                                                                          Rails.backtrace_cleaner.add_silencer  { |line|  line  =~  /rvm/ }
+                                                                                                                      - add  line into Guardfile
+                                                                                                                        guard :minitest,  spring: true, all_on_start: false do
 
   Rspec????
 

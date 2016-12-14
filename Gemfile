@@ -67,6 +67,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "rspec-rails"
+  gem "shoulda"
 
   # performance meausre
   gem 'rack-mini-profiler'
