@@ -17,6 +17,9 @@ When make use cases?
 !!!!! Backlog !!!!!!!
 
   Use Cases
+  Capitalize when adding email adress on users and volunteers
+  right menu doesn't work ? 
+  Assets on Heroku
 
 !!!!!!!!!!!!!!!!!!!!!
 
@@ -103,19 +106,41 @@ When make use cases?
      + set color anchors 
      + basic mixins 
 
-  13 Heroku First Deploy
++ 13 Heroku First Deploy
   
   14 add rest models
-     q) dogs with assotiation to owner
-     b) trainings / traings history
+     a) dogs with assotiation to owner/client
+  +      -design
+         -implement
+         -set new test environment
+         -test
+
+     b) events with assotiation to polymorphic assotiation participators
+  +     -design
+        -implement
+        -test
+
+     c) donations model
+        -desing 
+        -implement
+        -test
+      
+     d) deploy
+
+  15 Bakclog
+     a) assets on heroku
+     b) capitalize method on users nad voluneters
+        remove capitalize from common helper method
+     c) asside menu
+    
+  16 add controllers an views
         -design
         -implement
         -test
-     c) client with assotiation to type business/donator/or else
-     d) tests 
-     e) deploy
-
-  15 Documentation/Design of Bookkeeping
+        -deploy
+    
+    
+  17 Documentation/Design of Bookkeeping
      
     
   
@@ -140,7 +165,12 @@ When make use cases?
 
 * Configuration
 
+    --Simple_form gem--
+      after bundle  install ** rails g simple_form:install --bootstrap **
+
 * Database creation
+
+      
 
 * Database initialization
 
@@ -158,13 +188,35 @@ When make use cases?
   - add  line into Guardfile
     guard :minitest,  spring: true, all_on_start: false do
 
+  Rspec????
+
 
 
 * Services (job queues, cache servers, search engines, etc.)
 
   * Deployment instructions
+
+    download and install heroku CLI
     
-    --Simple_form gem--
-      after bundle  install ** rails g simple_form:install --bootstrap **
+    add gems to :production group
+      gem 'pg','0.17.1'
+      gem 'rails_12factor', '0.0.2'
+
+    run bundle install --without production
+
+    add settings for serving assets on production in config/application.rb
+      config.serve_static_assets = true
+
+    run commands in terminal 
+      $ heroku version
+      $ heroku login
+      $ heroku keys:add
+      $ heroku create
+      $ git push heroku master
+      $ heroku rename <appName>
+      $ haeroku rake db:migrate
+      $ heroku rake db:seed
+      $ heroku open
+    
     
 
