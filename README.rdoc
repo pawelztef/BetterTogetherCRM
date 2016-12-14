@@ -112,7 +112,7 @@ When make use cases?
 + 13 Heroku First Deploy
   
   14 add rest models
-     a) dogs with assotiation to owner/client
+  a   a) dogs with assotiation to owner/client
   +      -design
             *what type is the best for repersenting sex of animal
   +      -implement
