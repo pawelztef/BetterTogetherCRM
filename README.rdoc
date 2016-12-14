@@ -19,6 +19,7 @@ When make use cases?
   Use Cases
   Capitalize when adding email adress on users and volunteers
   right menu doesn't work ? 
+  add to users model phone attribute
   Assets on Heroku
 
 !!!!!!!!!!!!!!!!!!!!!
@@ -111,7 +112,10 @@ When make use cases?
   14 add rest models
      a) dogs with assotiation to owner/client
   +      -design
+            *what type is the best for repersenting sex of animal
          -implement
+            *validation for first_name ,last_name, email, phone1, intitution
+            *validation for name, gender, age, breed
          -set new test environment
          -test
 
@@ -122,6 +126,7 @@ When make use cases?
 
      c) donations model
         -desing 
+          -transaction id? check this
         -implement
         -test
       
