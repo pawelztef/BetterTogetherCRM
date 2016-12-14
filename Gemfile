@@ -66,13 +66,10 @@ group :development, :test do
   # gem 'guard-rspec'
   gem "factory_girl_rails"
   gem "capybara"
+  gem "rspec-rails"
 
   # performance meausre
   gem 'rack-mini-profiler'
-end
-
-group :test do
-  gem "rspec-rails"
 end
 
 group :development do
