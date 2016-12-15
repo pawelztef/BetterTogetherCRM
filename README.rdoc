@@ -148,6 +148,7 @@ When make use cases?
 
   All guides from Hartl book
 
+
   - add into test_helper.rb
       require "minitest/reporters"
       Minitest::Reporters.use!
