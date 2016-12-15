@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Client, type: :model do
 
+  describe 'column specyfication' do
+    it { should have_db_column(:first_name).with_options(presence: true) } 
+    it { should have_db_column(:last_name).with_options(presence: true) } 
+    it { should have_db_column(:email).with_options(presence: true) } 
+    it { should have_db_column(:phone1).with_options(presence: true) } 
+    it { should have_db_column(:phone2) }
+    it { should have_db_column(:institution) }
+  end
+
   describe 'presence of attributes' do
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:first_name) }
@@ -24,9 +33,21 @@ RSpec.describe Client, type: :model do
     end
   end
 
-  describe 'association' do
-    pending("waiting for implementation")
+  describe 'nested attributes' do
+    it{ should accept_nested_attributes_for(:dogs) }
   end
+
+  describe 'association' do
+    it { should have_many :dogs }
+  end
+
+  describe 'method responsivnes' do
+    it 'respond to #fullname' do  
+      client = FactoryGirl.create(:client)
+      expect(client).to respond_to :fullname
+    end
+  end
+
 
 
 end

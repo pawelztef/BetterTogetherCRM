@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
                     uniqueness: true,
                     # format: {with: EMAIL_REGEX},
                     confirmation: true
-  # validates :ownership, presence: true
 
   has_secure_password
   has_one :location, as: :localizable, dependent: :destroy

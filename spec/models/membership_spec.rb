@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Membership, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'column specyfication'
+  describe 'validation'
+  describe 'association'
+  describe 'respnding to methods'
 end

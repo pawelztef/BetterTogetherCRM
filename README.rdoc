@@ -116,13 +116,13 @@ When make use cases?
   +      -design
             *what type is the best for repersenting sex of animal
   +      -implement
-            *validation for first_name ,last_name, email, phone1, intitution
-            *validation for name, gender, age, breed
-         -set new test environment
-         -test
+  +         *validation for first_name ,last_name, email, phone1, intitution
+  +         *validation for name, gender, age, breed
+  +      -set new test environment
+  +      -test
          -seed data
 
-     b) dog association to location
+                                                                                                                       ????  b) dog association to location ???
 
      c) client assocaition to location
 

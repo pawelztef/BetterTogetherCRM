@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214121039) do
+ActiveRecord::Schema.define(version: 20161215214422) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(version: 20161214121039) do
     t.boolean  "sex",                    null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "client_id",  limit: 4
   end
+
+  add_index "dogs", ["client_id"], name: "index_dogs_on_client_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "line1",            limit: 255, null: false
@@ -86,4 +89,5 @@ ActiveRecord::Schema.define(version: 20161214121039) do
     t.datetime "updated_at",                null: false
   end
 
+  add_foreign_key "dogs", "clients"
 end
