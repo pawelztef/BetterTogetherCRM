@@ -28,5 +28,7 @@ RSpec.describe Client, type: :model do
     pending("waiting for implementation")
   end
 
+  describe 'method responsivnes'
+
 
 end

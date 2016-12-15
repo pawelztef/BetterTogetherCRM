@@ -5,6 +5,6 @@ FactoryGirl.define do
     sequence(:email) { |n| "email@email#{n}.com" }
     phone1 "MyString"
     phone2 "MyString"
-    institution false
+    institution 0
   end
 end
