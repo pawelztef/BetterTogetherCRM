@@ -41,7 +41,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'response to methods' do
-    it 'respond to fulname method' 
+    it 'respond to fullname method' 
     it 'repsond to owner? method' 
     it 'repsond to remove_withe_spaces? method' 
   end
