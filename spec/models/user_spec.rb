@@ -40,10 +40,32 @@ RSpec.describe User, type: :model do
     it { should accept_nested_attributes_for(:location) }
   end
 
-  describe 'response to methods' do
-    it 'respond to fullname method' 
-    it 'repsond to owner? method' 
-    it 'repsond to remove_withe_spaces? method' 
+  context 'response to methods' do
+
+    it 'respond to #fullname' do  
+      user = FactoryGirl.create(:user)
+      expect(user).to respond_to :fullname
+    end
+
+    it '#fullname return proper string' do
+      user = FactoryGirl.create(:user)
+      expect(user.fullname).to match /^[A-Z]\w+\s[A-Z]\w+$/
+    end
+
+    it 'repsond to owner? method' do
+      user = FactoryGirl.create(:user)
+      expect(user).not_to be_owner 
+    end
+
+    it 'repsond to remove_withe_spaces method' do
+      user = FactoryGirl.create(:user)
+      expect(user).to respond_to :remove_white_spaces
+      user.remove_white_spaces
+      expect(user.first_name).not_to match /\s/
+      expect(user.last_name).not_to match /\s/
+      expect(user.email).not_to match /\s/
+    end
+
   end
 
 end

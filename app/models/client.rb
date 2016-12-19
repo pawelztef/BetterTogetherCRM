@@ -1,4 +1,6 @@
 class Client < ActiveRecord::Base
+  include Reusable
+  before_validation :remove_white_spaces, only: [:first_name, :last_name, :email]
   has_many :dogs
 
   # EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
@@ -13,7 +15,7 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :dogs
 
   def fullname
-    "#{self.first_name} #{self.last_name}"
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
 
 end

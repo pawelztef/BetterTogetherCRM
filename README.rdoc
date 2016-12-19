@@ -24,6 +24,12 @@ When make use cases?
   Dog validation  for uniqueness 
   extract helper fullname methods for models user/volunteeer/client 
 
+
+
+  Association between volunteers volunteers_groups and memberships for monday!!!!!!!!!!!!!!!!!!!!!!
+
+
+
 !!!!!!!!!!!!!!!!!!!!!
 
 

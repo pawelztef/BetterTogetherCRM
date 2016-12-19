@@ -46,8 +46,18 @@ RSpec.describe Client, type: :model do
       client = FactoryGirl.create(:client)
       expect(client).to respond_to :fullname
     end
+    it '#fullname return proper string' do
+      client = FactoryGirl.create(:client)
+      expect(client.fullname).to match /^[A-Z]\w+\s[A-Z]\w+$/
+    end
+    it 'repsond to remove_withe_spaces method' do
+      client = FactoryGirl.create(:client)
+      expect(client).to respond_to :remove_white_spaces
+      client.remove_white_spaces
+      expect(client.first_name).not_to match /\s/
+      expect(client.last_name).not_to match /\s/
+      expect(client.email).not_to match /\s/
+    end
   end
-
-
 
 end
