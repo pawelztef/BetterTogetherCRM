@@ -5,7 +5,7 @@ RSpec.describe Dog, type: :model do
     it { should have_db_column(:name).of_type(:string).with_options(presence: true) }
     it { should have_db_column(:chip_id).of_type(:string) }
     it { should have_db_column(:age).of_type(:string).with_options(presen: true) }
-    it { should have_db_column(:sex).of_type(:boolean) }
+    it { should have_db_column(:sex).of_type(:string) }
     it { should have_db_column(:breed).of_type(:string).with_options(presen: true) }
     it { should have_db_column(:client_id).of_type(:integer) }
   end
@@ -15,6 +15,7 @@ RSpec.describe Dog, type: :model do
       it { should validate_presence_of(:name) }
       it { should validate_presence_of(:breed) }
       it { should validate_presence_of(:sex) }
+      it { should validate_length_of(:sex).is_equal_to(1) }
       it { should validate_presence_of(:age) }
     end
   end

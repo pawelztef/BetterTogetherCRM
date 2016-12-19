@@ -126,11 +126,11 @@ When make use cases?
   +         *validation for name, gender, age, breed
   +      -set new test environment
   +      -test
-         -seed data
+  +      -seed data
 
                                                                                                                        ????  b) dog association to location ???
 
-     c) client assocaition to location
+  +  c) client assocaition to location
 
      d) events with assotiation to polymorphic assotiation participators
   +     -design
