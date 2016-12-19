@@ -26,7 +26,7 @@ When make use cases?
 
 
 
-  Association between volunteers volunteers_groups and memberships for monday!!!!!!!!!!!!!!!!!!!!!!
+  ???  b) dog association to location ???
 
 
 
@@ -118,7 +118,7 @@ When make use cases?
 + 13 Heroku First Deploy
   
   14 add rest models
-  a   a) dogs with assotiation to owner/client
+     a) dogs with assotiation to owner/client
   +      -design
             *what type is the best for repersenting sex of animal
   +      -implement
@@ -128,40 +128,52 @@ When make use cases?
   +      -test
   +      -seed data
 
-                                                                                                                       ????  b) dog association to location ???
 
   +  c) client assocaition to location
 
-     d) events with assotiation to polymorphic assotiation participators
+  +  d) donations model
+  +     -desing 
+        -transaction id? check this
+  +     -implement
+  +     -test
+  +     -seed data
+
+  15 add controllers an views
+
+     a) prepare controller/views for clients 
+        - desing 
+            add scope to clients to retrieve only dog owners
+        - implement
+        - test
+     b) prepare controller/views for dogs
+        - desing 
+           desing
+        - implement
+        - test
+     c) prepare controller/views for donations
+        - desing 
+          add scope to client model to retrive only donators
+        - implement
+        - test
+
+  16 deploy
+       _ assets on heroku
+
+  17 events with assotiation to polymorphic assotiation participators
+     a)  create model fro events
   +     -design
         -implement
         -test
         -seed data
-        
-
-     e) donations model
-        -desing 
-          -transaction id? check this
-        -implement
-        -test
-        -seed data
+     b) prepare controller/views for clients 
+        - desing 
+        - implement
+        - test
       
-     f) deploy
-
-  15 Bakclog
-     a) assets on heroku
-     b) capitalize method on users nad voluneters
-        remove capitalize from common helper method
-     c) asside menu
-    
-  16 add controllers an views
-        -design
-        -implement
-        -test
-        -deploy
-    
-    
   17 Documentation/Design of Bookkeeping
+    
+    
+    
      
     
   

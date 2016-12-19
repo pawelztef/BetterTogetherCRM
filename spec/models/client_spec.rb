@@ -36,11 +36,13 @@ RSpec.describe Client, type: :model do
   describe 'nested attributes' do
     it{ should accept_nested_attributes_for(:dogs) }
     it{ should accept_nested_attributes_for(:location) }
+    it{ should accept_nested_attributes_for(:donations) }
   end
 
   describe 'association' do
     it { should have_many :dogs }
     it { should have_one :location }
+    it { should have_many :donations}
   end
 
   describe 'method responsivnes' do

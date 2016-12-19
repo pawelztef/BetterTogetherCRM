@@ -85,4 +85,9 @@ end
                      breed: "owczarek",
                      age: Faker::Number.between(1, 15))
   clt.dogs << dog
+
+  donation = Donation.create(transaction_id: Faker::Code.asin,
+                             amount: Faker::Number.decimal(2))
+  clt.donations << donation
+ 
 end
