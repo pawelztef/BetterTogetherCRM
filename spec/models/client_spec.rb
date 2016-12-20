@@ -1,20 +1,17 @@
 require 'rails_helper'
+require 'support/standard_details'
 
 RSpec.describe Client, type: :model do
 
+  it_behaves_like 'have common user details'
+
   describe 'column specyfication' do
-    it { should have_db_column(:first_name).with_options(presence: true) } 
-    it { should have_db_column(:last_name).with_options(presence: true) } 
-    it { should have_db_column(:email).with_options(presence: true) } 
-    it { should have_db_column(:phone1).with_options(presence: true) } 
-    it { should have_db_column(:phone2) }
-    it { should have_db_column(:institution) }
+    it { should have_db_column(:phone1).of_type(:string).with_options(presence: true) } 
+    it { should have_db_column(:phone2).of_type(:string) }
+    it { should have_db_column(:institution).of_type(:boolean) }
   end
 
   describe 'presence of attributes' do
-    it { should validate_presence_of(:last_name) }
-    it { should validate_presence_of(:first_name) }
-    it { should validate_presence_of(:email) }
     it { should validate_presence_of(:phone1) }
   end
 

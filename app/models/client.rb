@@ -1,7 +1,7 @@
 class Client < ActiveRecord::Base
   include Reusable
   before_validation :remove_white_spaces, only: [:first_name, :last_name, :email]
-  has_many :dogs
+  has_many :dogs, dependent: :destroy
   has_many :donations
   has_one :location, as: :localizable, dependent: :destroy
 
@@ -13,11 +13,13 @@ class Client < ActiveRecord::Base
                     # format: {with: EMAIL_REGEX},
                     confirmation: true
   validates :phone1, presence: true
+  # validates_associated :dogs
   
 
   accepts_nested_attributes_for :dogs
   accepts_nested_attributes_for :donations
   accepts_nested_attributes_for :location
+
 
   def fullname
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"

@@ -140,11 +140,13 @@ When make use cases?
 
   15 add controllers an views
 
-     a) prepare controller/views for clients 
-        - desing 
+     a) prepare controller/views for clients aka dog owners 
+  +     - desing 
             add scope to clients to retrieve only dog owners
-        - implement
+  +     - implement
         - test
+        - documentation
+
      b) prepare controller/views for dogs
         - desing 
            desing
@@ -162,6 +164,10 @@ When make use cases?
   17 events with assotiation to polymorphic assotiation participators
      a)  create model fro events
   +     -design
+            few static types of events 
+              e.g. dog transfer
+                   training 
+                   visit
         -implement
         -test
         -seed data

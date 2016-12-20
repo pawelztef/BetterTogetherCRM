@@ -1,0 +1,7 @@
+$('body').append('<%= j render("show") %>');
+$("#clientShowModal").modal('show');
+$(".closeClientShowModal").on("click", function() {
+  $("#clientShowModal").modal('hide');
+});
+
+
