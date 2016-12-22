@@ -27,6 +27,17 @@ When make use cases?
 
 
   ???  b) dog association to location ???
+  fullname method for client 
+  extract full name method from models
+  links to show view from edit view both Clients and Dogs
+  Ajax editing from show view in modal
+
+  !!!!!!!!! BUG !!!!!!!!!!!!!!!
+    problem with modal 
+    showing the same results
+    on many modals
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  
 
 
 

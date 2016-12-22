@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dogs</h1>
+
+<table class="table table-striped table-responsive table-hover">
+  <thead>
+    <tr>
+      <th>Name:</th>
+      <th>Chip id:</th>
+      <th>Age:</th>
+      <th>Breed:</th>
+      <th>Sex:</th>
+      <th colspan="3">Actions:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dogs.each do |dog| %>
+      <tr>
+        <td> <%= dog.name %> </td>
+        <td> <%= dog.chip_id %> </td>
+        <td> <%= dog.age %> </td>
+        <td> <%= dog.breed %> </td>
+        <td> <%= dog.sex %> </td>
+        <td><%= link_to 'Show', dog_path(dog), remote: true %>
+        <%= link_to 'Edit', edit_dog_path(dog) %>
+        <%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dog', new_dog_path %>

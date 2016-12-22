@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:simple_show, :show, :edit, :update, :destroy]
 
   def index
     @clients = Client.joins(:dogs)
@@ -22,7 +22,6 @@ class ClientsController < ApplicationController
   end
 
   def create
-    byebug
     @client = Client.new client_params
 
     if @client.save 
@@ -46,7 +45,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.destroy
-    gflash :success => 'User was succesfully created.'
+    gflash :success => 'User was succesfully deleted.'
     redirect_to clients_url
   end
 

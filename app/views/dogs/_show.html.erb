@@ -1,0 +1,73 @@
+<div class="modal fade" id="dogShowModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="containter">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeDogShowModal close">x</button>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+
+                <div class="col-md-12">
+                  <p id="notice"><%= notice %></p>
+
+                  <p>
+                  <strong>Name:</strong>
+                  <%= @dog.name %>
+                  </p>
+                  <p>
+                  <strong>Chip id:</strong>
+                  <%= @dog.chip_id%>
+                  </p>
+                  <p>
+                  <strong>Age:</strong>
+                  <%= @dog.age %>
+                  </p>
+                  <p>
+                  <strong>Breed:</strong>
+                  <%= @dog.breed %>
+                  </p>
+                  <p>
+                  <strong>Sex:</strong>
+                  <%= @dog.sex %>
+                  </p>
+
+                  <p>
+                  <strong>Owner:</strong>
+                  <%= link_to @dog.client.fullname, client_path(@dog.client_id), remote: true %>
+                  </p>
+                  <p>
+                  <strong>Addres:</strong>
+                  <%= @dog.client.location.full_street_address %>
+                  </p>
+                  <p>
+                  <strong>Coordinates:</strong>
+                  <%= @dog.client.location.latitude %>
+                  <%= @dog.client.location.longitude %>
+                  </p>
+
+                  <%= link_to 'Edit', edit_dog_path(@dog) %> |
+                  <%= link_to 'Back', dogs_path %>
+                </div>
+
+
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeDogShowModal btn btn-default">close</button>
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

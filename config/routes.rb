@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-  resources :volunteers_groups
+  resource :sessions, only: [:new, :create, :destroy]
+
   root 'users#index'
 
   get '/login' => 'sessions#new'
@@ -14,10 +14,11 @@ Rails.application.routes.draw do
     resources :locations, only: [:new, :create, :edit, :update]
   end
 
-  resource :sessions, only: [:new, :create, :destroy]
-
   resources :clients do
     resources :locations, only: [:new, :create, :edit, :update]
   end
+  
+  resources :volunteers_groups
+  resources :dogs
 
 end
