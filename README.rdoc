@@ -2,21 +2,14 @@
 
 How to store Passwords during Deploy?
 
-Fix  turbolinks 
-
-Fix validation in simple-form for login page as well require hints
-
-Style gritter messages
-
 Do I ned to specify ruby version in rbenv app file?
-
-When make use cases?
-  after first deploy
 
 
 !!!!! Backlog !!!!!!!
 
   Use Cases
+  Style gritter messages
+  Fix validation in simple-form for login page as well require hints
   Capitalize when adding email adress on users and volunteers
   right menu doesn't work ? 
   add to users model phone attribute
