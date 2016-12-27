@@ -152,8 +152,7 @@ Do I ned to specify ruby version in rbenv app file?
         - documentation
 
      b) prepare controller/views for dogs
-        - desing 
-           desing
+  +     - desing 
         - implement
         - test
      c) prepare controller/views for donations

@@ -14,7 +14,8 @@ class DogsController < ApplicationController
 
   def new
     @dog = Dog.new
-    @dog.client = Client.new
+    @client = Client.new
+    @dog.client = @client
     @client.location = Location.new
   end
 
@@ -33,8 +34,7 @@ class DogsController < ApplicationController
   end
 
   def update
-    # byebug
-    if @dog.update(dog_params)
+    if @dog.update dog_params
       gflash :success => 'Dog was succesfully updated.'
       redirect_to dogs_url 
     else
@@ -57,6 +57,7 @@ class DogsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def dog_params
-    params.require(:dog).permit(:id, :name, :chip_id, :age, :breed, :sex, :client_id, client: [:first_name, :last_name, :email, :phone1, :phone2, :institution])
+    params.require(:dog).permit(:id, :name, :chip_id, :age, :breed, :sex, :client_id)
   end
+
 end

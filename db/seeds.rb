@@ -1,12 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-#
-#
 
 loc = Location.new(line1: "A",
                         line2: "Newhaven Bay",
@@ -79,12 +70,14 @@ end
   
   clt.location = loc
   
-  dog = Dog.create( name: Faker::Pokemon.name,
-                     chip_id: Faker::Code.asin,
-                     sex: "M",
-                     breed: "owczarek",
-                     age: Faker::Number.between(1, 15))
-  clt.dogs << dog
+  2.times do 
+    dog = Dog.create( name: Faker::Pokemon.name,
+                       chip_id: Faker::Code.asin,
+                       sex: "M",
+                       breed: "owczarek",
+                       age: Faker::Number.between(1, 15))
+    clt.dogs << dog
+  end
 
   donation = Donation.create(transaction_id: Faker::Code.asin,
                              amount: Faker::Number.decimal(2))

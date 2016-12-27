@@ -1,8 +1,8 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:simple_show, :show, :edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.joins(:dogs)
+    @clients = Client.includes(:dogs)
   end
 
   def show
@@ -55,11 +55,10 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:first_name, :last_name, :email, :phone1, :phone2, :institution,
-                                   location_attributes: [:line1, :line2, :city, :county,
+    params.require(:client).permit(:id, :first_name, :last_name, :email, :phone1, :phone2, :institution,
+                                   location_attributes: [:id, :line1, :line2, :city, :county,
                                                          :code, :latitude, :longitude,
-                                                         :localizable_id, :localizable_type],
-                                   dogs_attributes: [:id, :name, :chip_id, :age, :breed, :sex, :client_id],)
-
+                                                         :localizable_id, :localizable_type])
   end
+
 end
