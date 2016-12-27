@@ -26,7 +26,6 @@ When make use cases?
 
 
 
-  Association between volunteers volunteers_groups and memberships for monday!!!!!!!!!!!!!!!!!!!!!!
 
 
 
