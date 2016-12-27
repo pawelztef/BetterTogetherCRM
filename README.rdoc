@@ -153,11 +153,12 @@ Do I ned to specify ruby version in rbenv app file?
 
      b) prepare controller/views for dogs
   +     - desing 
-        - implement
+  +     - implement
         - test
      c) prepare controller/views for donations
         - desing 
           add scope to client model to retrive only donators
+          views and controllers should be part of business namespace
         - implement
         - test
 
