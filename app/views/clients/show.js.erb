@@ -1,7 +1,7 @@
 $('body').append('<%= j render("show") %>');
-$("#volunteerShowModal").modal('show');
-$(".closeVolunteer").on("click", function() {
-  $("#volunteerShowModal").modal('hide');
+$("#clientShowModal").modal('show');
+$(".closeClientShowModal").on("click", function() {
+$("#clientShowModal").modal('hide');
 });
 $('body').on('hidden.bs.modal', '.modal', function (e) {
   $(e.target).removeData('bs.modal');

@@ -1,0 +1,30 @@
+<%= simple_form_for @dog, html: {class: 'form-horizontal'}  do |f| %>
+  <%= f.error_notification %>
+
+  <h3> <%= f.label "Dog details" %> </h3>
+  <%= f.input :name %> 
+  <%= f.input :chip_id %> 
+  <%= f.input :age, collection: 1..20 %> 
+  <%= f.input :breed %> 
+  <%= f.input :sex, collection: ["F", "M"] %> 
+
+  <%# relics of the past %>
+
+  <%# <h3> <%= f.label "Client details" %1> </h3> %>
+  <%# <%= f.simple_fields_for :client do |c| %1> %>
+  <%#   <%= c.input :first_name %1> %> 
+  <%#   <%= c.input :last_name %1> %> 
+  <%#   <%= c.input :email %1> %> 
+  <%#   <%= c.input :phone1 %1> %> 
+  <%#   <%= c.input :phone2 %1> %> 
+  <%#   <%= c.input :institution, as: :radio_buttons %1> %> 
+  <%# <h3> <%= c.label "Location" %1> </h3> %>
+  <%# <%= render "application_partials/location_form", f: c  %1> %>
+  <%# <% end %1> %> 
+
+
+
+  <div class="form-group">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<%= simple_form_for @client, html: {class: 'from-horizontal'} do |f| %>
+  <%= f.error_notification %>
+
+  <h3> <%= f.label "Personal Details" %> </h3>
+  <%= f.input :first_name %> 
+  <%= f.input :last_name %> 
+  <%= f.input :email %> 
+  <%= f.input :phone1 %> 
+  <%= f.input :phone2 %> 
+  <%= f.input :institution, as: :radio_buttons %> 
+  <h3> <%= f.label "Location" %> </h3>
+  <%= render "application_partials/location_form", f: f  %>
+  <%# <h3> <%= f.label "Dog details" %1> </h3> %>
+  <%# <%= render "application_partials/dog_form", f: f  %1> %>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-default' %> 
+  </div>
+<% end %> 

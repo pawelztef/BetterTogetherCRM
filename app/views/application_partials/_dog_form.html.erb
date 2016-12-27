@@ -1,0 +1,7 @@
+<%= f.simple_fields_for :dogs do |c| %>
+  <%= c.input :name %> 
+  <%= c.input :chip_id %> 
+  <%= c.input :age, collection: 1..20 %> 
+  <%= c.input :breed %> 
+  <%= c.input :sex, collection: ["F", "M"] %> 
+<% end %> 

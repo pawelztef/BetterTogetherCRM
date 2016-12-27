@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dog Owners</h1>
+<table class="table table-striped table-responsive table-hover">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Phone1</th>
+      <th>Phone2</th>
+      <th>Institution</th>
+      <th colspan="2">Coordinates</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.first_name %></td>
+        <td><%= client.last_name %></td>
+        <td><%= client.email %></td>
+        <td><%= client.phone1 %></td>
+        <td><%= client.phone2 %></td>
+        <td><%= client.institution %></td>
+        <td><%= client.location.latitude %></td>
+        <td><%= client.location.longitude %></td>
+        <td><%= link_to 'Show', client, remote: true %></td>
+        <td><%= link_to 'Edit', edit_client_path(client) %></td>
+        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Client', new_client_path %>
