@@ -1,3 +1,5 @@
+<% cli = @dog.client %>
+
 <div class="modal fade" id="dogShowModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -15,7 +17,6 @@
 
                 <div class="col-md-12">
                   <p id="notice"><%= notice %></p>
-
                   <p>
                   <strong>Name:</strong>
                   <%= @dog.name %>
@@ -39,23 +40,39 @@
 
                   <p>
                   <strong>Owner:</strong>
-                  <%= link_to @dog.client.fullname, client_path(@dog.client_id), remote: true %>
-                  </p>
-                  <p>
-                  <strong>Addres:</strong>
-                  <%= @dog.client.location.full_street_address %>
-                  </p>
-                  <p>
-                  <strong>Coordinates:</strong>
-                  <%= @dog.client.location.latitude %>
-                  <%= @dog.client.location.longitude %>
+                  <a herf="#" id="showOwnerBtn"> <%= cli.fullname %> </a>
                   </p>
 
+                  <div id="owner" style="display: none">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p>
+                        <strong>Email:</strong>
+                        <%= cli.email %>
+                        </p>
+                        <p>
+                        <strong>Phone1:</strong>
+                        <%= cli.phone1 %>
+                        </p>
+                        <p>
+                        <strong>Phone2:</strong>
+                        <%= cli.phone2 %>
+                        </p>
+                      </div>
+                    </div>
+                    <p>
+                    <strong>Address:</strong>
+                    <%= @dog.client.location.full_street_address %>
+                    </p>
+                    <p>
+                    <strong>Coordinates:</strong>
+                    <%= @dog.client.location.latitude %>
+                    <%= @dog.client.location.longitude %>
+                    </p>
+                  </div>
                   <%= link_to 'Edit', edit_dog_path(@dog) %> |
                   <%= link_to 'Back', dogs_path %>
                 </div>
-
-
               </div>
               <div class="row">
                 <div class="col-sm-12">
@@ -70,4 +87,3 @@
     </div>
   </div>
 </div>
-

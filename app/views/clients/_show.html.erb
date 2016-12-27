@@ -1,79 +1,68 @@
-<div class="modal fade" id="clientShowModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="containter">
-              <div class="row">
-                <div class="col-sm-12">
-                  <button type="button" class="closeClientShowModal close">x</button>
+<div id="clientsModal">
+  <div class="modal fade" id="clientShowModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="containter">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button type="button" class="closeClientShowModal close">x</button>
+                  </div>
                 </div>
-              </div>
-              <br />
-              <div class="row content">
+                <div class="row content">
+                  <div class="col-md-12">
 
-                <div class="col-md-12">
-                  <p id="notice"><%= notice %></p>
+                    <h3> Personal Details </h3>
+                    <p> <strong>First name:</strong> <%= @client.first_name %> </p>
+                    <p> <strong>Last name:</strong> <%= @client.last_name %> </p>
+                    <p> <strong>Email:</strong> <%= @client.email %> </p>
+                    <p> <strong>Phone1:</strong> <%= @client.phone1 %> </p>
+                    <p> <strong>Phone2:</strong> <%= @client.phone2 %> </p>
+                    <p> <strong>Address:</strong> <%= @client.location.full_street_address %> </p>
+                    <p> <strong>Coordinates:</strong> <%= @client.location.latitude %> <%= @client.location.longitude %> </p>
 
-                  <p>
-                  <strong>First name:</strong>
-                  <%= @client.first_name %>
-                  </p>
-
-                  <p>
-                  <strong>Last name:</strong>
-                  <%= @client.last_name %>
-                  </p>
-
-                  <p>
-                  <strong>Email:</strong>
-                  <%= @client.email %>
-                  </p>
-
-                  <p>
-                  <strong>Phone1:</strong>
-                  <%= @client.phone1 %>
-                  </p>
-
-                  <p>
-                  <strong>Phone2:</strong>
-                  <%= @client.phone2 %>
-                  </p>
-
-                  <p>
-                  <strong>Address:</strong>
-                  <%= @client.location.full_street_address %>
-                  </p>
-                  <strong>Coordinates:</strong>
-                  <%= @client.location.latitude %>
-                  <%= @client.location.longitude %>
-                  </p>
-
-                  <p>
-                  <strong>Dogs:</strong>
-                  <% @client.dogs.each do |dog| %>
-                    <%= "#{dog.name} #{dog.breed}"  %> 
-                  <% end %> 
-                  </p>
-
-                  <%= link_to 'Edit', edit_client_path(@client), class: "closeClientShowModal" %> |
-                  <%= link_to 'Back', clients_path, class: "closeClientShowModal"%>
+                    <h3> Dogs owned </h3>
+                    <div id="accordion">
+                      <% @client.dogs.each_with_index do |dog, index| %>
+                        <div class="panel">
+                          <div class="panel-heading">
+                            <h4 class="panel-title">
+                              <p> <strong>Name:</strong> <a data-toggle="collapse" data-parent="#accordion" href="#dog_<%= index %>"> <%= dog.name %> </a> </p>
+                            </h4>
+                          </div>
+                          <div id="dog_<%= index %>" class="panel-collapse collapse">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <p> <strong>Chip id:</strong> <%= dog.chip_id %> </p>
+                                <p> <strong>Age:</strong> <%= dog.age %> </p>
+                                <p> <strong>Breed:</strong> <%= dog.breed %> </p>
+                                <p> <strong>Sex:</strong> <%= dog.sex %> </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %> 
+                    </div> 
+                    <p> 
+                      <%= link_to 'Edit', edit_client_path(@client), class: "closeClientShowModal" %> 
+                      | <%= link_to 'Back', clients_path, class: "closeClientShowModal" %>
+                    </p>
+                    <br />
+                  </div>
                 </div>
-
-
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <button type="button" class="closeClientShowModal btn btn-default">close</button>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button type="button" class="closeClientShowModal btn btn-default">close</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <br />
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
+</div>
