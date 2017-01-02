@@ -21,7 +21,7 @@
         <td> <%= business_donation.donator.fullname %> </td>
         <td> <%= business_donation.created_at %> </td>
         <td>
-          <%= link_to 'Show', business_donation_path(business_donation) %> |
+          <%= link_to 'Show', business_donation_path(business_donation), remote: true %> |
           <%= link_to 'edit', edit_business_donation_path(business_donation) %> |
           <%= link_to 'destroy', business_donation_path(business_donation), method: :delete, data: { confirm: 'are you sure?' } %>
         </td>
