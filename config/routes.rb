@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   resources :clients do
     resources :locations, only: [:new, :create, :edit, :update]
   end
+
+  namespace :business do
+    resources :donations
+  end
   
   resources :volunteers_groups
   resources :dogs
