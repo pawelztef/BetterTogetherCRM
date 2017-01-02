@@ -2,19 +2,29 @@
 
 <h1>Listing Business Donations</h1>
 
-<table>
+<table class="table table-striped table-responsive table-hover">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Transaction id:</th>
+      <th>Amount:</th>
+      <th>Donator:</th>
+      <th>Date:</th>
+      <th colspan="3">Actions:</th>
     </tr>
   </thead>
 
   <tbody>
     <% @business_donations.each do |business_donation| %>
       <tr>
-        <td><%= link_to 'Show', business_donation %></td>
-        <td><%= link_to 'Edit', edit_business_donation_path(business_donation) %></td>
-        <td><%= link_to 'Destroy', business_donation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <%= business_donation.transaction_id %> </td>
+        <td> <%= business_donation.amount %> </td>
+        <td> <%= business_donation.donator.fullname %> </td>
+        <td> <%= business_donation.created_at %> </td>
+        <td>
+          <%= link_to 'Show', business_donation_path(business_donation) %> |
+          <%= link_to 'edit', edit_business_donation_path(business_donation) %> |
+          <%= link_to 'destroy', business_donation_path(business_donation), method: :delete, data: { confirm: 'are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

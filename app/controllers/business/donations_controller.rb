@@ -4,7 +4,7 @@ class Business::DonationsController < ApplicationController
   # GET /business/donations
   # GET /business/donations.json
   def index
-    @business_donations = Business::Donation.all
+    @business_donations = Donation.all
   end
 
   # GET /business/donations/1
