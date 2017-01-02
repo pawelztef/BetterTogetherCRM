@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @business_donation %> |
+<%= link_to 'Show', business_donation_path(@business_donation), remote: true %> |
 <%= link_to 'Back', business_donations_path %>

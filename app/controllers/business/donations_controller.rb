@@ -1,30 +1,26 @@
 class Business::DonationsController < ApplicationController
   before_action :set_business_donation, only: [:show, :edit, :update, :destroy]
 
-  # GET /business/donations
-  # GET /business/donations.json
   def index
     @business_donations = Donation.all
   end
 
-  # GET /business/donations/1
-  # GET /business/donations/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
-  # GET /business/donations/new
   def new
-    @business_donation = Business::Donation.new
+    @business_donation = Donation.new
   end
 
-  # GET /business/donations/1/edit
   def edit
   end
 
-  # POST /business/donations
-  # POST /business/donations.json
   def create
-    @business_donation = Business::Donation.new(business_donation_params)
+    @business_donation = Donation.new(business_donation_params)
 
     respond_to do |format|
       if @business_donation.save
@@ -37,8 +33,6 @@ class Business::DonationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /business/donations/1
-  # PATCH/PUT /business/donations/1.json
   def update
     respond_to do |format|
       if @business_donation.update(business_donation_params)
@@ -51,8 +45,6 @@ class Business::DonationsController < ApplicationController
     end
   end
 
-  # DELETE /business/donations/1
-  # DELETE /business/donations/1.json
   def destroy
     @business_donation.destroy
     respond_to do |format|
@@ -62,12 +54,10 @@ class Business::DonationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_business_donation
-      @business_donation = Business::Donation.find(params[:id])
+      @business_donation = Donation.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def business_donation_params
       params.fetch(:business_donation, {})
     end
