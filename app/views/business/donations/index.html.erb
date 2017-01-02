@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Business Donations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @business_donations.each do |business_donation| %>
+      <tr>
+        <td><%= link_to 'Show', business_donation %></td>
+        <td><%= link_to 'Edit', edit_business_donation_path(business_donation) %></td>
+        <td><%= link_to 'Destroy', business_donation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Donation', new_business_donation_path %>
