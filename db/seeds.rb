@@ -79,8 +79,16 @@ end
     clt.dogs << dog
   end
 
+ 
+end
+5.times do 
+ don = Donator.create( first_name: Faker::Name.first_name,
+                         last_name: Faker::Name.last_name,
+                         email: Faker::Internet.email,
+                         phone1: Faker::PhoneNumber.cell_phone,
+                         phone2: Faker::PhoneNumber.cell_phone,
+                         institution: false )
   donation = Donation.create(transaction_id: Faker::Code.asin,
                              amount: Faker::Number.decimal(2))
-  clt.donations << donation
- 
+  don.donations << donation
 end
