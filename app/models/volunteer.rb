@@ -20,9 +20,5 @@ class Volunteer < ActiveRecord::Base
   validates :phone1, presence: true
 
 
-  def fullname
-    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
-  end
-  
  
 end
