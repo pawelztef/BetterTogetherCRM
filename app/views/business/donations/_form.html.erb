@@ -1,8 +1,22 @@
 <%= simple_form_for [:business, @business_donation] do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-  </div>
+  <h3> <%= f.label "Donation Details" %> </h3>
+  <%= f.input :transaction_id %> 
+  <%= f.input :amount %> 
+
+
+  <%= f.simple_fields_for :location do |c| %>
+    <h3> <%= c.label "Donator Details" %> </h3>
+    <%= c.input :first_name %> 
+    <%= c.input :last_name %> 
+    <%= c.input :email %> 
+    <%= c.input :phone1 %> 
+    <%= c.input :phone2 %> 
+    <%= c.input :institution, as: :radio_buttons %> 
+    <%# <h3> <%= c.label "Location" %1> </h3> %>
+    <%# <%= render "application_partials/location_form", f: c  %1> %>
+  <% end %> 
 
   <div class="form-actions">
     <%= f.button :submit %>
