@@ -16,24 +16,20 @@ class Business::DonationsController < ApplicationController
     @business_donation = Donation.new
     @donator = Donator.new
     @donator.location = Location.new
-    # byebug
   end
 
   def edit
   end
 
   def create
-    @business_donation = Donation.new(business_donation_params)
+    byebug
+    # @business_donation = Donation.new(business_donation_params)
 
-    respond_to do |format|
-      if @business_donation.save
-        format.html { redirect_to @business_donation, notice: 'Donation was successfully created.' }
-        format.json { render :show, status: :created, location: @business_donation }
-      else
-        format.html { render :new }
-        format.json { render json: @business_donation.errors, status: :unprocessable_entity }
-      end
-    end
+    # if @business_donation.save
+      redirect_to business_donations_url
+    # else
+    #   render :new
+    # end
   end
 
   def update
@@ -57,12 +53,13 @@ class Business::DonationsController < ApplicationController
   end
 
   private
-    def set_business_donation
-      @business_donation = Donation.find(params[:id])
-    end
+  def set_business_donation
+    @business_donation = Donation.find(params[:id])
+  end
 
-    def business_donation_params
-      params.require(:donation).permit(:amount, :transaction_id, 
-                                       donator: [:first_name, :last_name, :email, :phone1, :phone2, :institution] )
-    end
+  def business_donation_params
+    params.require(:donation).permit(:amount, :transaction_id, 
+                                     donator: [:first_name, :last_name, :email, :phone1, :phone2, :institution,
+                                     location_attributes: [:line1, :line2, :city, :county, :code]] )
+  end
 end
