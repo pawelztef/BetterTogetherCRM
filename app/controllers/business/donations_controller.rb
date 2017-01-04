@@ -25,9 +25,18 @@ class Business::DonationsController < ApplicationController
 
   def create
     @business_donation = Donation.new(business_donation_params)
-    @business_donation.donator = Donator.where(first_name: business_donation_params[:donator_attributes][:first_name],
+    @donator = Donator.where(first_name: business_donation_params[:donator_attributes][:first_name],
                                                last_name: business_donation_params[:donator_attributes][:last_name])
-                                              .first_or_initialize(business_donation_params[:donator_attributes])
+                      .first_or_initialize
+                      
+    @donator.assign_attributes({ email: business_donation_params[:donator_attributes][:email],
+                                         phone1: business_donation_params[:donator_attributes][:phone1],
+                                         phone2: business_donation_params[:donator_attributes][:phone2],
+                                         institution: business_donation_params[:donator_attributes][:institution],
+                                         location: Location.new(business_donation_params[:donator_attributes][:location_attributes])})
+    @business_donation.donator = @donator
+    # @business_donation.donator.location = Location.new business_donation_params[:donator_attributes][:location]
+    byebug
     if @business_donation.save
       redirect_to business_donations_url
     else
