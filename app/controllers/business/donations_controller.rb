@@ -14,20 +14,20 @@ class Business::DonationsController < ApplicationController
 
   def new
     @business_donation = Donation.new
-    @donator = Donator.new
-    @donator.location = Location.new
+    @business_donation.donator = Donator.new
+    @business_donation.donator.location = Location.new
+    # @donator = Donator.new
+    # @donator.location = Location.new
   end
 
   def edit
   end
 
   def create
-    @business_donation = Donation.new(transaction_id: business_donation_params[:transaction_id],
-                                      amount: business_donation_params[:amount], 
-                                      donator: Donator.new(business_donation_params[:donator]))
-    byebug
-    # @business_donation.donator = Donator.new #business_donation_params[:donator]
-    # @donator = Donator.create_or_update business_donation_params[:donator]
+    @business_donation = Donation.new(business_donation_params)
+    @business_donation.donator = Donator.where(first_name: business_donation_params[:donator_attributes][:first_name],
+                                               last_name: business_donation_params[:donator_attributes][:last_name])
+                                              .first_or_initialize(business_donation_params[:donator_attributes])
     if @business_donation.save
       redirect_to business_donations_url
     else
@@ -62,7 +62,7 @@ class Business::DonationsController < ApplicationController
 
   def business_donation_params
     params.require(:donation).permit(:amount, :transaction_id, 
-                                     donator: [:first_name, :last_name, :email, :phone1, :phone2, :institution,
+                                     donator_attributes: [:first_name, :last_name, :email, :phone1, :phone2, :institution,
                                      location_attributes: [:line1, :line2, :city, :county, :code]] )
   end
 end
