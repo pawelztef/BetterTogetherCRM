@@ -32,14 +32,13 @@ class Business::DonationsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @business_donation.update(business_donation_params)
-        format.html { redirect_to @business_donation, notice: 'Donation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @business_donation }
-      else
-        format.html { render :edit }
-        format.json { render json: @business_donation.errors, status: :unprocessable_entity }
-      end
+    @business_donation.assign_attributes business_donation_params
+    @business_donation.donator = Donator.initialize_or_update business_donation_params
+    
+    if @business_donation.save
+      redirect_to business_donations_url
+    else
+      render :edit
     end
   end
 
