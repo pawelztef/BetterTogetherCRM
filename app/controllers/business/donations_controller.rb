@@ -45,10 +45,7 @@ class Business::DonationsController < ApplicationController
 
   def destroy
     @business_donation.destroy
-    respond_to do |format|
-      format.html { redirect_to business_donations_url, notice: 'Donation was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to business_donations_url
   end
 
   private
@@ -59,6 +56,6 @@ class Business::DonationsController < ApplicationController
   def business_donation_params
     params.require(:donation).permit(:amount, :transaction_id, 
                                      donator_attributes: [:first_name, :last_name, :email, :phone1, :phone2, :institution,
-                                     location_attributes: [:line1, :line2, :city, :county, :code]] )
+                                                          location_attributes: [:line1, :line2, :city, :county, :code]] )
   end
 end
