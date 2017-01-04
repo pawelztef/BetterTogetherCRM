@@ -6,7 +6,7 @@
   <%= f.input :amount %> 
 
 
-  <%= f.simple_fields_for @donator do |c| %>
+  <%= f.simple_fields_for :donator do |c| %>
     <h3> <%= c.label "Donator Details" %> </h3>
     <%= c.input :first_name %> 
     <%= c.input :last_name %> 
