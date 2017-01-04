@@ -81,13 +81,21 @@ end
 
  
 end
-5.times do 
+5.times do |n| 
  don = Donator.create( first_name: Faker::Name.first_name,
                          last_name: Faker::Name.last_name,
                          email: Faker::Internet.email,
                          phone1: Faker::PhoneNumber.cell_phone,
                          phone2: Faker::PhoneNumber.cell_phone,
                          institution: false )
+  loc = Location.new(line1: "#{127 + n}",
+                          line2: "Newhaven Bay",
+                          city: "Balbriggan",
+                          county: "Dublin",
+                          code: "XYZ",
+                          latitude: 1.11,
+                          longitude: 2.22)
+  don.location = loc
   donation = Donation.create(transaction_id: Faker::Code.asin,
                              amount: Faker::Number.decimal(2))
   don.donations << donation
