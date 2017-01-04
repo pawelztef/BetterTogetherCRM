@@ -22,14 +22,17 @@ class Business::DonationsController < ApplicationController
   end
 
   def create
+    @business_donation = Donation.new(transaction_id: business_donation_params[:transaction_id],
+                                      amount: business_donation_params[:amount], 
+                                      donator: Donator.new(business_donation_params[:donator]))
     byebug
-    # @business_donation = Donation.new(business_donation_params)
-
-    # if @business_donation.save
+    # @business_donation.donator = Donator.new #business_donation_params[:donator]
+    # @donator = Donator.create_or_update business_donation_params[:donator]
+    if @business_donation.save
       redirect_to business_donations_url
-    # else
-    #   render :new
-    # end
+    else
+      render :new
+    end
   end
 
   def update

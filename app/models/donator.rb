@@ -8,11 +8,11 @@ class Donator < ActiveRecord::Base
   validates :first_name, presence: true, uniqueness: {scope: :last_name}
   validates :last_name, presence: true, uniqueness: {scope: :first_name}
   validates :email, presence: true,
-                    uniqueness: true,
-                    # format: {with: EMAIL_REGEX},
-                    confirmation: true
+    uniqueness: true,
+    # format: {with: EMAIL_REGEX},
+    confirmation: true
   validates :phone1, presence: true
-  
+
   accepts_nested_attributes_for :location
 
   def self.create_or_update user
