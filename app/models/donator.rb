@@ -15,12 +15,17 @@ class Donator < ActiveRecord::Base
 
   accepts_nested_attributes_for :location
 
-  def self.create_or_update user
-    donator = Donator.where(first_name: user.first_name, last_name: user.last_name).first_or_create 
-    donator.email = user.email
-    donator.phone1 = user.phone1 
-    donator.phone2 = user.phone2 
-    donator.institution = user.institution
-    donator.save
+  def self.initialize_or_update donation_attributes 
+    donator = Donator.where(first_name: donation_attributes[:donator_attributes][:first_name],
+                            last_name: donation_attributes[:donator_attributes][:last_name])
+                     .first_or_initialize
+
+    donator.assign_attributes({ email: donation_attributes[:donator_attributes][:email],
+                                phone1: donation_attributes[:donator_attributes][:phone1],
+                                phone2: donation_attributes[:donator_attributes][:phone2],
+                                institution: donation_attributes[:donator_attributes][:institution],
+                                location: Location.new(donation_attributes[:donator_attributes][:location_attributes])})
+    return donator
   end
+  
 end
