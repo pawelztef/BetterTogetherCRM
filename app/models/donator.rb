@@ -13,6 +13,8 @@ class Donator < ActiveRecord::Base
                     confirmation: true
   validates :phone1, presence: true
   
+  accepts_nested_attributes_for :location
+
   def self.create_or_update user
     donator = Donator.where(first_name: user.first_name, last_name: user.last_name).first_or_create 
     donator.email = user.email

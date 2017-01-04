@@ -14,6 +14,9 @@ class Business::DonationsController < ApplicationController
 
   def new
     @business_donation = Donation.new
+    @donator = Donator.new
+    @donator.location = Location.new
+    # byebug
   end
 
   def edit
@@ -59,6 +62,7 @@ class Business::DonationsController < ApplicationController
     end
 
     def business_donation_params
-      params.fetch(:business_donation, {})
+      params.require(:donation).permit(:amount, :transaction_id, 
+                                       donator: [:first_name, :last_name, :email, :phone1, :phone2, :institution] )
     end
 end
