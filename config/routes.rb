@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :business do
+  get 'donators/index'
+  end
+
+  namespace :business do
+  get 'donators/show'
+  end
+
   resource :sessions, only: [:new, :create, :destroy]
 
   root 'users#index'
