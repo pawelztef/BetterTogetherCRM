@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :business do
-  get 'donators/index'
-  end
-
-  namespace :business do
-  get 'donators/show'
-  end
 
   resource :sessions, only: [:new, :create, :destroy]
 
@@ -28,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :business do
     resources :donations
+    resources :donators, onlty: [:index, :show]
   end
   
   resources :volunteers_groups
