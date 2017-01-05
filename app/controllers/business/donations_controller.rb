@@ -6,6 +6,8 @@ class Business::DonationsController < ApplicationController
   end
 
   def show
+
+   @donator = @business_donation.donator 
     respond_to do |format|
       format.html
       format.js

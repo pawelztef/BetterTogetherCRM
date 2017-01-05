@@ -14,37 +14,20 @@
                 <div class="row content">
                   <div class="col-md-12">
 
-                    <%# <h3> Personal Details </h3> %>
-                    <%# <p> <strong>First name:</strong> <%= @client.first_name %1> </p> %>
-                    <%# <p> <strong>Last name:</strong> <%= @client.last_name %1> </p> %>
-                    <%# <p> <strong>Email:</strong> <%= @client.email %1> </p> %>
-                    <%# <p> <strong>Phone1:</strong> <%= @client.phone1 %1> </p> %>
-                    <%# <p> <strong>Phone2:</strong> <%= @client.phone2 %1> </p> %>
-                    <%# <p> <strong>Address:</strong> <%= @client.location.full_street_address %1> </p> %>
-                    <%# <p> <strong>Coordinates:</strong> <%= @client.location.latitude %1> <%= @client.location.longitude %1> </p> %>
+                    <h3> Donation Details </h3>
+                    <p> <strong>Transaction id:</strong> <%= @business_donation.transaction_id %> </p>
+                    <p> <strong>Amount:</strong> <%= @business_donation.amount %> </p>
+                    <p> <strong>Date:</strong> <%= @business_donation.created_at %> </p>
+                    
+                    <h3> Donator Details </h3>
+                    <p> <strong>First name:</strong> <%= @donator.first_name %> </p>
+                    <p> <strong>Last name:</strong> <%= @donator.last_name %> </p>
+                    <p> <strong>Email:</strong> <%= @donator.email %> </p>
+                    <p> <strong>Phone1:</strong> <%= @donator.phone1 %> </p>
+                    <p> <strong>Phone2:</strong> <%= @donator.phone2 %> </p>
+                    <p> <strong>Address:</strong> <%= @donator.location.full_street_address %> </p>
+                    <p> <strong>Coordinates:</strong> <%= @donator.location.latitude %> <%= @donator.location.longitude %> </p>
 
-                    <%# <h3> Dogs owned </h3> %>
-                    <%# <div id="accordion"> %>
-                    <%#   <% @client.dogs.each_with_index do |dog, index| %1> %>
-                    <%#     <div class="panel"> %>
-                    <%#       <div class="panel-heading"> %>
-                    <%#         <h4 class="panel-title"> %>
-                    <%#           <p> <strong>Name:</strong> <a data-toggle="collapse" data-parent="#accordion" href="#dog_<%= index %1>"> <%= dog.name %1> </a> </p> %>
-                    <%#         </h4> %>
-                    <%#       </div> %>
-                    <%#       <div id="dog_<%= index %1>" class="panel-collapse collapse"> %>
-                    <%#         <div class="row"> %>
-                    <%#           <div class="col-md-12"> %>
-                    <%#             <p> <strong>Chip id:</strong> <%= dog.chip_id %1> </p> %>
-                    <%#             <p> <strong>Age:</strong> <%= dog.age %1> </p> %>
-                    <%#             <p> <strong>Breed:</strong> <%= dog.breed %1> </p> %>
-                    <%#             <p> <strong>Sex:</strong> <%= dog.sex %1> </p> %>
-                    <%#           </div> %>
-                    <%#         </div> %>
-                    <%#       </div> %>
-                    <%#     </div> %>
-                    <%#   <% end %1> %> 
-                    <%# </div> %> 
                     <p> 
                       <%= link_to 'Edit', edit_business_donation_path(@business_donation), class: "closeDonationShowModal" %> 
                       | <%= link_to 'Back', business_donations_path, class: "closeDonationShowModal" %>
