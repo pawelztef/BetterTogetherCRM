@@ -17,15 +17,15 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :location
 
   def self.initialize_or_update attributes 
-    client = Client.where(first_name: attributes[:donator_attributes][:first_name],
-                            last_name: attributes[:donator_attributes][:last_name])
+    client = Client.where(first_name: attributes[:first_name],
+                            last_name: attributes[:last_name])
                      .first_or_initialize
 
-    client.assign_attributes({ email: attributes[:donator_attributes][:email],
-                                phone1: attributes[:donator_attributes][:phone1],
-                                phone2: attributes[:donator_attributes][:phone2],
-                                institution: attributes[:donator_attributes][:institution],
-                                location: Location.new(attributes[:donator_attributes][:location_attributes])})
+    client.assign_attributes({ email: attributes[:email],
+                                phone1: attributes[:phone1],
+                                phone2: attributes[:phone2],
+                                institution: attributes[:institution],
+                                location: Location.new(attributes[:location_attributes])})
     return client
   end
 
