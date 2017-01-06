@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   namespace :business do
     resources :donations
-    resources :donators, onlty: [:index, :show]
+    resources :donators, only: [:index, :show]
   end
   
   resources :volunteers_groups
