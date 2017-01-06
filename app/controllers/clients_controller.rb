@@ -22,7 +22,9 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new client_params
+    @client = Client.initialize_or_update client_params
+
+    byebug
 
     if @client.save 
       gflash :success => 'Client and his dog was succesfully created.'
