@@ -5,5 +5,10 @@ class Business::DonatorsController < ApplicationController
 
   def show
     @donator = Donator.find params[:id]
+    @donations = @donator.donations.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end
