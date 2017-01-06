@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.initialize_or_update client_params
-
+    @client.dogs <<  Dog.new(client_params[:dog_attributes])
     byebug
 
     if @client.save 
@@ -60,7 +60,8 @@ class ClientsController < ApplicationController
     params.require(:client).permit(:id, :first_name, :last_name, :email, :phone1, :phone2, :institution,
                                    location_attributes: [:id, :line1, :line2, :city, :county,
                                                          :code, :latitude, :longitude,
-                                                         :localizable_id, :localizable_type])
+                                                         :localizable_id, :localizable_type],
+                                   dogs_attributes: [:name, :chip_id, :age, :breed, :sex])
   end
 
 end
