@@ -25,7 +25,7 @@ class Business::DonationsController < ApplicationController
 
   def create
     @business_donation = Donation.new(business_donation_params)
-    @business_donation.donator = Donator.initialize_or_update business_donation_params
+    @business_donation.donator = Donator.initialize_or_update business_donation_params[:donator_attributes]
     if @business_donation.save
       gflash :success => 'Donation was succesfully stored.'
       redirect_to business_donations_url
@@ -37,7 +37,7 @@ class Business::DonationsController < ApplicationController
 
   def update
     @business_donation.assign_attributes business_donation_params
-    @business_donation.donator = Donator.initialize_or_update business_donation_params
+    @business_donation.donator = Donator.initialize_or_update business_donation_params[:donator_attributes]
 
     if @business_donation.save
       gflash :success => 'Donation was succesfully updated.'
@@ -67,6 +67,6 @@ class Business::DonationsController < ApplicationController
   def business_donation_params
     params.require(:donation).permit(:amount, :transaction_id, 
                                      donator_attributes: [:first_name, :last_name, :email, :phone1, :phone2, :institution,
-                                                          location_attributes: [:line1, :line2, :city, :county, :code]] )
+                                    location_attributes: [:line1, :line2, :city, :county, :code]] )
   end
 end
