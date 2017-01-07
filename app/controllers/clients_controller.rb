@@ -23,8 +23,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.initialize_or_update client_params
-    @client.dogs <<  Dog.new(client_params[:dog_attributes])
-    byebug
+    @client.dogs <<  Dog.new(client_params[:dogs_attributes]["0"])
 
     if @client.save 
       gflash :success => 'Client and his dog was succesfully created.'
