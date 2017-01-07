@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102180322) do
+ActiveRecord::Schema.define(version: 20170107163322) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -80,6 +80,12 @@ ActiveRecord::Schema.define(version: 20170102180322) do
   end
 
   add_index "memberships", ["volunteer_id", "volunteers_group_id"], name: "index_memberships_on_volunteer_id_and_volunteers_group_id", using: :btree
+
+  create_table "tracelogs", force: :cascade do |t|
+    t.string "trace_id",   limit: 255, null: false
+    t.string "user_name",  limit: 255, null: false
+    t.string "trace_type", limit: 255, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      limit: 255,                 null: false
