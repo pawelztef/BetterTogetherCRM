@@ -7,17 +7,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
 
-  resources :users do
-    resources :locations, only: [:new, :create, :edit, :update]
-  end
-  
-  resources :volunteers do
-    resources :locations, only: [:new, :create, :edit, :update]
-  end
 
-  resources :clients do
-    resources :locations, only: [:new, :create, :edit, :update]
-  end
+  resources :users
+  resources :volunteers
+  resources :clients, path: "dogowners"
 
   namespace :business do
     resources :donations
