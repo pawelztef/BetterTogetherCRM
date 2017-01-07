@@ -7,7 +7,7 @@ class Business::DonationsController < ApplicationController
 
   def show
 
-   @donator = @business_donation.donator 
+    @donator = @business_donation.donator 
     respond_to do |format|
       format.html
       format.js
@@ -27,8 +27,10 @@ class Business::DonationsController < ApplicationController
     @business_donation = Donation.new(business_donation_params)
     @business_donation.donator = Donator.initialize_or_update business_donation_params
     if @business_donation.save
+      gflash :success => 'Donation was succesfully stored.'
       redirect_to business_donations_url
     else
+      gflash :now, :error =>'There was a problem while saving donation.'
       render :new
     end
   end
@@ -36,16 +38,24 @@ class Business::DonationsController < ApplicationController
   def update
     @business_donation.assign_attributes business_donation_params
     @business_donation.donator = Donator.initialize_or_update business_donation_params
-    
+
     if @business_donation.save
+      gflash :success => 'Donation was succesfully updated.'
       redirect_to business_donations_url
     else
+      gflash :now, :error =>'There was a problem while updating donation.'
       render :edit
     end
   end
 
   def destroy
     @business_donation.destroy
+    @tracelog = Tracelog.new trace_id: @business_donation.transaction_id, user_name: current_moderator.fullname , trace_type: 'donation'
+    if @tracelog.save
+      gflash :success => 'Donation was succesfully deleted.'
+    else
+      gflash :now, :warning =>'Donation was succesfully deleted, however there was a problem to store this action in log.' 
+    end
     redirect_to business_donations_url
   end
 
