@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   end
   
   resources :volunteers_groups
-  resources :dogs
+  resources :dogs, except: [:new, :create]
 
 end
