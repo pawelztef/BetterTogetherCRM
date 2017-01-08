@@ -11,7 +11,10 @@ RSpec.describe Donation, type: :model do
     it { pending 'should validate uniqueness of transaction_id' }
   end
   describe 'associations' do
-    it {should belong_to(:client) }
+    it {should belong_to(:donator) }
+  end
+  describe 'nested attributes' do
+    it{ should accept_nested_attributes_for(:donator) }
   end
   
 
