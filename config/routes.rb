@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :donators, only: [:index, :show]
   end
   
+  resource :dashboard
   resources :volunteers_groups
   resources :dogs, except: [:new, :create]
 
