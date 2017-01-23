@@ -16,5 +16,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require gritter
+//= require moment
+//= require fullcalendar
 //= require_tree .
 
