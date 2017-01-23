@@ -6,15 +6,16 @@
       <div id="side_accordion" class="sidebar-menu sub-menu">
         <div class="panel">
           <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#side_accordion" href="#dashboard_submenu"><i class="fa fa-desktop"></i>Dashboard</a> 
+            <%# <a data-toggle="collapse" data-parent="#side_accordion" href="#dashboard_submenu"><i class="fa fa-desktop"></i>Dashboard</a> %> 
+            <%= link_to "<i class='fa fa-desktop'></i> Dashbard".html_safe, dashboard_path %> 
           </div>
-          <div id="dashboard_submenu" class="panel-collapse collapse">
-            <ul class="sub">
-              <li><a  href="#">General</a></li>
-              <li><a  href="#">Buttons</a></li>
-              <li><a  href="#">Panels</a></li>
-            </ul>
-          </div>
+          <%# <div id="dashboard_submenu" class="panel-collapse collapse"> %>
+          <%#   <ul class="sub"> %>
+          <%#     <li><a  href="#">General</a></li> %>
+          <%#     <li><a  href="#">Buttons</a></li> %>
+          <%#     <li><a  href="#">Panels</a></li> %>
+          <%#   </ul> %>
+          <%# </div> %>
         </div>
         <div class="panel">
           <div class="panel-heading">
