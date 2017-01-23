@@ -84,6 +84,10 @@ GEM
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     formatador (0.2.5)
+    fullcalendar-rails (3.1.0.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     geocoder (1.4.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -119,6 +123,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
     json (1.8.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -135,6 +141,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     mysql2 (0.4.5)
     nenv (0.3.0)
@@ -272,6 +280,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   font-awesome-sass (~> 4.7.0)
+  fullcalendar-rails
   geocoder
   gritter (= 1.2.0)
   guard-livereload (~> 2.5)
@@ -279,6 +288,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  momentjs-rails
   mysql2 (>= 0.3.13, < 0.5)
   pg
   rack-livereload

@@ -37,6 +37,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Lorem Ipsum helper
 gem 'faker'
 
+# full-calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 # material styles
 # gem 'bootstrap-material-design-rails'
 
