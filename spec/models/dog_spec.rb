@@ -22,6 +22,7 @@ RSpec.describe Dog, type: :model do
 
   describe 'association' do
     it { should belong_to(:client) }
+    it { should have_and_belong_to_many(:custom_events) }
     # it 'proper test for association' do
     #   dog = FactoryGirl.create(:dog)
     #   cli = FactoryGirl.create(:client)

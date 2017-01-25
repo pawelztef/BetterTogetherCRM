@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107163322) do
+ActiveRecord::Schema.define(version: 20170125140239) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 20170107163322) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
   end
+
+  create_table "custom_events", force: :cascade do |t|
+    t.string   "title",       limit: 255,   null: false
+    t.text     "description", limit: 65535, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "custom_events_dogs", id: false, force: :cascade do |t|
+    t.integer "dog_id",          limit: 4, null: false
+    t.integer "custom_event_id", limit: 4, null: false
+  end
+
+  add_index "custom_events_dogs", ["custom_event_id", "dog_id"], name: "index_custom_events_dogs_on_custom_event_id_and_dog_id", using: :btree
+  add_index "custom_events_dogs", ["dog_id", "custom_event_id"], name: "index_custom_events_dogs_on_dog_id_and_custom_event_id", using: :btree
 
   create_table "dogs", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -55,6 +70,17 @@ ActiveRecord::Schema.define(version: 20170107163322) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "eventable_id",   limit: 4
+    t.string   "eventable_type", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "line1",            limit: 255, null: false
@@ -95,6 +121,11 @@ ActiveRecord::Schema.define(version: 20170107163322) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.boolean  "ownership",                   default: false, null: false
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "volunteers", force: :cascade do |t|
