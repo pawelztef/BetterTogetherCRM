@@ -1,26 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-<%= @hello %> 
-  <%# <tbody> %>
-  <%#   <% @events.each do |event| %1> %>
-  <%#     <tr> %>
-  <%#       <td><%= link_to 'Show', event %1></td> %>
-  <%#       <td><%= link_to 'Edit', edit_event_path(event) %1></td> %>
-  <%#       <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %1></td> %>
-  <%#     </tr> %>
-  <%#   <% end %1> %>
-  <%# </tbody> %>
-</table>
-
-<br>
-
+<div id="dashboard">
+  <div class="calendar"></div>
+</div>
+<br />
 <%= link_to 'New Event', new_event_path %>
