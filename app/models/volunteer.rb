@@ -4,6 +4,7 @@ class Volunteer < ActiveRecord::Base
   before_validation :remove_white_spaces, only: [:first_name, :last_name, :email]
 
   has_many :memberships, dependent: :destroy
+  has_many :visits, dependent: :destroy
   has_many :volunteers_groups, through: :memberships
   has_one :location, as: :localizable, dependent: :destroy
   

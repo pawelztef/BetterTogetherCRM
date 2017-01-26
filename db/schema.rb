@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125140239) do
+ActiveRecord::Schema.define(version: 20170126095551) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20170125140239) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
   end
+
+  create_table "clients_custom_events", id: false, force: :cascade do |t|
+    t.integer "client_id",       limit: 4, null: false
+    t.integer "custom_event_id", limit: 4, null: false
+  end
+
+  add_index "clients_custom_events", ["client_id", "custom_event_id"], name: "index_clients_custom_events_on_client_id_and_custom_event_id", using: :btree
+  add_index "clients_custom_events", ["custom_event_id", "client_id"], name: "index_clients_custom_events_on_custom_event_id_and_client_id", using: :btree
 
   create_table "custom_events", force: :cascade do |t|
     t.string   "title",       limit: 255,   null: false
@@ -38,6 +46,14 @@ ActiveRecord::Schema.define(version: 20170125140239) do
 
   add_index "custom_events_dogs", ["custom_event_id", "dog_id"], name: "index_custom_events_dogs_on_custom_event_id_and_dog_id", using: :btree
   add_index "custom_events_dogs", ["dog_id", "custom_event_id"], name: "index_custom_events_dogs_on_dog_id_and_custom_event_id", using: :btree
+
+  create_table "custom_events_volunteers", id: false, force: :cascade do |t|
+    t.integer "volunteer_id",    limit: 4, null: false
+    t.integer "custom_event_id", limit: 4, null: false
+  end
+
+  add_index "custom_events_volunteers", ["custom_event_id", "volunteer_id"], name: "index_custom_events_on_vol_id", using: :btree
+  add_index "custom_events_volunteers", ["volunteer_id", "custom_event_id"], name: "index_custom_events_on_cust_eve_id", using: :btree
 
   create_table "dogs", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -124,9 +140,14 @@ ActiveRecord::Schema.define(version: 20170125140239) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "volunteer_id", limit: 4
+    t.integer  "client_id",    limit: 4
   end
+
+  add_index "visits", ["client_id"], name: "index_visits_on_client_id", using: :btree
+  add_index "visits", ["volunteer_id"], name: "index_visits_on_volunteer_id", using: :btree
 
   create_table "volunteers", force: :cascade do |t|
     t.string   "first_name", limit: 255, null: false
@@ -146,4 +167,6 @@ ActiveRecord::Schema.define(version: 20170125140239) do
   end
 
   add_foreign_key "dogs", "clients"
+  add_foreign_key "visits", "clients"
+  add_foreign_key "visits", "volunteers"
 end
