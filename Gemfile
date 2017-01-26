@@ -40,6 +40,7 @@ gem 'faker'
 # full-calendar
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 # material styles
 # gem 'bootstrap-material-design-rails'

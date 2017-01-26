@@ -15,10 +15,16 @@ initialize_calendar = function() {
 
       select: function(start, end) {
         $.getScript('/events/new', function() {
-          $('#event_date_range').html(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
-          // date_range_picker();
-          // $('.start_hidden').val(moment(start).format("YYYY-MM-DD HH:mm"));
-          // $('.end_hidden').val(moment(end).format("YYYY-MM-DD HH:mm"));
+          var startDate = moment(start).format("YYYY-MM-DD HH:mm");
+          var endDate = moment(end).format("YYYY-MM-DD HH:mm");
+          $('input#startTime').datetimepicker({
+            defaultDate: startDate 
+          });
+          $('input#endTime').datetimepicker({
+            defaultDate: endDate 
+          });
+          $('#startTime').val(moment(start).format("YYYY-MM-DD HH:mm"));
+          $('#endTime').val(moment(end).format("YYYY-MM-DD HH:mm"));
         });
 
         calendar.fullCalendar('unselect');
