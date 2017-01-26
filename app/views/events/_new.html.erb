@@ -1,0 +1,42 @@
+<div class="modal fade" id="newEvent">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="containter">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeNewEvent close">x</button>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-md-12">
+                  <p id="notice"><%= notice %></p>
+                  <div id="event_date_range"></div>
+                  <%= simple_form_for @event, html: {class: 'form-horizontal'} do |f| %>
+                    <%= f.error_notification %>
+
+                    <%= f.input :start, as: :date %> 
+                    <%= f.input :end, as: :date %> 
+
+                    <div class="form-actions">
+                      <%= f.button :submit %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeNewEvent btn btn-default">close</button>
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

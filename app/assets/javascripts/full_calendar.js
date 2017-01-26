@@ -11,7 +11,18 @@ initialize_calendar = function() {
       selectable: true,
       selectHelper: true,
       editable: true,
-      eventLimit: true
+      eventLimit: true,
+
+      select: function(start, end) {
+        $.getScript('/events/new', function() {
+          $('#event_date_range').html(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
+          // date_range_picker();
+          // $('.start_hidden').val(moment(start).format("YYYY-MM-DD HH:mm"));
+          // $('.end_hidden').val(moment(end).format("YYYY-MM-DD HH:mm"));
+        });
+
+        calendar.fullCalendar('unselect');
+      }
     });
   });
 };
