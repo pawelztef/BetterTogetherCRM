@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   
   get '/dashboard' => 'dashboard#index'
   resources :volunteers_groups
+  resources :events
   resources :dogs, except: [:new, :create]
 
 end
