@@ -1,0 +1,9 @@
+$('body').append('<%= j render("edit") %>');
+$('#newEvent').modal('show');
+$(".closeNewEvent").on("click", function() {
+  $("#newEvent").modal('hide');
+});
+$('body').on('hidden.bs.modal', '.modal', function (e) {
+  $(e.target).removeData('bs.modal');
+  $('.modal').remove();
+});

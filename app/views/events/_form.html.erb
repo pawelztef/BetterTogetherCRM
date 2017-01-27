@@ -1,9 +1,14 @@
 <%= simple_form_for @event, remote: true do |f| %>
   <%= f.error_notification %>
 
+  <%= f.input :title %> 
   <%= f.input :start, as: :string, input_html: { class: "datepicker", id: "startTime" } %> 
   <%= f.input :end, as: :string, input_html: { class: "datepicker", id: "endTime" } %> 
 
   <%= f.button :submit %>
+  <%= link_to 'Delete', event_path, method: :delete,
+    class: 'btn btn-danger', 
+    data: {confirm: 'Are you sure?'}, 
+    remote: true unless @event.new_record? %> 
 
 <% end %>
