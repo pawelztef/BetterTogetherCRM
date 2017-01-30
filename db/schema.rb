@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127145316) do
+ActiveRecord::Schema.define(version: 20170128100326) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20170127145316) do
   add_index "clients_custom_events", ["custom_event_id", "client_id"], name: "index_clients_custom_events_on_custom_event_id_and_client_id", using: :btree
 
   create_table "custom_events", force: :cascade do |t|
-    t.string   "title",       limit: 255,   null: false
     t.text     "description", limit: 65535, null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
