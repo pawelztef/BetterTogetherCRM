@@ -5,10 +5,16 @@
   <%= f.input :start, as: :string, input_html: { class: "datepicker", id: "startTime" } %> 
   <%= f.input :end, as: :string, input_html: { class: "datepicker", id: "endTime" } %> 
 
+
+  
+  <%= f.fields_for :custom_events do |custom_event| %>
+    <%= custom_event.label :hello %> 
+  
+  <% end %> 
+
+  <br />
   <%= f.button :submit %>
 
 <% end %>
-  <%= link_to 'Delete', event_path, method: :delete,
-    class: 'btn btn-danger', 
-    data: {confirm: 'Are you sure?'}, 
-    remote: true unless @event.new_record? %> 
+<br />
+<%= link_to 'Delete', event_path, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, remote: true unless @event.new_record? %> 

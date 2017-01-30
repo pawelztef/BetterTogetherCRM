@@ -5,8 +5,6 @@ RSpec.describe Event, type: :model do
     it { should have_db_column(:title).of_type(:string)}
     it { should have_db_column(:start).of_type(:datetime).with_options(presence: true) }
     it { should have_db_column(:end).of_type(:datetime).with_options(presence: true) }
-    it { should have_db_column(:eventable_id).of_type(:integer) }
-    it { should have_db_column(:eventable_type).of_type(:string) }
   end
   describe 'validation' do
     describe 'precence of attributes' do
@@ -16,6 +14,9 @@ RSpec.describe Event, type: :model do
     end
   end
   describe 'association' do
-    it{ should belong_to(:eventable) }
+    it{ should have_and_belong_to_many(:visits) }
+    it{ should have_and_belong_to_many(:custom_events) }
+    it{ should accept_nested_attributes_for(:visits).allow_destroy(true) }
+    it{ should accept_nested_attributes_for(:custom_events).allow_destroy(true) }
   end
 end

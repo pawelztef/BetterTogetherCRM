@@ -19,6 +19,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.custom_events.build
     respond_to do |format|
       format.html
       format.js
@@ -80,6 +81,8 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:start, :end, :title)
+    params.require(:event).permit(:start, :end, :title,
+                                 visits_attributes: [ ],
+                                 custom_events_attributes: [])
   end
 end
