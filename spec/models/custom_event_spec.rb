@@ -3,13 +3,11 @@ require 'rails_helper'
 RSpec.describe CustomEvent, type: :model do
 
   describe 'column specyfication' do
-    it { should have_db_column(:title).of_type(:string).with_options(presence: true) }
     it { should have_db_column(:description).of_type(:text).with_options(presence: true) }
   end
 
   describe 'validation' do
     describe 'precence of attributes' do
-      it { should validate_presence_of(:title) }
       it { should validate_presence_of(:description) }
     end
   end
