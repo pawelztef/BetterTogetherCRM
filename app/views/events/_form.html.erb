@@ -6,10 +6,14 @@
   <%= f.input :end, as: :string, input_html: { class: "datepicker", id: "endTime" } %> 
 
 
-  
+
   <%= f.fields_for :custom_events do |custom_event| %>
-    <%= custom_event.label :hello %> 
-  
+
+    <%# <h3> <%= f.label "Dog Details" %1> </h3> %>
+    <%# <%= custom_event.fields_for :dogs  do |dog| %1> %> 
+    <%#   <%= render "application_partials/dog_form", f: dog %1> %>
+    <%# <% end %1> %>
+    
   <% end %> 
 
   <br />

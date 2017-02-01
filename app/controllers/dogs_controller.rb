@@ -2,7 +2,8 @@ class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dogs = Dog.all
+    # @dogs = Dog.all
+    @dogs = Dog.search(params[:search])
   end
 
   def show

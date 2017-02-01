@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @dogs = Dog.all
     @event = Event.new
     @event.custom_events.build
     respond_to do |format|
