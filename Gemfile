@@ -48,6 +48,10 @@ gem 'bootstrap3-datetimepicker-rails'
 # geolocation
 gem  'geocoder'
 
+# managing froms inputs
+gem 'dependent-fields-rails'
+gem 'underscore-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
