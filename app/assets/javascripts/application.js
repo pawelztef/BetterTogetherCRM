@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require underscore
+//= require dependent-fields
 //= require gritter
 //= require moment
 //= require fullcalendar
