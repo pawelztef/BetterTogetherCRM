@@ -14,12 +14,13 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require underscore
 //= require dependent-fields
 //= require gritter
 //= require moment
 //= require fullcalendar
 //= require bootstrap-datetimepicker
+//= require turbolinks
 //= require_tree .
+//
 

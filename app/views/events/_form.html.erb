@@ -1,29 +1,44 @@
-<%= simple_form_for @event, remote: true do |f| %>
-  <%= f.error_notification %>
+<%= form_for @event, remote: true do |f| %>
+  <%# create errors code %> 
 
-  <%= f.input :title %> 
-  <%= f.input :start, as: :string, input_html: { class: "datepicker", id: "startTime" } %> 
-  <%= f.input :end, as: :string, input_html: { class: "datepicker", id: "endTime" } %> 
+  <%= f.label :title %> 
+  <%= f.text_field :title %> <br /> 
+
+  <%= f.label :start %> 
+  <%= f.text_field :start, class: "datepicker", id: "startTime" %> <br />
+  <%= f.label :end %> 
+  <%= f.text_field :end, class: "datepicker", id: "endTime" %> <br /> 
 
 
-    <h3> <%= f.label "Custom Event" %> </h3>
 
-    <h3> <%= f.label "Traing Event" %> </h3>
 
-    <h3> <%= f.label "Transfer Event" %> </h3>
+  <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]])  %> <br /> 
 
-    <h3> <%= f.label "Visit Event" %> </h3>
 
-  <%# <%= f.fields_for :custom_events do |custom_event| %1> %>
-    <%# <h3> <%= f.label "Dog Details" %1> </h3> %>
-    <%# <%= custom_event.fields_for :dogs  do |dog| %1> %> 
-    <%#   <%= render "application_partials/dog_form", f: dog %1> %>
-    <%# <% end %1> %>
-  <%# <% end %1> %> 
+  <div id="customEvent">
+    <h3>
+      <p>custom</p>
+    </h3>
+  </div>
+  <div id="training">
+    <h3>
+      <p>training</p>
+    </h3>
+  </div>
+  <div id="transfer">
+    <h3>
+      <p>transfer</p>
+    </h3>
+  </div>
+  <div id="visit">
+    <h3>
+      <p>visit</p>
+    </h3>
+  </div>
 
-  <br />
-  <%= f.button :submit %>
+  <%= f.submit "Create" %> <br /> 
 
-<% end %>
-<br />
-<%= link_to 'Delete', event_path, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, remote: true unless @event.new_record? %> 
+  <%= link_to 'Delete', event_path, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, remote: true unless @event.new_record? %> 
+<% end %> 
+<script>
+</script>

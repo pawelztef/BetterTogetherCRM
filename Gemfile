@@ -50,7 +50,7 @@ gem  'geocoder'
 
 # managing froms inputs
 gem 'dependent-fields-rails'
-gem 'underscore-rails'
+# gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
