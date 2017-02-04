@@ -1,44 +1,31 @@
-<%= form_for @event, remote: true do |f| %>
+<%= form_for @event, remote: true, html: {class: 'form-horizontal'} do |f| %>
   <%# create errors code %> 
 
   <%= f.label :title %> 
-  <%= f.text_field :title %> <br /> 
-
+  <%= f.text_field :title, class: 'form-control' %> <br /> 
   <%= f.label :start %> 
-  <%= f.text_field :start, class: "datepicker", id: "startTime" %> <br />
+  <%= f.text_field :start, class: "datepicker form-control", id: "startTime" %> <br />
   <%= f.label :end %> 
-  <%= f.text_field :end, class: "datepicker", id: "endTime" %> <br /> 
+  <%= f.text_field :end, class: "datepicker form-control", id: "endTime" %> <br /> 
 
 
+  <%= select_tag :options,
+    options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), 
+    class: 'btn btn-default'  %> <br /> 
 
+    <%= render "custom_events" %>
+    <%= render "training" %>
+    <%= render "transfer" %>
+    <%= render "visit" %>
 
-  <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]])  %> <br /> 
+    <%= f.submit "Create", class: 'btn btn-default' %> <br /> 
 
+    <%= link_to 'Delete', event_path, method: :delete, 
+      class: 'btn btn-danger', 
+      data: {confirm: 'Are you sure?'}, 
+      remote: true unless @event.new_record? %> 
 
-  <div id="customEvent">
-    <h3>
-      <p>custom</p>
-    </h3>
-  </div>
-  <div id="training">
-    <h3>
-      <p>training</p>
-    </h3>
-  </div>
-  <div id="transfer">
-    <h3>
-      <p>transfer</p>
-    </h3>
-  </div>
-  <div id="visit">
-    <h3>
-      <p>visit</p>
-    </h3>
-  </div>
+  <% end %> 
 
-  <%= f.submit "Create" %> <br /> 
-
-  <%= link_to 'Delete', event_path, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, remote: true unless @event.new_record? %> 
-<% end %> 
-<script>
-</script>
+  <script>
+  </script>

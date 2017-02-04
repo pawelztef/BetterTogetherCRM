@@ -5,8 +5,8 @@ var hide = function(...selectors) {
 };
 
 
-$(document).on('change', '#options', function() {
-  var customEvent = $('#customEvent');
+$(document).on('change load', '#options', function() {
+  var customEvent = $('#custom-event');
   var training = $('#training');
   var transfer = $('#transfer');
   var visit = $('#visit');
