@@ -17,6 +17,7 @@ RSpec.describe CustomEvent, type: :model do
     it{ should have_and_belong_to_many(:clients) }
     it{ should have_and_belong_to_many(:volunteers) }
     it{ should have_and_belong_to_many(:events) }
+    it{ should have_many(:notes) }
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130131154) do
+ActiveRecord::Schema.define(version: 20170205123003) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -134,6 +134,16 @@ ActiveRecord::Schema.define(version: 20170130131154) do
   end
 
   add_index "memberships", ["volunteer_id", "volunteers_group_id"], name: "index_memberships_on_volunteer_id_and_volunteers_group_id", using: :btree
+
+  create_table "notes", force: :cascade do |t|
+    t.text     "content",      limit: 65535
+    t.integer  "notable_id",   limit: 4
+    t.string   "notable_type", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "notes", ["notable_type", "notable_id"], name: "index_notes_on_notable_type_and_notable_id", using: :btree
 
   create_table "tracelogs", force: :cascade do |t|
     t.string "trace_id",   limit: 255, null: false

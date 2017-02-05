@@ -4,4 +4,5 @@ class CustomEvent < ActiveRecord::Base
   has_and_belongs_to_many :clients
   has_and_belongs_to_many :volunteers
   has_and_belongs_to_many :events
+  has_many :notes, as: :notable
 end

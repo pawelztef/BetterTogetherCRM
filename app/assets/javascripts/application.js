@@ -15,12 +15,12 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require underscore
-//= require dependent-fields
 //= require gritter
 //= require moment
 //= require fullcalendar
 //= require bootstrap-datetimepicker
 //= require turbolinks
+//= require cocoon
 //= require_tree .
 //
 
