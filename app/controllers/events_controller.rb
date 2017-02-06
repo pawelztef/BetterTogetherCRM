@@ -18,24 +18,25 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @dogs = Dog.all
     @event = Event.new
-    @event.custom_events.build
+    @note = Note.new
+    @custom_event = CustomEvent.new
+
+    @custom_event.notes << @note
+    @event.custom_events << @custom_event
+    
     respond_to do |format|
       format.html
       format.js
     end
   end
 
-  # GET /events/1/edit
   def edit
   end
 
-  # POST /events
-  # POST /events.json
   def create
-    respond_to do |format|
       @event = Event.new(event_params)
+    respond_to do |format|
       if @event.save
         format.html
         format.js
@@ -48,8 +49,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -64,8 +63,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
@@ -75,15 +72,13 @@ class EventsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(:options, :start, :end, :title,
-                                 visits_attributes: [ ],
-                                 custom_events_attributes: [])
+                                 visits_attributes: [],
+                                 custom_events_attributes: [:description ] )
   end
 end

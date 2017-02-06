@@ -10,20 +10,24 @@
       <li role="presentation"><a href="#custom-event-clients-tab" aria-controls="custom-event-clients-tab" role="tab" data-toggle="tab">Clients</a></li>
       <li role="presentation"><a href="#custom-event-voluteer-tab" aria-controls="custom-event-voluteer-tab" role="tab" data-toggle="tab">Volunteers</a></li>
     </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="custom-event-description-tab">
-        <p> Place for custom-event-description-tab </p>
+    <%= event.fields_for :custom_events do |custom_event| %>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="custom-event-description-tab">
+          <h3> Describe event </h3>
+          <%= custom_event.label :description %><br /> 
+          <%= custom_event.text_area :description %> 
+        </div>
+        <div role="tabpanel" class="tab-pane" id="custom-event-dog-tab">
+          <p> Place for custom-event-dog-tabs</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="custom-event-clients-tab">
+          <p> Place for custom-event-clients-tab</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="custom-event-voluteer-tab">
+          <p> Place for custom-event-voluteer-tab</p>
+        </div>
       </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-dog-tab">
-        <p> Place for custom-event-dog-tabs</p>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-clients-tab">
-        <p> Place for custom-event-clients-tab</p>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-voluteer-tab">
-        <p> Place for custom-event-voluteer-tab</p>
-      </div>
-    </div>
+    <% end %> 
   </div>
 </fieldset>

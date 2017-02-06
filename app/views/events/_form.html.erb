@@ -13,7 +13,7 @@
     options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), 
     class: 'btn btn-default'  %> <br /> 
 
-    <%= render "custom_events" %>
+    <%= render "custom_events", event: f %>
     <%= render "training" %>
     <%= render "transfer" %>
     <%= render "visit" %>
