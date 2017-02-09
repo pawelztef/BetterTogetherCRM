@@ -18,6 +18,10 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @clients = Client.all
+    @dogs = Dog.all
+    @volunteers = Volunteer.all
+
     @event = Event.new
     @note = Note.new
     @custom_event = CustomEvent.new
