@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
     @custom_event.notes << @note
     @event.custom_events << @custom_event
-    
+
     respond_to do |format|
       format.html
       format.js
@@ -39,7 +39,9 @@ class EventsController < ApplicationController
   end
 
   def create
-      @event = Event.new(event_params)
+    @dogs = Dog.find(params[:dogs_ids])
+    byebug
+    @event = Event.new(event_params)
     respond_to do |format|
       if @event.save
         format.html
@@ -82,7 +84,28 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:options, :start, :end, :title,
-                                 visits_attributes: [],
-                                 custom_events_attributes: [:description ] )
+                                  visits_attributes: [],
+                                  custom_events_attributes: [:description, 
+                                                             dogs_ids: [],
+                                                             clients_ids: [],
+                                                             volunteers_ids: []] )
   end
+
+
+  def build_relevant event
+    case params[:options]
+      when "0"
+        return event
+      when "1"
+        return event
+      when "2"
+        return event
+      when "3"
+        return event
+      when "4"
+        return event
+    end
+  end
+
+
 end
