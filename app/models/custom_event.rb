@@ -3,5 +3,5 @@ class CustomEvent < ActiveRecord::Base
   has_and_belongs_to_many :dogs
   has_and_belongs_to_many :clients
   has_and_belongs_to_many :volunteers
-  has_one :event, as: :eventable
+  belongs_to :event
 end

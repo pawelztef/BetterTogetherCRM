@@ -21,8 +21,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.build_note
-    @note = Note.new
-    @custom_event = CustomEvent.new
+    @event.build_custom_event
+    @event.build_visit
     respond_to do |format|
       format.html
       format.js
@@ -33,9 +33,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    byebug
     @event = Event.new(event_params)
-    # build_relevant
+    byebug
     respond_to do |format|
       if @event.save
         format.html
@@ -116,11 +115,8 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:options, :start, :end, :title, 
-                                 note_attributes: [:content])
-                                  # visits_attributes: [],
-                                  # custom_events_attributes: [:description, 
-                                  #                            dogs_ids: [],
-                                  #                            clients_ids: [],
-                                  #                            volunteers_ids: []])
+                                 note_attributes: [:content],
+                                 custom_event_attributes: [:description],
+                                 visit_attributes: [])
   end
 end
