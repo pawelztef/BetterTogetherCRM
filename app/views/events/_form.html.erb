@@ -1,15 +1,8 @@
 <%= simple_form_for @event, remote: true, html: {class: 'form-horizontal'} do |f| %>
-  <%# create errors code %> 
 
-  <%# <%= f.label :title %1> %> 
-  <%# <%= f.text_field :title, class: 'form-control' %1> <br /> %> 
   <%= f.input :title, input_html: {class: "form-control" } %> 
   <%= f.input :start, as: :string, input_html: {class: "datepicker form-control", id: "startTime"} %> 
-  <%# <%= f.label :start %1> %> 
-  <%# <%= f.text_field :start, class: "datepicker form-control", id: "startTime" %1> <br /> %>
   <%= f.input :end, as: :string, input_html: {class: "datepicker form-control", id: "endTime"} %> 
-  <%# <%= f.label :end %1> %> 
-  <%# <%= f.text_field :end, class: "datepicker form-control", id: "endTime" %1> <br /> %> 
 
 
   <%= select_tag :options,
@@ -21,7 +14,6 @@
     <%= render "transfer" %>
     <%= render "visit" %>
 
-    <%# <%= f.submit "Create", class: 'btn btn-default' %1> <br /> %> 
     <%= f.button :submit %> 
 
     <%= link_to 'Delete', event_path, method: :delete, 

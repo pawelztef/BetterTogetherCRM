@@ -32,9 +32,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    build_relevant
     byebug
+    @event = Event.new(event_params)
+    # build_relevant
     respond_to do |format|
       if @event.save
         format.html
