@@ -34,7 +34,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    byebug
+    @event.custom_event.dog_ids = params[:dog_ids] if @event.custom_event
     respond_to do |format|
       if @event.save
         format.html
@@ -49,8 +49,12 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event.attributes = event_params
+    @event.custom_event.dog_ids = params[:dog_ids] if @event.custom_event
+    byebug
     respond_to do |format|
-      if @event.update(event_params)
+      if @event.update
+    byebug
         format.html
         format.js
         format.json
@@ -116,7 +120,7 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:options, :start, :end, :title, 
                                  note_attributes: [:content],
-                                 custom_event_attributes: [:description],
+                                 custom_event_attributes: [:description, dog_ids: []],
                                  visit_attributes: [])
   end
 end
