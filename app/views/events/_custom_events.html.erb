@@ -108,10 +108,7 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="custom-event-note-tab">
         <h3> Add Note </h3>
-        <%= event.fields_for :notes do |note| %> 
-          <%= note.label :content %> <br />
-          <%= note.text_area :content %> 
-        <% end %> 
+        <%= render "note", event: event  %>
       </div>
     </div>
   </div>

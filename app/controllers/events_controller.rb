@@ -20,6 +20,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.build_note
     @note = Note.new
     @custom_event = CustomEvent.new
     respond_to do |format|
@@ -114,7 +115,8 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:options, :start, :end, :title)
+    params.require(:event).permit(:options, :start, :end, :title, 
+                                 note_attributes: [:content])
                                   # visits_attributes: [],
                                   # custom_events_attributes: [:description, 
                                   #                            dogs_ids: [],
