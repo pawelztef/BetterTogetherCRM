@@ -30,6 +30,8 @@ class EventsController < ApplicationController
   end
 
   def edit
+    byebug
+
   end
 
   def create
@@ -53,7 +55,7 @@ class EventsController < ApplicationController
     @event.custom_event.dog_ids = params[:dog_ids] if @event.custom_event
     byebug
     respond_to do |format|
-      if @event.update
+      if @event.save
     byebug
         format.html
         format.js
