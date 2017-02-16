@@ -51,8 +51,7 @@ class EventsController < ApplicationController
 
   def update
     @event.attributes = event_params
-    @event.custom_event.dog_ids = params[:dog_ids] if @event.custom_event
-    byebug
+    @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
     respond_to do |format|
       if @event.save
         format.html
@@ -78,6 +77,7 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+    @dog_ids = @event.custom_event.dog_ids
   end
 
   def set_tables
