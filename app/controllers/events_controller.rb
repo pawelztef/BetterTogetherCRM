@@ -52,6 +52,7 @@ class EventsController < ApplicationController
   def update
     @event.attributes = event_params
     @event.custom_event.dog_ids = params[:dog_ids] if @event.custom_event
+    byebug
     respond_to do |format|
       if @event.save
         format.html
@@ -74,37 +75,6 @@ class EventsController < ApplicationController
   end
 
   private
-  def build_relevant
-    case params[:options]
-    when "1" #custom
-      build_custom_event
-    when "2" #training
-      build_training
-    when "3" #transfer
-      build_transfer
-    when "4" #visit
-      build_visit
-    else
-      # need to implement
-    end
-  end
-
-  def build_custom_event
-    @custom_event = @event.custom_events.first
-    @custom_event.clients << Client.find(params[:clients_ids]) if params[:clients_ids]
-    @custom_event.volunteers << Volunteer.find(params[:volunteers_ids]) if params[:volunteers_ids]
-    @custom_event.dogs << Dog.find(params[:dogs_ids]) if params[:dogs_ids] 
-    # @event.custom_events << @custom_event 
-  end
-
-  def build_training
-  end
-
-  def build_transfer
-  end
-
-  def build_visit
-  end
 
   def set_event
     @event = Event.find(params[:id])
