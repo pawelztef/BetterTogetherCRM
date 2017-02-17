@@ -36,8 +36,14 @@ class EventsController < ApplicationController
   end
 
   def create
+    # byebug
     @event = Event.new(event_params)
-    @event.custom_event.dog_ids = params[:dog_ids] if @event.custom_event
+    if @event.custom_event.present?
+      @event.custom_event.dog_ids = params[:dog_ids] 
+      @event.custom_event.client_ids = params[:client_ids] 
+      @event.custom_event.volunteer_ids = params[:volunteer_ids] 
+    end
+    byebug
     respond_to do |format|
       if @event.save
         format.html
@@ -53,7 +59,11 @@ class EventsController < ApplicationController
 
   def update
     @event.attributes = event_params
-    @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
+    if @event.custom_event.present?
+      @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
+      @event.custom_event.client_ids = params[:client_ids] || @client_ids
+      @event.custom_event.volunteer_ids = params[:volunteer_ids] || @volunteer_ids
+    end
     respond_to do |format|
       if @event.save
         format.html
@@ -80,23 +90,25 @@ class EventsController < ApplicationController
   def set_edit_view
     if @event.custom_event.present?
       params[:options] = 1
-      
-    #Uncomment after rest models implemented
 
-    # elsif @event.training.present?
-    #   params[:options] = 2
-    # elsif @event.transfer.present?
-    #   params[:options] = 3
-      
-       
-    elsif @event.visit.present?
-      params[:options] = 4
-    end
+      #Uncomment after rest models implemented
+
+      # elsif @event.training.present?
+      #   params[:options] = 2
+      # elsif @event.transfer.present?
+      #   params[:options] = 3
+
+
+      elsif @event.visit.present?
+        params[:options] = 4
+      end
   end
 
   def set_event
     @event = Event.find(params[:id])
     @dog_ids = @event.custom_event.dog_ids
+    @client_ids = @event.custom_event.client_ids
+    @volunteer_ids = @event.custom_event.volunteer_ids
   end
 
   def set_tables
@@ -108,7 +120,7 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:id, :options, :start, :end, :title, 
                                   note_attributes: [:id, :content],
-                                  custom_event_attributes: [:id, :description, dog_ids: []],
+                                  custom_event_attributes: [:id, :description, dog_ids: [], client_ids: [], volunteer_ids: []],
                                   visit_attributes: [])
   end
 end

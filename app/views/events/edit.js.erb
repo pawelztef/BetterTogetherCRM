@@ -1,4 +1,4 @@
-$('body').append('<%= j render("edit") %>');
+$('body').append('<%= j render("edit_form") %>');
 
 $('#custom-event, #training, #transfer, #visit').css("display", "initial");
 
@@ -10,4 +10,3 @@ $('body').on('hidden.bs.modal', '.modal', function (e) {
   $(e.target).removeData('bs.modal');
   $('.modal').remove();
 });
-  <%# $('#options').val( <%= params[:options] %1> ).change(); %>

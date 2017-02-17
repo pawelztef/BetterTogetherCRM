@@ -21,7 +21,6 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="custom-event-dog-tab">
           <h3>Add Dogs</h3>
-          <%# <%= custom_event.association :dogs, as: :check_boxes, collection: Dog.all.to_a, label_method: :name %1> %> 
           <table class="table table-striped table-responsive table-hover">
             <thead>
               <tr>
@@ -34,6 +33,7 @@
               </tr>
             </thead>
             <tbody>
+              <%= hidden_field_tag "dog_ids[]", nil %> 
               <% @dogs.each do |dog| %>
                 <tr>
                   <td> <%= check_box_tag "dog_ids[]", dog.id, @event.custom_event.dog_ids.include?(dog.id) %> </td>
@@ -64,9 +64,10 @@
           </thead>
 
           <tbody>
+            <%= hidden_field_tag "client_ids[]", nil %> 
             <% @clients.each do |client| %>
               <tr>
-                <td> <%= check_box_tag "clients_ids[]", client.id %> </td>
+                <td> <%= check_box_tag "client_ids[]", client.id, @event.custom_event.client_ids.include?(client.id) %> </td>
                 <td><%= client.first_name %></td>
                 <td><%= client.last_name %></td>
                 <td><%= client.email %></td>
@@ -93,9 +94,10 @@
             </tr>
           </thead>
           <tbody>
+            <%= hidden_field_tag "volunteer_ids[]", nil %> 
             <% @volunteers.each do |volunteer| %>
               <tr>
-                <td> <%= check_box_tag "voluteers_ids[]", volunteer.id %> </td>
+                <td> <%= check_box_tag "volunteer_ids[]", volunteer.id, @event.custom_event.volunteer_ids.include?(volunteer.id) %> </td>
                 <td><%= volunteer.first_name %></td>
                 <td><%= volunteer.last_name %></td>
                 <td><%= volunteer.email %></td>

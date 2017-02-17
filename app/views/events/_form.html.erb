@@ -10,9 +10,9 @@
   <% end %> 
 
   <%= render "custom_events", event: f %>
-  <%= render "training" %>
-  <%= render "transfer" %>
-  <%= render "visit" %>
+  <%= render "training", event: f %>
+  <%= render "transfer", event: f %>
+  <%= render "visit", event: f %>
 
   <%= f.button :submit %> 
 
