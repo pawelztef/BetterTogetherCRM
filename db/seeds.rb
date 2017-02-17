@@ -6,7 +6,7 @@ loc = Location.new(line1: "A",
                         code: "XYZ",
                         latitude: 1.11,
                         longitude: 2.22)
-user = User.create(first_name: "pawel", last_name: "stachowicz", email: "p@p.com", password: "password", ownership: true)
+user = User.create(first_name: "pawel", last_name: "stachowicz", email: "a@a.com", password: "password", ownership: true)
 user.location = loc
 
 5.times do 

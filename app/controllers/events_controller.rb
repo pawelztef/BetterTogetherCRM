@@ -31,6 +31,8 @@ class EventsController < ApplicationController
 
   def edit
 
+    set_edit_view
+
   end
 
   def create
@@ -75,6 +77,23 @@ class EventsController < ApplicationController
 
   private
 
+  def set_edit_view
+    if @event.custom_event.present?
+      params[:options] = 1
+      
+    #Uncomment after rest models implemented
+
+    # elsif @event.training.present?
+    #   params[:options] = 2
+    # elsif @event.transfer.present?
+    #   params[:options] = 3
+      
+       
+    elsif @event.visit.present?
+      params[:options] = 4
+    end
+  end
+
   def set_event
     @event = Event.find(params[:id])
     @dog_ids = @event.custom_event.dog_ids
@@ -88,8 +107,8 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:id, :options, :start, :end, :title, 
-                                 note_attributes: [:id, :content],
-                                 custom_event_attributes: [:id, :description, dog_ids: []],
-                                 visit_attributes: [])
+                                  note_attributes: [:id, :content],
+                                  custom_event_attributes: [:id, :description, dog_ids: []],
+                                  visit_attributes: [])
   end
 end

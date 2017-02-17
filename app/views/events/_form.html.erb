@@ -5,23 +5,20 @@
   <%= f.input :end, as: :string, input_html: {class: "datepicker form-control", id: "endTime"} %> 
 
 
-  <%= select_tag :options,
-    options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), 
-    class: 'btn btn-default'  %> <br /> 
-
-    <%= render "custom_events", event: f %>
-    <%= render "training" %>
-    <%= render "transfer" %>
-    <%= render "visit" %>
-
-    <%= f.button :submit %> 
-
-    <%= link_to 'Delete', event_path, method: :delete, 
-      class: 'btn btn-danger', 
-      data: {confirm: 'Are you sure?'}, 
-      remote: true unless @event.new_record? %> 
-
+  <% unless params[:action] == 'edit' %>
+    <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), class: 'btn btn-default'  %> <br /> 
   <% end %> 
 
-  <script>
-  </script>
+  <%= render "custom_events", event: f %>
+  <%= render "training" %>
+  <%= render "transfer" %>
+  <%= render "visit" %>
+
+  <%= f.button :submit %> 
+
+  <%= link_to 'Delete', event_path, method: :delete, 
+    class: 'btn btn-danger', 
+    data: {confirm: 'Are you sure?'}, 
+    remote: true unless @event.new_record? %> 
+
+<% end %> 

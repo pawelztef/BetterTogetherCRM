@@ -1,9 +1,13 @@
 $('body').append('<%= j render("edit") %>');
-$('#newEvent').modal('show');
-$(".closeNewEvent").on("click", function() {
-  $("#newEvent").modal('hide');
+
+$('#custom-event, #training, #transfer, #visit').css("display", "initial");
+
+$('#editEvent').modal('show');
+$(".closeEditEvent").on("click", function() {
+  $("#editEvent").modal('hide');
 });
 $('body').on('hidden.bs.modal', '.modal', function (e) {
   $(e.target).removeData('bs.modal');
   $('.modal').remove();
 });
+  <%# $('#options').val( <%= params[:options] %1> ).change(); %>
