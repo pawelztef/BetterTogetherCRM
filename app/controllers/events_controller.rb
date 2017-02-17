@@ -36,14 +36,12 @@ class EventsController < ApplicationController
   end
 
   def create
-    # byebug
     @event = Event.new(event_params)
     if @event.custom_event.present?
       @event.custom_event.dog_ids = params[:dog_ids] 
       @event.custom_event.client_ids = params[:client_ids] 
       @event.custom_event.volunteer_ids = params[:volunteer_ids] 
     end
-    byebug
     respond_to do |format|
       if @event.save
         format.html
