@@ -37,10 +37,19 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if @event.custom_event.present?
-      @event.custom_event.dog_ids = params[:dog_ids] 
-      @event.custom_event.client_ids = params[:client_ids] 
-      @event.custom_event.volunteer_ids = params[:volunteer_ids] 
+    case params[:options]
+      when "1"
+        if @event.custom_event.present?
+          @event.custom_event.dog_ids = params[:dog_ids] 
+          @event.custom_event.client_ids = params[:client_ids] 
+          @event.custom_event.volunteer_ids = params[:volunteer_ids] 
+        end
+      when "2"
+      when "3"
+      when "4"
+        @event.build_visit
+        @event.visit.volunteer = Volunteer.find params[:visitor_id]
+        @event.visit.client = Client.find params[:visited_id]
     end
     respond_to do |format|
       if @event.save
@@ -61,6 +70,9 @@ class EventsController < ApplicationController
       @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
       @event.custom_event.client_ids = params[:client_ids] || @client_ids
       @event.custom_event.volunteer_ids = params[:volunteer_ids] || @volunteer_ids
+    elsif @event.visit.present?
+      @event.visit.volunteer_id = params[:visitor_id] || @visitor_id
+      @event.visit.client_id = params[:visited_id] || @visited_id
     end
     respond_to do |format|
       if @event.save
@@ -104,9 +116,14 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
-    @dog_ids = @event.custom_event.dog_ids
-    @client_ids = @event.custom_event.client_ids
-    @volunteer_ids = @event.custom_event.volunteer_ids
+    if @event.custom_event.present?
+      @dog_ids = @event.custom_event.dog_ids 
+      @client_ids = @event.custom_event.client_ids
+      @volunteer_ids = @event.custom_event.volunteer_ids
+    elsif @event.visit.present?
+      @visitor_id = @event.visit.volunteer_id
+      @visited_id = @event.visit.client_id
+    end
   end
 
   def set_tables
@@ -119,6 +136,6 @@ class EventsController < ApplicationController
     params.require(:event).permit(:id, :options, :start, :end, :title, 
                                   note_attributes: [:id, :content],
                                   custom_event_attributes: [:id, :description, dog_ids: [], client_ids: [], volunteer_ids: []],
-                                  visit_attributes: [])
+                                  visit_attributes: [:volunteer_id, :client_id])
   end
 end
