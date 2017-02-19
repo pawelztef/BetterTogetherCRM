@@ -47,72 +47,72 @@
             </tbody>
           </table>
         </div>
-      <% end %> 
-      <div role="tabpanel" class="tab-pane" id="custom-event-clients-tab">
-        <h3>Add Clients</h3>
-        <table class="table table-striped table-responsive table-hover">
-          <thead>
-            <tr>
-              <th>Add:</th>
-              <th>First name</th>
-              <th>Last name</th>
-              <th>Email</th>
-              <th>Phone1</th>
-              <th>Phone2</th>
-              <th>Institution</th>
-            </tr>
-          </thead>
+        <div role="tabpanel" class="tab-pane" id="custom-event-clients-tab">
+          <h3>Add Clients</h3>
+          <table class="table table-striped table-responsive table-hover">
+            <thead>
+              <tr>
+                <th>Add:</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Phone1</th>
+                <th>Phone2</th>
+                <th>Institution</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <%= hidden_field_tag "client_ids[]", nil %> 
-            <% @clients.each do |client| %>
+            <tbody>
+              <%= hidden_field_tag "client_ids[]", nil %> 
+              <% @clients.each do |client| %>
+                <tr>
+                  <td> <%= check_box_tag "client_ids[]", client.id, @event.custom_event.client_ids.include?(client.id) %> </td>
+                  <td><%= client.first_name %></td>
+                  <td><%= client.last_name %></td>
+                  <td><%= client.email %></td>
+                  <td><%= client.phone1 %></td>
+                  <td><%= client.phone2 %></td>
+                  <td><%= client.institution %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="custom-event-voluteer-tab">
+          <h3>Add Volunteers</h3>
+          <table class="table table-striped table-responsive table-hover">
+            <thead>
               <tr>
-                <td> <%= check_box_tag "client_ids[]", client.id, @event.custom_event.client_ids.include?(client.id) %> </td>
-                <td><%= client.first_name %></td>
-                <td><%= client.last_name %></td>
-                <td><%= client.email %></td>
-                <td><%= client.phone1 %></td>
-                <td><%= client.phone2 %></td>
-                <td><%= client.institution %></td>
+                <th>Add</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Phone1</th>
+                <th>Phone2</th>
+                <th>Address</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-voluteer-tab">
-        <h3>Add Volunteers</h3>
-        <table class="table table-striped table-responsive table-hover">
-          <thead>
-            <tr>
-              <th>Add</th>
-              <th>First name</th>
-              <th>Last name</th>
-              <th>Email</th>
-              <th>Phone1</th>
-              <th>Phone2</th>
-              <th>Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= hidden_field_tag "volunteer_ids[]", nil %> 
-            <% @volunteers.each do |volunteer| %>
-              <tr>
-                <td> <%= check_box_tag "volunteer_ids[]", volunteer.id, @event.custom_event.volunteer_ids.include?(volunteer.id) %> </td>
-                <td><%= volunteer.first_name %></td>
-                <td><%= volunteer.last_name %></td>
-                <td><%= volunteer.email %></td>
-                <td><%= volunteer.phone1 %></td>
-                <td><%= volunteer.phone2 %></td>
-                <td><%= volunteer.location.full_street_address %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-note-tab">
-        <h3> Add Note </h3>
-        <%= render "note", event: event  %>
-      </div>
+            </thead>
+            <tbody>
+              <%= hidden_field_tag "volunteer_ids[]", nil %> 
+              <% @volunteers.each do |volunteer| %>
+                <tr>
+                  <td> <%= check_box_tag "volunteer_ids[]", volunteer.id, @event.custom_event.volunteer_ids.include?(volunteer.id) %> </td>
+                  <td><%= volunteer.first_name %></td>
+                  <td><%= volunteer.last_name %></td>
+                  <td><%= volunteer.email %></td>
+                  <td><%= volunteer.phone1 %></td>
+                  <td><%= volunteer.phone2 %></td>
+                  <td><%= volunteer.location.full_street_address %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="custom-event-note-tab">
+          <h3> Add Note </h3>
+          <%= render "note", f: custom_event  %>
+        </div>
+      <% end %> 
     </div>
   </div>
 </fieldset>

@@ -44,7 +44,7 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="visit-client-tab">
           <h3>Listing Clinets</h3>
-          
+
           <table class="table table-striped table-responsive table-hover">
             <thead>
               <tr>
@@ -70,13 +70,11 @@
               <% end %>
             </tbody>
           </table>
-        
+
         </div>
         <div role="tabpanel" class="tab-pane" id="visit-note-tab">
           <h3> Add Note </h3>
-
-          <%= render "note", event: event  %>
-        
+          <%= render "note", f: visit %>
         </div>
       <% end %> 
     </div>

@@ -19,10 +19,12 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    
     @event = Event.new
-    @event.build_note
     @event.build_custom_event
     @event.build_visit
+    @event.custom_event.note = Note.new
+    @event.visit.note = Note.new
     respond_to do |format|
       format.html
       format.js
@@ -30,9 +32,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-
     set_edit_view
-
   end
 
   def create
@@ -44,12 +44,14 @@ class EventsController < ApplicationController
           @event.custom_event.client_ids = params[:client_ids] 
           @event.custom_event.volunteer_ids = params[:volunteer_ids] 
         end
+        @event.visit = nil
       when "2"
       when "3"
       when "4"
-        @event.build_visit
+        # @event.build_visit
         @event.visit.volunteer = Volunteer.find params[:visitor_id]
         @event.visit.client = Client.find params[:visited_id]
+        @event.custom_event = nil
     end
     respond_to do |format|
       if @event.save
@@ -65,6 +67,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    byebug
     @event.attributes = event_params
     if @event.custom_event.present?
       @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
@@ -134,8 +137,8 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:id, :options, :start, :end, :title, 
-                                  note_attributes: [:id, :content],
-                                  custom_event_attributes: [:id, :description, dog_ids: [], client_ids: [], volunteer_ids: []],
-                                  visit_attributes: [:volunteer_id, :client_id])
+                                  
+                                  custom_event_attributes: [:id, :description, dog_ids: [], client_ids: [], volunteer_ids: [], note_attributes: [:id, :content]],
+                                  visit_attributes: [:id, :volunteer_id, :client_id, note_attributes: [:id, :content]] )
   end
 end
