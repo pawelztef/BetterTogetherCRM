@@ -67,7 +67,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    byebug
     @event.attributes = event_params
     if @event.custom_event.present?
       @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids

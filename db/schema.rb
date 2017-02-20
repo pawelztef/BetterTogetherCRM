@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214212806) do
+ActiveRecord::Schema.define(version: 20170220105532) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -138,6 +138,22 @@ ActiveRecord::Schema.define(version: 20170214212806) do
     t.string "trace_type", limit: 255, null: false
   end
 
+  create_table "trainings", force: :cascade do |t|
+    t.boolean  "dog_dog"
+    t.boolean  "dog_human"
+    t.boolean  "no_attachment"
+    t.boolean  "ignore_calling"
+    t.boolean  "no_heel"
+    t.boolean  "toilet_home"
+    t.boolean  "bite_furniture"
+    t.text     "other",          limit: 65535
+    t.integer  "event_id",       limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "trainings", ["event_id"], name: "index_trainings_on_event_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      limit: 255,                 null: false
     t.string   "last_name",       limit: 255,                 null: false
@@ -179,6 +195,7 @@ ActiveRecord::Schema.define(version: 20170214212806) do
 
   add_foreign_key "custom_events", "events"
   add_foreign_key "dogs", "clients"
+  add_foreign_key "trainings", "events"
   add_foreign_key "visits", "clients"
   add_foreign_key "visits", "events"
   add_foreign_key "visits", "volunteers"
