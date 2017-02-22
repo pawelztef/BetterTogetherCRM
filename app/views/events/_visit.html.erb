@@ -27,10 +27,10 @@
               </tr>
             </thead>
             <tbody>
-              <%= hidden_field_tag "visitor_id", nil %> 
+              <%= hidden_field_tag "volunteer_id", nil %> 
               <% @volunteers.each do |volunteer| %>
                 <tr>
-                  <td> <%= radio_button_tag "visitor_id", volunteer.id, @event.visit.volunteer_id == volunteer.id %> </td>
+                  <td> <%= radio_button_tag "volunteer_id", volunteer.id, @event.visit.volunteer_id == volunteer.id %> </td>
                   <td><%= volunteer.fullname %></td>
                   <td><%= volunteer.email %></td>
                   <td><%= volunteer.phone1 %></td>
@@ -57,10 +57,10 @@
               </tr>
             </thead>
             <tbody>
-              <%= hidden_field_tag "visited_id", nil %> 
+              <%= hidden_field_tag "client_id", nil %> 
               <% @clients.each do |client| %>
                 <tr>
-                  <td> <%= radio_button_tag "visited_id", client.id, @event.visit.client_id == client.id %> </td>
+                  <td> <%= radio_button_tag "client_id", client.id, @event.visit.client_id == client.id %> </td>
                   <td><%= client.fullname %></td>
                   <td><%= client.email %></td>
                   <td><%= client.phone1 %></td>

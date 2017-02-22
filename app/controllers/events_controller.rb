@@ -19,12 +19,14 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    
+
     @event = Event.new
+    @event.build_training
     @event.build_custom_event
     @event.build_visit
     @event.custom_event.note = Note.new
     @event.visit.note = Note.new
+    @event.training.note = Note.new
     respond_to do |format|
       format.html
       format.js
@@ -38,21 +40,31 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     case params[:options]
-      when "1"
-        if @event.custom_event.present?
-          @event.custom_event.dog_ids = params[:dog_ids] 
-          @event.custom_event.client_ids = params[:client_ids] 
-          @event.custom_event.volunteer_ids = params[:volunteer_ids] 
-        end
+    when "1"
+      if @event.custom_event.present?
+        @event.training = nil
         @event.visit = nil
-      when "2"
-      when "3"
-      when "4"
-        # @event.build_visit
-        @event.visit.volunteer = Volunteer.find params[:visitor_id]
-        @event.visit.client = Client.find params[:visited_id]
+        @event.custom_event.dog_ids = params[:dog_ids] 
+        @event.custom_event.client_ids = params[:client_ids] 
+        @event.custom_event.volunteer_ids = params[:volunteer_ids] 
+      end
+      @event.visit = nil
+    when "2"
+      if @event.training.present?
         @event.custom_event = nil
+        @event.visit = nil
+        @event.training.dog_id = params[:dog_id]
+        @event.training.volunteer_id = params[:volunteer_id]
+      end
+    when "3"
+    when "4"
+      @event.custom_event = nil
+      @event.training = nil
+      @event.visit.volunteer = Volunteer.find params[:volunteer_id]
+      @event.visit.client = Client.find params[:client_id]
+      @event.custom_event = nil
     end
+    byebug
     respond_to do |format|
       if @event.save
         format.html
@@ -73,9 +85,15 @@ class EventsController < ApplicationController
       @event.custom_event.client_ids = params[:client_ids] || @client_ids
       @event.custom_event.volunteer_ids = params[:volunteer_ids] || @volunteer_ids
     elsif @event.visit.present?
-      @event.visit.volunteer_id = params[:visitor_id] || @visitor_id
-      @event.visit.client_id = params[:visited_id] || @visited_id
+      @event.visit.volunteer_id = params[:volunteer_id] || @visitor_id
+      @event.visit.client_id = params[:client_id] || @visited_id
+    elsif @event.training.present?
+      @event.training.dog_id = params[:dog_id] || @trainee_id
+      @event.training.volunteer_id = params[:volunteer_id] || @trainer_id
+      # @event.training.other = nil if @vent.training.other.empty?
+      byebug
     end
+
     respond_to do |format|
       if @event.save
         format.html
@@ -102,18 +120,14 @@ class EventsController < ApplicationController
   def set_edit_view
     if @event.custom_event.present?
       params[:options] = 1
-
+    elsif @event.training.present?
+      params[:options] = 2
       #Uncomment after rest models implemented
-
-      # elsif @event.training.present?
-      #   params[:options] = 2
       # elsif @event.transfer.present?
       #   params[:options] = 3
-
-
-      elsif @event.visit.present?
-        params[:options] = 4
-      end
+    elsif @event.visit.present?
+      params[:options] = 4
+    end
   end
 
   def set_event
@@ -125,6 +139,9 @@ class EventsController < ApplicationController
     elsif @event.visit.present?
       @visitor_id = @event.visit.volunteer_id
       @visited_id = @event.visit.client_id
+    elsif @event.training.present?
+      @trainee_id = @event.training.dog_id
+      @trainer_id = @event.training.volunteer_id
     end
   end
 
@@ -136,8 +153,8 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:id, :options, :start, :end, :title, 
-                                  
                                   custom_event_attributes: [:id, :description, dog_ids: [], client_ids: [], volunteer_ids: [], note_attributes: [:id, :content]],
-                                  visit_attributes: [:id, :volunteer_id, :client_id, note_attributes: [:id, :content]] )
+                                  visit_attributes: [:id, :volunteer_id, :client_id, note_attributes: [:id, :content]],
+                                  training_attributes: [:id, :dog_dog, :dog_human, :no_attachment, :ignore_calling, :no_heel, :toilet_home, :bite_furniture, :other, :dog_id, :volunteer_id, note_attributes: [:id, :content]])
   end
 end

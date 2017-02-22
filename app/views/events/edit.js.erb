@@ -2,6 +2,17 @@ $('body').append('<%= j render("edit_form") %>');
 
 $('#custom-event, #training, #transfer, #visit').css("display", "initial");
 
+<%# if(' <%= @event.training && @event.training.other %1>' ) { %>
+  if(false) {
+  $("#training-other-checkbox").prop('checked', true);
+  $('.event_training_other').css('display', 'initial');
+}
+$(document).on('change', '#training-other-checkbox', function() {
+  if( $('#training-other-checkbox').not(':checked')) {
+   $('#event_training_attributes_other').html('');
+  }
+});
+
 $('#editEvent').modal('show');
 $(".closeEditEvent").on("click", function() {
   $("#editEvent").modal('hide');

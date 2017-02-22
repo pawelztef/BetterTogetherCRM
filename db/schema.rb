@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220105532) do
+ActiveRecord::Schema.define(version: 20170220111807) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -150,9 +150,13 @@ ActiveRecord::Schema.define(version: 20170220105532) do
     t.integer  "event_id",       limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "dog_id",         limit: 4
+    t.integer  "volunteer_id",   limit: 4
   end
 
+  add_index "trainings", ["dog_id"], name: "index_trainings_on_dog_id", using: :btree
   add_index "trainings", ["event_id"], name: "index_trainings_on_event_id", using: :btree
+  add_index "trainings", ["volunteer_id"], name: "index_trainings_on_volunteer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      limit: 255,                 null: false
@@ -195,7 +199,9 @@ ActiveRecord::Schema.define(version: 20170220105532) do
 
   add_foreign_key "custom_events", "events"
   add_foreign_key "dogs", "clients"
+  add_foreign_key "trainings", "dogs"
   add_foreign_key "trainings", "events"
+  add_foreign_key "trainings", "volunteers"
   add_foreign_key "visits", "clients"
   add_foreign_key "visits", "events"
   add_foreign_key "visits", "volunteers"

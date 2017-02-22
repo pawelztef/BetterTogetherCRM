@@ -30,4 +30,12 @@ $(document).on('change load', '#options', function() {
   }
 });
 
+$(document).on('change load', '#training-other-checkbox', function() {
+  if ( $("#training-other-checkbox").is(':checked')) {
+    $('.event_training_other').slideDown();
+  } else {
+    $('.event_training_other').slideUp();
+  }
+});
+
 
