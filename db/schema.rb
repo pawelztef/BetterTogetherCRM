@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220111807) do
+ActiveRecord::Schema.define(version: 20170223124057) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -158,6 +158,20 @@ ActiveRecord::Schema.define(version: 20170220111807) do
   add_index "trainings", ["event_id"], name: "index_trainings_on_event_id", using: :btree
   add_index "trainings", ["volunteer_id"], name: "index_trainings_on_volunteer_id", using: :btree
 
+  create_table "transfers", force: :cascade do |t|
+    t.integer  "dog_id",       limit: 4
+    t.integer  "sender_id",    limit: 4
+    t.integer  "recipient_id", limit: 4
+    t.integer  "volunteer_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "transfers", ["dog_id"], name: "index_transfers_on_dog_id", using: :btree
+  add_index "transfers", ["recipient_id"], name: "index_transfers_on_recipient_id", using: :btree
+  add_index "transfers", ["sender_id"], name: "index_transfers_on_sender_id", using: :btree
+  add_index "transfers", ["volunteer_id"], name: "index_transfers_on_volunteer_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name",      limit: 255,                 null: false
     t.string   "last_name",       limit: 255,                 null: false
@@ -202,6 +216,8 @@ ActiveRecord::Schema.define(version: 20170220111807) do
   add_foreign_key "trainings", "dogs"
   add_foreign_key "trainings", "events"
   add_foreign_key "trainings", "volunteers"
+  add_foreign_key "transfers", "dogs"
+  add_foreign_key "transfers", "volunteers"
   add_foreign_key "visits", "clients"
   add_foreign_key "visits", "events"
   add_foreign_key "visits", "volunteers"
