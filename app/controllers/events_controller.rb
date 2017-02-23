@@ -24,6 +24,7 @@ class EventsController < ApplicationController
     @event.build_training
     @event.build_custom_event
     @event.build_visit
+    @event.build_transfer
     @event.custom_event.note = Note.new
     @event.visit.note = Note.new
     @event.training.note = Note.new

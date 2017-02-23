@@ -5,17 +5,103 @@
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#transfer-dog-tab" aria-controls="transfer-dog-tab" role="tab" data-toggle="tab">Dog</a></li>
       <li role="presentation"><a href="#transfer-sender-tab" aria-controls="transfer-sender-tab" role="tab" data-toggle="tab">Sender</a></li>
-      <li role="presentation"><a href="#transfer-recipent-tab" aria-controls="transfer-recipient-tab" role="tab" data-toggle="tab">Recipient</a></li>
+      <li role="presentation"><a href="#transfer-recipient-tab" aria-controls="transfer-recipient-tab" role="tab" data-toggle="tab">Recipient</a></li>
       <li role="presentation"><a href="#transfer-volunteer-tab" aria-controls="transfer-volunteer-tab" role="tab" data-toggle="tab">Volunteer</a></li>
       <li role="presentation"><a href="#transfer-note-tab" aria-controls="transfer-note-tab" role="tab" data-toggle="tab">Notes</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="transfer-dog-tab">transfer-dog-tab</div>
-      <div role="tabpanel" class="tab-pane" id="transfer-sender-tab">transfer-sender-tab</div>
-      <div role="tabpanel" class="tab-pane" id="transfer-recipient-tab">transfer-recipient-tab</div>
-      <div role="tabpanel" class="tab-pane" id="transfer-volunteer-tab">transfer-volunteer-tab</div>
-      <div role="tabpanel" class="tab-pane" id="transfer-note-tab">transfer-note-tab</div>
+      <%= event.simple_fields_for :transfer do |tr| %> 
+        <div role="tabpanel" class="tab-pane active" id="transfer-dog-tab">
+          <h3>Add Dogs</h3>
+          <table class="table table-striped table-responsive table-hover">
+            <thead>
+              <tr>
+                <th>Add:</th>
+                <th>Name:</th>
+                <th>Chip id:</th>
+                <th>Age:</th>
+                <th>Breed:</th>
+                <th>Sex:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= hidden_field_tag "dog_id", nil %> 
+              <% @dogs.each do |dog| %>
+                <tr>
+                  <td> <%= radio_button_tag "dog_id", dog.id, @event.training.dog_id == dog.id %> </td>
+                  <td> <%= dog.name %> </td>
+                  <td> <%= dog.chip_id %> </td>
+                  <td> <%= dog.age %> </td>
+                  <td> <%= dog.breed %> </td>
+                  <td> <%= dog.sex %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="transfer-sender-tab">transfer-sender-tab</div>
+        <div role="tabpanel" class="tab-pane" id="transfer-recipient-tab">
+          <h3>Listing Clinets</h3>
+          <table class="table table-striped table-responsive table-hover">
+            <thead>
+              <tr>
+                <th>Add</th>
+                <th>Full name</th>
+                <th>Email</th>
+                <th>Phone1</th>
+                <th>Phone2</th>
+                <th>Institution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= hidden_field_tag "client_id", nil %> 
+              <% @clients.each do |client| %>
+                <tr>
+                  <td> <%= radio_button_tag "client_id", client.id, @event.visit.client_id == client.id %> </td>
+                  <td><%= client.fullname %></td>
+                  <td><%= client.email %></td>
+                  <td><%= client.phone1 %></td>
+                  <td><%= client.phone2 %></td>
+                  <td><%= client.institution %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="transfer-volunteer-tab">
+          <h3>Listing Volunteers</h3>
+          <table class="table table-striped table-responsive table-hover">
+            <thead>
+              <tr>
+                <th>Add</th>
+                <th>Full name</th>
+                <th>Email</th>
+                <th>Phone1</th>
+                <th>Phone2</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= hidden_field_tag "volunteer_id", nil %> 
+              <% @volunteers.each do |volunteer| %>
+                <tr>
+                  <td> <%= radio_button_tag "volunteer_id", volunteer.id, @event.visit.volunteer_id == volunteer.id %> </td>
+                  <td><%= volunteer.fullname %></td>
+                  <td><%= volunteer.email %></td>
+                  <td><%= volunteer.phone1 %></td>
+                  <td><%= volunteer.phone2 %></td>
+                  <td><%= volunteer.location.full_street_address %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="transfer-note-tab">
+          <h3> Add Note </h3>
+          <%= render "note", f: tr %>
+        </div>
+      <% end %>
     </div>
   </div>
 </fieldset>
