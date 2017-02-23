@@ -64,7 +64,6 @@ class EventsController < ApplicationController
       @event.visit.client = Client.find params[:client_id]
       @event.custom_event = nil
     end
-    byebug
     respond_to do |format|
       if @event.save
         format.html
@@ -79,6 +78,7 @@ class EventsController < ApplicationController
   end
 
   def update
+
     @event.attributes = event_params
     if @event.custom_event.present?
       @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
@@ -91,7 +91,6 @@ class EventsController < ApplicationController
       @event.training.dog_id = params[:dog_id] || @trainee_id
       @event.training.volunteer_id = params[:volunteer_id] || @trainer_id
       # @event.training.other = nil if @vent.training.other.empty?
-      byebug
     end
 
     respond_to do |format|
@@ -122,6 +121,7 @@ class EventsController < ApplicationController
       params[:options] = 1
     elsif @event.training.present?
       params[:options] = 2
+      
       #Uncomment after rest models implemented
       # elsif @event.transfer.present?
       #   params[:options] = 3

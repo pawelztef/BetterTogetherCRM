@@ -24,10 +24,12 @@
 
           <div class="checkbox" id="training-other">
             <label class="boolean optional" for="training-other-checkbox">
-              <input type="checkbox" id="training-other-checkbox"> 0ther</label>
+              <input type="checkbox" id="training-other-checkbox"> Other</label>
           </div>
-          
+
           <%= t.input :other %> 
+
+
         </div>
         <div role="tabpanel" class="tab-pane" id="dog-client-tab">
           <h3>Add Dogs</h3>
@@ -94,3 +96,9 @@
     </div>
   </div>
 </fieldset>
+<script>
+if( <%= @event.training.other.present? %> ) {
+  $("#training-other-checkbox").prop('checked', true);
+  $('.event_training_other').css('display', 'inline');
+}
+</script>
