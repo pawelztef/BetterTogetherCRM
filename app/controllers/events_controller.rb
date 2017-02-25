@@ -115,8 +115,9 @@ class EventsController < ApplicationController
 
   # POST /events/transfer
   def transfer
-    @client = Client.includes(:dogs).where(dogs: {id: params[:dog_id]})
-    byebug
+
+    @dog = Dog.find(params[:dog_id])
+    @client = @dog.client
     respond_to do |format|
       format.js
     end
