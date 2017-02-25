@@ -39,3 +39,12 @@ $(document).on('change load', '#training-other-checkbox', function() {
 });
 
 
+$(document).on('change', '[name="dog_id"]', function() {
+  var data = $(this).serializeArray();
+  $.ajax({
+    method: 'POST',
+    url: '/events/transfer',
+    data: data,
+    dataType: 'script'
+  })
+});

@@ -19,7 +19,6 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-
     @event = Event.new
     @event.build_training
     @event.build_custom_event
@@ -79,7 +78,6 @@ class EventsController < ApplicationController
   end
 
   def update
-
     @event.attributes = event_params
     if @event.custom_event.present?
       @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
@@ -111,6 +109,15 @@ class EventsController < ApplicationController
     @event.destroy
     respond_to do |format|
       format.html
+      format.js
+    end
+  end
+
+  # POST /events/transfer
+  def transfer
+    @client = Client.includes(:dogs).where(dogs: {id: params[:dog_id]})
+    byebug
+    respond_to do |format|
       format.js
     end
   end
