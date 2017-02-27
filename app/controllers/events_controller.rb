@@ -24,9 +24,12 @@ class EventsController < ApplicationController
     @event.build_custom_event
     @event.build_visit
     @event.build_transfer
+
     @event.custom_event.note = Note.new
     @event.visit.note = Note.new
     @event.training.note = Note.new
+    @event.transfer.note = Note.new
+
     respond_to do |format|
       format.html
       format.js
@@ -57,6 +60,15 @@ class EventsController < ApplicationController
         @event.training.volunteer_id = params[:volunteer_id]
       end
     when "3"
+      @event.custom_event = nil
+      @event.training = nil
+      @event.visit = nil
+      if @event.transfer.present?
+        @event.transfer.volunteer = Volunteer.find params[:conveyor_id]
+        @event.transfer.dog = Dog.find params[:dog_id]
+        @event.transfer.sender = @event.transfer.dog.client
+        @event.transfer.recipient = Client.find params[:recipient_id]
+      end
     when "4"
       @event.custom_event = nil
       @event.training = nil
@@ -83,17 +95,23 @@ class EventsController < ApplicationController
       @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
       @event.custom_event.client_ids = params[:client_ids] || @client_ids
       @event.custom_event.volunteer_ids = params[:volunteer_ids] || @volunteer_ids
+    elsif @event.transfer.present?
+      @event.transfer.dog_id = params[:dog_id] || @transferable_id
+      @event.transfer.sender_id = params[:sender_id] || @sender_id
+      @event.transfer.recipient_id = params[:recipient_id] || @recipient_id
+      byebug
+
     elsif @event.visit.present?
       @event.visit.volunteer_id = params[:volunteer_id] || @visitor_id
       @event.visit.client_id = params[:client_id] || @visited_id
     elsif @event.training.present?
       @event.training.dog_id = params[:dog_id] || @trainee_id
       @event.training.volunteer_id = params[:volunteer_id] || @trainer_id
-      # @event.training.other = nil if @vent.training.other.empty?
     end
 
     respond_to do |format|
       if @event.save
+        byebug
         format.html
         format.js
         format.json
@@ -115,7 +133,6 @@ class EventsController < ApplicationController
 
   # POST /events/transfer
   def transfer
-
     @dog = Dog.find(params[:dog_id])
     @client = @dog.client
     respond_to do |format|
@@ -130,10 +147,11 @@ class EventsController < ApplicationController
       params[:options] = 1
     elsif @event.training.present?
       params[:options] = 2
-      
-      #Uncomment after rest models implemented
-      # elsif @event.transfer.present?
-      #   params[:options] = 3
+    elsif @event.transfer.present?
+      params[:options] = 3
+      @sender = @event.transfer.sender
+      byebug
+
     elsif @event.visit.present?
       params[:options] = 4
     end
@@ -145,6 +163,10 @@ class EventsController < ApplicationController
       @dog_ids = @event.custom_event.dog_ids 
       @client_ids = @event.custom_event.client_ids
       @volunteer_ids = @event.custom_event.volunteer_ids
+    elsif @event.transfer.present?
+      @trnasferable_id = @event.transfer.dog_id
+      @sender_id = @event.transfer.sender_id
+      @recipient_id = @event.transfer.recipient_id
     elsif @event.visit.present?
       @visitor_id = @event.visit.volunteer_id
       @visited_id = @event.visit.client_id
@@ -164,6 +186,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:id, :options, :start, :end, :title, 
                                   custom_event_attributes: [:id, :description, dog_ids: [], client_ids: [], volunteer_ids: [], note_attributes: [:id, :content]],
                                   visit_attributes: [:id, :volunteer_id, :client_id, note_attributes: [:id, :content]],
-                                  training_attributes: [:id, :dog_dog, :dog_human, :no_attachment, :ignore_calling, :no_heel, :toilet_home, :bite_furniture, :other, :dog_id, :volunteer_id, note_attributes: [:id, :content]])
+                                  training_attributes: [:id, :dog_dog, :dog_human, :no_attachment, :ignore_calling, :no_heel, :toilet_home, :bite_furniture, :other, :dog_id, :volunteer_id, note_attributes: [:id, :content]],
+                                  transfer_attributes: [:id, note_attributes: [:id, :content]])
   end
 end
