@@ -3,6 +3,7 @@ let email;
 let phone;
 let address;
 let radio;
+let sender;
 
 
 radio = $('#sender-radio').empty();
@@ -10,10 +11,12 @@ fullname = $('#sender-fullname').empty();
 email = $('#sender-email').empty();
 phone = $('#sender-phone').empty();
 address = $('#sender-address').empty();
+sender = $('#sender_id');
 
 radio.html("<input type='radio' checked disabled>");
 fullname.html(" <%= @client.fullname %> ");
 email.html(" <%= @client.email %> ");
 phone.html(" <%= @client.phone1 %> ");
 address.html(" <%= @client.location.full_street_address %> ");
+sender.val(" <%= @client.id %> ");
 

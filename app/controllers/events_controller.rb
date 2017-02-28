@@ -47,6 +47,7 @@ class EventsController < ApplicationController
       if @event.custom_event.present?
         @event.training = nil
         @event.visit = nil
+        @event.transfer = nil
         @event.custom_event.dog_ids = params[:dog_ids] 
         @event.custom_event.client_ids = params[:client_ids] 
         @event.custom_event.volunteer_ids = params[:volunteer_ids] 
@@ -56,6 +57,7 @@ class EventsController < ApplicationController
       if @event.training.present?
         @event.custom_event = nil
         @event.visit = nil
+        @event.transfer = nil
         @event.training.dog_id = params[:dog_id]
         @event.training.volunteer_id = params[:volunteer_id]
       end
@@ -72,6 +74,7 @@ class EventsController < ApplicationController
     when "4"
       @event.custom_event = nil
       @event.training = nil
+      @event.transfer = nil
       @event.visit.volunteer = Volunteer.find params[:volunteer_id]
       @event.visit.client = Client.find params[:client_id]
       @event.custom_event = nil
@@ -99,8 +102,6 @@ class EventsController < ApplicationController
       @event.transfer.dog_id = params[:dog_id] || @transferable_id
       @event.transfer.sender_id = params[:sender_id] || @sender_id
       @event.transfer.recipient_id = params[:recipient_id] || @recipient_id
-      byebug
-
     elsif @event.visit.present?
       @event.visit.volunteer_id = params[:volunteer_id] || @visitor_id
       @event.visit.client_id = params[:client_id] || @visited_id
@@ -111,7 +112,6 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        byebug
         format.html
         format.js
         format.json
@@ -150,8 +150,6 @@ class EventsController < ApplicationController
     elsif @event.transfer.present?
       params[:options] = 3
       @sender = @event.transfer.sender
-      byebug
-
     elsif @event.visit.present?
       params[:options] = 4
     end

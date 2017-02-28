@@ -3,37 +3,40 @@ $('body').append('<%= j render("edit_form") %>');
 $('#custom-event, #training, #transfer, #visit').css("display", "inherit");
 
 $(document).on('change', '#training-other-checkbox', function() {
-  if( $('#training-other-checkbox').not(':checked')) {
-    $('#event_training_attributes_other').html('');
-  }
+if( $('#training-other-checkbox').not(':checked')) {
+$('#event_training_attributes_other').html('');
+}
 });
 
 
 $('#editEvent').modal('show');
 $(".closeEditEvent").on("click", function() {
-  $("#editEvent").modal('hide');
+$("#editEvent").modal('hide');
 });
 $('body').on('hidden.bs.modal', '.modal', function (e) {
-  $(e.target).removeData('bs.modal');
-  $('.modal').remove();
+$(e.target).removeData('bs.modal');
+$('.modal').remove();
 });
 
-let fullname;
-let email;
-let phone;
-let address;
-let radio;
+<% if @sender %>
+  let fullname;
+  let email;
+  let phone;
+  let address;
+  let radio;
+  let sender;
 
+  radio = $('#sender-radio').empty();
+  fullname = $('#sender-fullname').empty();
+  email = $('#sender-email').empty();
+  phone = $('#sender-phone').empty();
+  address = $('#sender-address').empty();
+  sender = $('#sender_id');
 
-radio = $('#sender-radio').empty();
-fullname = $('#sender-fullname').empty();
-email = $('#sender-email').empty();
-phone = $('#sender-phone').empty();
-address = $('#sender-address').empty();
-
-radio.html("<input type='radio' checked disabled>");
-fullname.html(" <%= @sender.fullname %> ");
-email.html(" <%= @sender.email %> ");
-phone.html(" <%= @sender.phone1 %> ");
-address.html(" <%= @sender.location.full_street_address %> ");
-
+  radio.html("<input type='radio' checked disabled>");
+  fullname.html(" <%= @sender.fullname %> ");
+  email.html(" <%= @sender.email %> ");
+  phone.html(" <%= @sender.phone1 %> ");
+  address.html(" <%= @sender.location.full_street_address %> ");
+  sender.val(" <%= @sender.id %> ");
+<% end %> 
