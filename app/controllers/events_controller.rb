@@ -58,8 +58,8 @@ class EventsController < ApplicationController
         @event.custom_event = nil
         @event.visit = nil
         @event.transfer = nil
-        @event.training.dog_id = params[:dog_id]
-        @event.training.volunteer_id = params[:volunteer_id]
+        @event.training.dog_id = params[:trainee_id]
+        @event.training.volunteer_id = params[:trainer_id]
       end
     when "3"
       @event.custom_event = nil
@@ -102,12 +102,13 @@ class EventsController < ApplicationController
       @event.transfer.dog_id = params[:dog_id] || @transferable_id
       @event.transfer.sender_id = params[:sender_id] || @sender_id
       @event.transfer.recipient_id = params[:recipient_id] || @recipient_id
+      @event.transfer.volunteer_id = params[:conveyor_id] || @conveyor_id
     elsif @event.visit.present?
       @event.visit.volunteer_id = params[:volunteer_id] || @visitor_id
       @event.visit.client_id = params[:client_id] || @visited_id
     elsif @event.training.present?
-      @event.training.dog_id = params[:dog_id] || @trainee_id
-      @event.training.volunteer_id = params[:volunteer_id] || @trainer_id
+      @event.training.dog_id = params[:trainee_id] || @trainee_id
+      @event.training.volunteer_id = params[:trainer_id] || @trainer_id
     end
 
     respond_to do |format|
@@ -165,6 +166,7 @@ class EventsController < ApplicationController
       @trnasferable_id = @event.transfer.dog_id
       @sender_id = @event.transfer.sender_id
       @recipient_id = @event.transfer.recipient_id
+      @conveyor_id = @event.transfer.volunteer_id
     elsif @event.visit.present?
       @visitor_id = @event.visit.volunteer_id
       @visited_id = @event.visit.client_id
