@@ -3,6 +3,7 @@
   <%= f.input :title, input_html: {class: "form-control" } %> 
   <%= f.input :start, as: :string, input_html: {class: "datepicker form-control", id: "startTime"} %> 
   <%= f.input :end, as: :string, input_html: {class: "datepicker form-control", id: "endTime"} %> 
+  <%= f.input :color, as: :select, collection: [['Black','#000000'],['Green','#00FF00'],['Red','#FF0000']] %> 
 
 
   <% unless params[:action] == 'edit' %>

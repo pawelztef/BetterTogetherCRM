@@ -183,7 +183,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:id, :options, :start, :end, :title, 
+    params.require(:event).permit(:id, :options, :start, :end, :title, :color,
                                   custom_event_attributes: [:id, :description, dog_ids: [], client_ids: [], volunteer_ids: [], note_attributes: [:id, :content]],
                                   visit_attributes: [:id, :volunteer_id, :client_id, note_attributes: [:id, :content]],
                                   training_attributes: [:id, :dog_dog, :dog_human, :no_attachment, :ignore_calling, :no_heel, :toilet_home, :bite_furniture, :other, :dog_id, :volunteer_id, note_attributes: [:id, :content]],

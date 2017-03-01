@@ -21,25 +21,26 @@
                     <%= f.input :title, input_html: {class: "form-control" } %> 
                     <%= f.input :start, as: :string, input_html: {class: "datepicker form-control", id: "startTime"} %> 
                     <%= f.input :end, as: :string, input_html: {class: "datepicker form-control", id: "endTime"} %> 
+                    <%= f.input :color, as: :select, collection: [['Black','#000000'],['Green','#00FF00'],['Red','#FF0000']] %> 
 
                     <%= hidden_field_tag :options, params[:options] %> 
                     <% case params[:options] 
-                         when 1 %> <%= render "custom_events", event: f %> 
-                      <% when 2 %> <%= render "training", event: f %> 
-                      <% when 3 %> <%= render "transfer", event: f %> 
-                      <% when 4 %> <%= render "visit", event: f %> 
-                    <% end %> 
-                    <br />
-                    <br />
+                    when 1 %> <%= render "custom_events", event: f %> 
+                <% when 2 %> <%= render "training", event: f %> 
+                <% when 3 %> <%= render "transfer", event: f %> 
+                <% when 4 %> <%= render "visit", event: f %> 
+                <% end %> 
+                <br />
+                <br />
 
-                    <%= f.button :submit %> 
+                <%= f.button :submit %> 
 
-                    <%= link_to 'Delete', event_path, method: :delete, 
-                      class: 'btn btn-danger', 
-                      data: {confirm: 'Are you sure?'}, 
-                      remote: true unless @event.new_record? %> 
+                <%= link_to 'Delete', event_path, method: :delete, 
+                  class: 'btn btn-danger', 
+                  data: {confirm: 'Are you sure?'}, 
+                  remote: true unless @event.new_record? %> 
 
-                  <% end %> 
+              <% end %> 
                 </div>
               </div>
               <div class="row">
