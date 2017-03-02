@@ -94,6 +94,7 @@ class EventsController < ApplicationController
 
   def update
     @event.attributes = event_params
+
     if @event.custom_event.present?
       @event.custom_event.dog_ids = params[:dog_ids] || @dog_ids
       @event.custom_event.client_ids = params[:client_ids] || @client_ids

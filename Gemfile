@@ -41,6 +41,8 @@ gem 'faker'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+#color picker
+gem 'jquery-minicolors-rails'
 
 # material styles
 # gem 'bootstrap-material-design-rails'
