@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  include EventsHelper
+
   has_one :custom_event, dependent: :destroy
   has_one :visit, dependent: :destroy
   has_one :training, dependent: :destroy
