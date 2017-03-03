@@ -1,101 +1,100 @@
-<fieldset id="training">
-  <h3>
-    <p>training</p>
-  </h3>
-  <div>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#training-description-tab" aria-controls="training-description-tab" role="tab" data-toggle="tab">Description</a></li>
-      <li role="presentation"><a href="#dog-client-tab" aria-controls="dog-client-tab" role="tab" data-toggle="tab">Dog</a></li>
-      <li role="presentation"><a href="#trainer-tab" aria-controls="trainer-tab" role="tab" data-toggle="tab">Trainer</a></li>
-      <li role="presentation"><a href="#training-note-tab" aria-controls="training-note-tab" role="tab" data-toggle="tab">Note</a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <%= event.simple_fields_for :training do |t| %> 
-        
-        <div role="tabpanel" class="tab-pane active" id="training-description-tab">
-          <%= t.input :dog_dog, as: :boolean %> 
-          <%= t.input :dog_human, as: :boolean %> 
-          <%= t.input :no_attachment, as: :boolean %> 
-          <%= t.input :ignore_calling, as: :boolean %> 
-          <%= t.input :no_heel, as: :boolean %> 
-          <%= t.input :toilet_home, as: :boolean %> 
-          <%= t.input :bite_furniture, as: :boolean %> 
-          <div class="checkbox" id="training-other">
-            <label class="boolean optional" for="training-other-checkbox">
-              <input type="checkbox" id="training-other-checkbox"> Other</label>
-          </div>
-          <%= t.input :other %> 
-        </div>
+<h3>
+  <p>training</p>
+</h3>
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#training-description-tab" aria-controls="training-description-tab" role="tab" data-toggle="tab">Description</a></li>
+    <li role="presentation"><a href="#dog-client-tab" aria-controls="dog-client-tab" role="tab" data-toggle="tab">Dog</a></li>
+    <li role="presentation"><a href="#trainer-tab" aria-controls="trainer-tab" role="tab" data-toggle="tab">Trainer</a></li>
+    <li role="presentation"><a href="#training-note-tab" aria-controls="training-note-tab" role="tab" data-toggle="tab">Note</a></li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <%= event.simple_fields_for :training do |t| %> 
 
-        <div role="tabpanel" class="tab-pane" id="dog-client-tab">
-          <h3>Add Dogs</h3>
-          <table class="table table-striped table-responsive table-hover">
-            <thead>
+      <div role="tabpanel" class="tab-pane active" id="training-description-tab">
+        <%= t.input :dog_dog, as: :boolean %> 
+        <%= t.input :dog_human, as: :boolean %> 
+        <%= t.input :no_attachment, as: :boolean %> 
+        <%= t.input :ignore_calling, as: :boolean %> 
+        <%= t.input :no_heel, as: :boolean %> 
+        <%= t.input :toilet_home, as: :boolean %> 
+        <%= t.input :bite_furniture, as: :boolean %> 
+        <div class="checkbox" id="training-other">
+          <label class="boolean optional" for="training-other-checkbox">
+            <input type="checkbox" id="training-other-checkbox"> Other</label>
+        </div>
+        <%= t.input :other %> 
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="dog-client-tab">
+        <h3>Add Dogs</h3>
+        <table class="table table-striped table-responsive table-hover">
+          <thead>
+            <tr>
+              <th>Add:</th>
+              <th>Name:</th>
+              <th>Chip id:</th>
+              <th>Age:</th>
+              <th>Breed:</th>
+              <th>Sex:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= hidden_field_tag "traniee_id", nil %> 
+            <% @dogs.each do |dog| %>
               <tr>
-                <th>Add:</th>
-                <th>Name:</th>
-                <th>Chip id:</th>
-                <th>Age:</th>
-                <th>Breed:</th>
-                <th>Sex:</th>
+                <td> <%= radio_button_tag "trainee_id", dog.id, @event.training.dog_id == dog.id %> </td>
+                <td> <%= dog.name %> </td>
+                <td> <%= dog.chip_id %> </td>
+                <td> <%= dog.age %> </td>
+                <td> <%= dog.breed %> </td>
+                <td> <%= dog.sex %> </td>
               </tr>
-            </thead>
-            <tbody>
-              <%= hidden_field_tag "traniee_id", nil %> 
-              <% @dogs.each do |dog| %>
-                <tr>
-                  <td> <%= radio_button_tag "trainee_id", dog.id, @event.training.dog_id == dog.id %> </td>
-                  <td> <%= dog.name %> </td>
-                  <td> <%= dog.chip_id %> </td>
-                  <td> <%= dog.age %> </td>
-                  <td> <%= dog.breed %> </td>
-                  <td> <%= dog.sex %> </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-        <div role="tabpanel" class="tab-pane" id="trainer-tab">
-          <h3>Listing Trainers</h3>
-          <table class="table table-striped table-responsive table-hover">
-            <thead>
+      <div role="tabpanel" class="tab-pane" id="trainer-tab">
+        <h3>Listing Trainers</h3>
+        <table class="table table-striped table-responsive table-hover">
+          <thead>
+            <tr>
+              <th>Add</th>
+              <th>Full name</th>
+              <th>Email</th>
+              <th>Phone1</th>
+              <th>Phone2</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= hidden_field_tag "trainer_id", nil %> 
+            <% @volunteers.each do |volunteer| %>
               <tr>
-                <th>Add</th>
-                <th>Full name</th>
-                <th>Email</th>
-                <th>Phone1</th>
-                <th>Phone2</th>
-                <th>Address</th>
+                <td> <%= radio_button_tag "trainer_id", volunteer.id, @event.training.volunteer_id == volunteer.id %> </td>
+                <td><%= volunteer.fullname %></td>
+                <td><%= volunteer.email %></td>
+                <td><%= volunteer.phone1 %></td>
+                <td><%= volunteer.phone2 %></td>
+                <td><%= volunteer.location.full_street_address %></td>
               </tr>
-            </thead>
-            <tbody>
-              <%= hidden_field_tag "trainer_id", nil %> 
-              <% @volunteers.each do |volunteer| %>
-                <tr>
-                  <td> <%= radio_button_tag "trainer_id", volunteer.id, @event.training.volunteer_id == volunteer.id %> </td>
-                  <td><%= volunteer.fullname %></td>
-                  <td><%= volunteer.email %></td>
-                  <td><%= volunteer.phone1 %></td>
-                  <td><%= volunteer.phone2 %></td>
-                  <td><%= volunteer.location.full_street_address %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-        <div role="tabpanel" class="tab-pane" id="training-note-tab">
-          <h3> Add Note </h3>
-          <%= render "note", f: t %>
-        </div>
+      <div role="tabpanel" class="tab-pane" id="training-note-tab">
+        <h3> Add Note </h3>
+        <%= render "note", f: t %>
+      </div>
 
-      <% end %>
-    </div>
+    <% end %>
   </div>
-</fieldset>
+</div>
+
 <script>
 if( <%= @event.training.other.present? %> ) {
   $("#training-other-checkbox").prop('checked', true);
