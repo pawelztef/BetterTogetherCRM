@@ -22,7 +22,8 @@
 //= require fullcalendar
 //= require bootstrap-datetimepicker
 //= require turbolinks
-//= require cocoon
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require_tree .
 //
 
