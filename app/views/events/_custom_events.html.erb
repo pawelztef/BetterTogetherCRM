@@ -16,8 +16,10 @@
       <%= event.simple_fields_for :custom_event do |custom_event| %>
         <div role="tabpanel" class="tab-pane active" id="custom-event-description-tab">
           <h3> Describe event </h3>
-          <%= custom_event.label :description %><br /> 
-          <%= custom_event.text_area :description %> 
+          <div class="form-group">
+            <%= custom_event.label :description %><br /> 
+            <%= custom_event.text_area :description, class: 'required form-control' %> 
+          </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="custom-event-dog-tab">
           <h3>Add Dogs</h3>

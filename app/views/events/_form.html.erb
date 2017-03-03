@@ -3,12 +3,13 @@
   <%= f.input :title, input_html: {class: "form-control" } %> 
   <%= f.input :start, as: :string, input_html: {class: "datepicker form-control", id: "startTime"} %> 
   <%= f.input :end, as: :string, input_html: {class: "datepicker form-control", id: "endTime"} %> 
-  <%# <%= f.input :color, as: :select, collection: [['','#f5168d'],['','#5ebd66'],['','#485ee3'],['','#f07d18'],['','#fa49c3']] %1> %> 
   <%= f.input :color, as: :minicolors %> 
 
 
   <% unless params[:action] == 'edit' %>
-    <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), class: 'btn btn-default'  %> <br /> 
+    <div class="form-group">
+      <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), class: 'form-control'  %> <br /> 
+    </div>
   <% end %> 
 
   <%= render "custom_events", event: f %>
@@ -28,4 +29,21 @@
 $('#event_color').minicolors({
   theme: 'bootstrap'
 });
+
+jQuery.validator.addMethod('optionsCheck', function(value){
+  return (value != '0');
+}, 'event type required');
+
+$("#new_event").validate({
+  rules: {
+    options: { optionsCheck: true }
+  },
+  highlight: function(element, errorClass) {
+    $(element).css({"border": "red 1px solid", "box-shadow": "0 0 7px rgba(255, 0, 0, 0.6)"});
+  },
+  unhighlight: function(element, errorClass, validClass) {
+    $(element).css({"border": "#ccc 1px solid", "box-shadow": "none"});
+  }
+});
+
 </script>
