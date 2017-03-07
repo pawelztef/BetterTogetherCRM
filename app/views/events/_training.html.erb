@@ -14,16 +14,17 @@
     <%= event.simple_fields_for :training do |t| %> 
 
       <div role="tabpanel" class="tab-pane active" id="training-description-tab">
-        <%= t.input :dog_dog, as: :boolean %> 
-        <%= t.input :dog_human, as: :boolean %> 
-        <%= t.input :no_attachment, as: :boolean %> 
-        <%= t.input :ignore_calling, as: :boolean %> 
-        <%= t.input :no_heel, as: :boolean %> 
-        <%= t.input :toilet_home, as: :boolean %> 
-        <%= t.input :bite_furniture, as: :boolean %> 
+        <div class="validate-group-error-placement"></div>
+        <%= t.input :dog_dog, as: :boolean, input_html: {class: "training-description"} %> 
+        <%= t.input :dog_human, as: :boolean, input_html: {class: "training-description"} %> 
+        <%= t.input :no_attachment, as: :boolean, input_html: {class: "training-description"} %> 
+        <%= t.input :ignore_calling, as: :boolean, input_html: {class: "training-description"} %> 
+        <%= t.input :no_heel, as: :boolean, input_html: {class: "training-description"} %> 
+        <%= t.input :toilet_home, as: :boolean, input_html: {class: "training-description"} %> 
+        <%= t.input :bite_furniture, as: :boolean, input_html: {class: "training-description"} %> 
         <div class="checkbox" id="training-other">
           <label class="boolean optional" for="training-other-checkbox">
-            <input type="checkbox" id="training-other-checkbox"> Other</label>
+            <input type="checkbox" id="training-other-checkbox" class="training-description" name="training_attributes_other"> Other</label>
         </div>
         <%= t.input :other %> 
       </div>

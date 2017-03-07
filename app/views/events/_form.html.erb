@@ -1,5 +1,5 @@
 <%= simple_form_for @event, remote: true, html: {class: 'form-horizontal'} do |f| %>
- 
+
   <fieldset id="core-event">
     <%= f.input :title, input_html: {class: "form-control" } %> 
     <%= f.input :start, as: :string, input_html: {class: "datepicker form-control", id: "startTime"} %> 
@@ -11,7 +11,7 @@
       </div>
     <% end %> 
   </fieldset>
-  
+
   <fieldset id="custom-event"> <%= render "custom_events", event: f %> </fieldset>
   <fieldset id="training"> <%= render "training", event: f %> </fieldset>
   <fieldset id="transfer"> <%= render "transfer", event: f %> </fieldset>
@@ -27,23 +27,75 @@
 <% end %> 
 <script>
 
-  $('#event_color').minicolors({
-    theme: 'bootstrap'
-  });
+$('#event_color').minicolors({
+  theme: 'bootstrap'
+});
 
-  jQuery.validator.addMethod('optionsCheck', function(value){
-    return (value != '0');
-  }, 'event type required');
+jQuery.validator.addMethod('optionsCheck', function(value){
+  return (value != '0');
+}, 'event type required');
 
-  $("#new_event").validate({
-    rules: {
-      options: { optionsCheck: true }
+
+$("#new_event").validate({
+  debug: true,
+  rules: {
+
+    options: { optionsCheck: true },
+
+    "event[training_attributes][dog_dog]": {
+      require_from_group: [1, ".training-description"]
     },
-    highlight: function(element, errorClass) {
-      $(element).css({"border": "red 1px solid", "box-shadow": "0 0 7px rgba(255, 0, 0, 0.6)"});
+
+    "event[training_attributes][dog_human]": {
+      require_from_group: [1, ".training-description"]
     },
-    unhighlight: function(element, errorClass, validClass) {
-      $(element).css({"border": "#ccc 1px solid", "box-shadow": "none"});
+
+    "event[training_attributes][no_attachment]": {
+      require_from_group: [1, ".training-description"]
+    },
+
+    "event[training_attributes][ignore_calling]": {
+      require_from_group: [1, ".training-description"]
+    },
+
+    "event[training_attributes][no_heel]": {
+      require_from_group: [1, ".training-description"]
+    },
+
+    "event[training_attributes][toilet_home]": {
+      require_from_group: [1, ".training-description"]
+    },
+
+    "event[training_attributes][bite_furniture]": {
+      require_from_group: [1, ".training-description"]
+    },
+
+    "training_attributes_other": {
+      require_from_group: [1, ".training-description"]
+    },
+
+    "trainee_id": {
+      required: true
     }
-  });
+  },
+  groups: {
+    trainingChecks: "event[training_attributes][dog_dog] event[training_attributes][dog_human] event[training_attributes][no_attachment] event[training_attributes][ignore_calling] event[training_attributes][no_heel] event[training_attributes][toilet_home] event[training_attributes][bite_furniture] training_attributes_other"
+  },
+
+  errorPlacement: function(error, element) {
+    if(element.attr("type") == "checkbox") {
+      error.appendTo($("#training-description-tab:first-child"));
+    } else {
+      error.insertAfter(element);
+    }
+  },
+
+  highlight: function(element, errorClass) {
+    $(element).css({"border": "red 1px solid", "box-shadow": "0 0 7px rgba(255, 0, 0, 0.6)"});
+  },
+  unhighlight: function(element, errorClass, validClass) {
+    $(element).css({"border": "#ccc 1px solid", "box-shadow": "none"});
+  }
+
+});
 </script>
