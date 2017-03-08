@@ -4,10 +4,10 @@
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#training-description-tab" aria-controls="training-description-tab" role="tab" data-toggle="tab">Description</a></li>
-    <li role="presentation"><a href="#dog-client-tab" aria-controls="dog-client-tab" role="tab" data-toggle="tab">Dog</a></li>
-    <li role="presentation"><a href="#trainer-tab" aria-controls="trainer-tab" role="tab" data-toggle="tab">Trainer</a></li>
-    <li role="presentation"><a href="#training-note-tab" aria-controls="training-note-tab" role="tab" data-toggle="tab">Note</a></li>
+    <li role="presentation" class="active disabledTab"><a href="#training-description-tab" aria-controls="training-description-tab" role="tab" data-toggle="tab">Description</a></li>
+    <li role="presentation" class="disabledTab"><a href="#dog-client-tab" aria-controls="dog-client-tab" role="tab" data-toggle="tab">Dog</a></li>
+    <li role="presentation" class="disabledTab"><a href="#trainer-tab" aria-controls="trainer-tab" role="tab" data-toggle="tab">Trainer</a></li>
+    <li role="presentation" class="disabledTab"><a href="#training-note-tab" aria-controls="training-note-tab" role="tab" data-toggle="tab">Note</a></li>
   </ul>
   <!-- Tab panes -->
   <div class="tab-content">
@@ -27,6 +27,7 @@
             <input type="checkbox" id="training-other-checkbox" class="training-description" name="training_attributes_other"> Other</label>
         </div>
         <%= t.input :other %> 
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="dog-client-tab">
@@ -56,6 +57,8 @@
             <% end %>
           </tbody>
         </table>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="trainer-tab">
@@ -85,11 +88,14 @@
             <% end %>
           </tbody>
         </table>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="training-note-tab">
         <h3> Add Note </h3>
         <%= render "note", f: t %>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
       </div>
 
     <% end %>
@@ -101,4 +107,5 @@ if( <%= @event.training.other.present? %> ) {
   $("#training-other-checkbox").prop('checked', true);
   $('.event_training_other').css('display', 'inline');
 }
+
 </script>

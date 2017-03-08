@@ -2,11 +2,11 @@
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#transfer-dog-tab" aria-controls="transfer-dog-tab" role="tab" data-toggle="tab">Dog</a></li>
-    <li role="presentation"><a href="#transfer-sender-tab" aria-controls="transfer-sender-tab" role="tab" data-toggle="tab">Sender</a></li>
-    <li role="presentation"><a href="#transfer-recipient-tab" aria-controls="transfer-recipient-tab" role="tab" data-toggle="tab">Recipient</a></li>
-    <li role="presentation"><a href="#transfer-volunteer-tab" aria-controls="transfer-volunteer-tab" role="tab" data-toggle="tab">Volunteer</a></li>
-    <li role="presentation"><a href="#transfer-note-tab" aria-controls="transfer-note-tab" role="tab" data-toggle="tab">Notes</a></li>
+    <li role="presentation" class="active disabledTab"><a href="#transfer-dog-tab" aria-controls="transfer-dog-tab" role="tab" data-toggle="tab">Dog</a></li>
+    <li role="presentation" class="disabledTab"><a href="#transfer-sender-tab" aria-controls="transfer-sender-tab" role="tab" data-toggle="tab">Sender</a></li>
+    <li role="presentation" class="disabledTab"><a href="#transfer-recipient-tab" aria-controls="transfer-recipient-tab" role="tab" data-toggle="tab">Recipient</a></li>
+    <li role="presentation" class="disabledTab"><a href="#transfer-volunteer-tab" aria-controls="transfer-volunteer-tab" role="tab" data-toggle="tab">Volunteer</a></li>
+    <li role="presentation" class="disabledTab"><a href="#transfer-note-tab" aria-controls="transfer-note-tab" role="tab" data-toggle="tab">Notes</a></li>
   </ul>
   <!-- Tab panes -->
   <div class="tab-content">
@@ -38,6 +38,7 @@
             <% end %>
           </tbody>
         </table>
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
       <div role="tabpanel" class="tab-pane" id="transfer-sender-tab">
         <table class="table table-striped table-responsive table-hover">
@@ -62,6 +63,8 @@
             </tr>
           </tbody>
         </table>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
       <div role="tabpanel" class="tab-pane" id="transfer-recipient-tab">
         <h3>Listing Recipients</h3>
@@ -90,6 +93,8 @@
             <% end %>
           </tbody>
         </table>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
       <div role="tabpanel" class="tab-pane" id="transfer-volunteer-tab">
         <h3>Listing Volunteers</h3>
@@ -118,10 +123,13 @@
             <% end %>
           </tbody>
         </table>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
       <div role="tabpanel" class="tab-pane" id="transfer-note-tab">
         <h3> Add Note </h3>
         <%= render "note", f: tr %>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
       </div>
     <% end %>
   </div>

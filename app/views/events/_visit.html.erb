@@ -4,9 +4,9 @@
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#visit-volunteer-tab" aria-controls="visit-volunteer-tab" role="tab" data-toggle="tab">Volunteer</a></li>
-    <li role="presentation"><a href="#visit-client-tab" aria-controls="visit-client-tab" role="tab" data-toggle="tab">Client</a></li>
-    <li role="presentation"><a href="#visit-note-tab" aria-controls="visit-note-tab" role="tab" data-toggle="tab">Notes</a></li>
+    <li role="presentation" class="active disabledTab"><a href="#visit-volunteer-tab" aria-controls="visit-volunteer-tab" role="tab" data-toggle="tab">Volunteer</a></li>
+    <li role="presentation" class="disabledTab"><a href="#visit-client-tab" aria-controls="visit-client-tab" role="tab" data-toggle="tab">Client</a></li>
+    <li role="presentation" class="disabledTab"><a href="#visit-note-tab" aria-controls="visit-note-tab" role="tab" data-toggle="tab">Notes</a></li>
   </ul>
   <!-- Tab panes -->
   <div class="tab-content">
@@ -39,7 +39,7 @@
             <% end %>
           </tbody>
         </table>
-
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
       <div role="tabpanel" class="tab-pane" id="visit-client-tab">
         <h3>Listing Clinets</h3>
@@ -68,12 +68,14 @@
               </tr>
             <% end %>
           </tbody>
-        </table>
-
+        </table>      
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
+      <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
       <div role="tabpanel" class="tab-pane" id="visit-note-tab">
         <h3> Add Note </h3>
         <%= render "note", f: visit %>
+      <button type="button" class="btn btn-default prev-step">Prevoious</button>
       </div>
     <% end %> 
   </div>

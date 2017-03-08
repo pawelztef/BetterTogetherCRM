@@ -17,7 +17,7 @@
   <fieldset id="transfer"> <%= render "transfer", event: f %> </fieldset>
   <fieldset id="visit"> <%= render "visit", event: f %> </fieldset>
 
-  <%= f.button :submit %> 
+  <%= f.button :submit, id: 'event-submit' %> 
 
   <%= link_to 'Delete', event_path, method: :delete, 
     class: 'btn btn-danger', 
@@ -26,6 +26,39 @@
 
 <% end %> 
 <script>
+
+function displaySubmit(elem) {
+  var length;
+  length = elem.parents('ul').find('li').size();
+  if(elem.index() == length-2) {
+    $("#event-submit").css("display", "initial");
+  } else {
+    $("#event-submit").css("display", "none");
+  }
+}
+function nextTab(elem) {
+  $(elem).next().find('a[data-toggle="tab"]').click();
+  displaySubmit(elem);
+}
+function prevTab(elem) {
+  $(elem).prev().find('a[data-toggle="tab"]').click();
+  displaySubmit(elem);
+}
+$(".next-step").on('click', function() {
+  if ($("#new_event").valid()) {
+    let x;
+    x = $(this).parents().prev('.nav-tabs').find('li.active');
+    debugger;
+    nextTab(x);
+  }
+});
+$(".prev-step").on('click', function() {
+    x = $(this).parents().prev('.nav-tabs').find('li.active');
+    prevTab(x);
+});
+
+
+
 
 $('#event_color').minicolors({
   theme: 'bootstrap'
@@ -75,6 +108,9 @@ $("#new_event").validate({
     },
 
     "trainee_id": {
+      required: true
+    },
+    "trainer_id": {
       required: true
     }
   },
