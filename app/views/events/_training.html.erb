@@ -15,19 +15,31 @@
 
       <div role="tabpanel" class="tab-pane active" id="training-description-tab">
         <div class="validate-group-error-placement"></div>
-        <%= t.input :dog_dog, as: :boolean, input_html: {class: "training-description"} %> 
-        <%= t.input :dog_human, as: :boolean, input_html: {class: "training-description"} %> 
-        <%= t.input :no_attachment, as: :boolean, input_html: {class: "training-description"} %> 
-        <%= t.input :ignore_calling, as: :boolean, input_html: {class: "training-description"} %> 
-        <%= t.input :no_heel, as: :boolean, input_html: {class: "training-description"} %> 
-        <%= t.input :toilet_home, as: :boolean, input_html: {class: "training-description"} %> 
-        <%= t.input :bite_furniture, as: :boolean, input_html: {class: "training-description"} %> 
-        <div class="checkbox" id="training-other">
-          <label class="boolean optional" for="training-other-checkbox">
-            <input type="checkbox" id="training-other-checkbox" class="training-description" name="training_attributes_other"> Other</label>
-        </div>
+        <table class="table table-responsive">
+          <thead><tr><th colspan="8"><h4>Issue desription</h4></tr></thead>
+          <tbody>
+            <tr>
+              <td> <%= t.input :dog_dog, as: :boolean, input_html: {class: "training-description"} %> </td>
+              <td> <%= t.input :dog_human, as: :boolean, input_html: {class: "training-description"} %> </td>
+              <td> <%= t.input :no_attachment, as: :boolean, input_html: {class: "training-description"} %> </td>
+              <td> <%= t.input :ignore_calling, as: :boolean, input_html: {class: "training-description"} %> </td>
+            <%# </tr> %>
+            <%# <tr> %>
+              <td> <%= t.input :no_heel, as: :boolean, input_html: {class: "training-description"} %> </td>
+              <td> <%= t.input :toilet_home, as: :boolean, input_html: {class: "training-description"} %> </td>
+              <td> <%= t.input :bite_furniture, as: :boolean, input_html: {class: "training-description"} %> </td>
+              <td>
+                <div class="checkbox" id="training-other">
+                  <label class="boolean optional" for="training-other-checkbox">
+                    <input type="checkbox" id="training-other-checkbox" class="training-description" name="training_attributes_other"> Other</label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <%= t.input :other %> 
-      <button type="button" class="btn btn-default next-step">Save and continue</button>
+
+        <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="dog-client-tab">
@@ -57,8 +69,8 @@
             <% end %>
           </tbody>
         </table>
-      <button type="button" class="btn btn-default prev-step">Prevoious</button>
-      <button type="button" class="btn btn-default next-step">Save and continue</button>
+        <button type="button" class="btn btn-default prev-step">Prevoious</button>
+        <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="trainer-tab">
@@ -88,14 +100,14 @@
             <% end %>
           </tbody>
         </table>
-      <button type="button" class="btn btn-default prev-step">Prevoious</button>
-      <button type="button" class="btn btn-default next-step">Save and continue</button>
+        <button type="button" class="btn btn-default prev-step">Prevoious</button>
+        <button type="button" class="btn btn-default next-step">Save and continue</button>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="training-note-tab">
         <h3> Add Note </h3>
         <%= render "note", f: t %>
-      <button type="button" class="btn btn-default prev-step">Prevoious</button>
+        <button type="button" class="btn btn-default prev-step">Prevoious</button>
       </div>
 
     <% end %>

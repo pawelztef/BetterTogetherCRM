@@ -1,15 +1,36 @@
 <%= simple_form_for @event, remote: true, html: {class: 'form-horizontal'} do |f| %>
 
   <fieldset id="core-event">
-    <%= f.input :title, input_html: {class: "form-control" } %> 
-    <%= f.input :start, as: :string, input_html: {class: "datepicker form-control", id: "startTime"} %> 
-    <%= f.input :end, as: :string, input_html: {class: "datepicker form-control", id: "endTime"} %> 
-    <%= f.input :color, as: :minicolors %> 
-    <% unless params[:action] == 'edit' %>
-      <div class="form-group">
-        <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), class: 'form-control'  %> <br /> 
+    
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.input :title, input_html: {class: "form-control" } %> 
       </div>
-    <% end %> 
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :start, as: :string, input_html: {class: "datepicker form-control", id: "startTime"} %> 
+      </div>
+      <div class="col-md-6">
+        <%= f.input :end, as: :string, input_html: {class: "datepicker form-control", id: "endTime"} %> 
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-10">
+        <% unless params[:action] == 'edit' %>
+          <label class="control-label string required" for="startTime" aria-required="true"><abbr title="required">*</abbr> Start</label>
+          <div class="form-group">
+            <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), class: 'form-control'  %> <br /> 
+          </div>
+        <% end %> 
+      </div>
+      <div class="col-xs-2">
+        <%= f.input :color, as: :minicolors %> 
+      </div>
+    </div>
+  
   </fieldset>
 
   <fieldset id="custom-event"> <%= render "custom_events", event: f %> </fieldset>
@@ -53,8 +74,8 @@ $(".next-step").on('click', function() {
   }
 });
 $(".prev-step").on('click', function() {
-    x = $(this).parents().prev('.nav-tabs').find('li.active');
-    prevTab(x);
+  x = $(this).parents().prev('.nav-tabs').find('li.active');
+  prevTab(x);
 });
 
 
