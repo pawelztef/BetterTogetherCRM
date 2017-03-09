@@ -14,17 +14,16 @@
     <%= event.simple_fields_for :training do |t| %> 
 
       <div role="tabpanel" class="tab-pane active" id="training-description-tab">
-        <div class="validate-group-error-placement"></div>
+        <h4>Issue desription</h4>
+        <span class="validate-group-error-placement"></span>
         <table class="table table-responsive">
-          <thead><tr><th colspan="8"><h4>Issue desription</h4></tr></thead>
+          <thead> </thead>
           <tbody>
             <tr>
               <td> <%= t.input :dog_dog, as: :boolean, input_html: {class: "training-description"} %> </td>
               <td> <%= t.input :dog_human, as: :boolean, input_html: {class: "training-description"} %> </td>
               <td> <%= t.input :no_attachment, as: :boolean, input_html: {class: "training-description"} %> </td>
               <td> <%= t.input :ignore_calling, as: :boolean, input_html: {class: "training-description"} %> </td>
-            <%# </tr> %>
-            <%# <tr> %>
               <td> <%= t.input :no_heel, as: :boolean, input_html: {class: "training-description"} %> </td>
               <td> <%= t.input :toilet_home, as: :boolean, input_html: {class: "training-description"} %> </td>
               <td> <%= t.input :bite_furniture, as: :boolean, input_html: {class: "training-description"} %> </td>
@@ -43,7 +42,8 @@
       </div>
 
       <div role="tabpanel" class="tab-pane" id="dog-client-tab">
-        <h3>Add Dogs</h3>
+        <h4>Add Dogs</h4>
+        <span class="validate-group-error-placement"></span>
         <table class="table table-striped table-responsive table-hover">
           <thead>
             <tr>
@@ -74,7 +74,8 @@
       </div>
 
       <div role="tabpanel" class="tab-pane" id="trainer-tab">
-        <h3>Listing Trainers</h3>
+        <h4>Listing Trainers</h4>
+        <span class="validate-group-error-placement"></span>
         <table class="table table-striped table-responsive table-hover">
           <thead>
             <tr>
@@ -105,7 +106,7 @@
       </div>
 
       <div role="tabpanel" class="tab-pane" id="training-note-tab">
-        <h3> Add Note </h3>
+        <h4> Add Note </h4>
         <%= render "note", f: t %>
         <button type="button" class="btn btn-default prev-step">Prevoious</button>
       </div>

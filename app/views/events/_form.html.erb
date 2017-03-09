@@ -22,7 +22,7 @@
         <% unless params[:action] == 'edit' %>
           <label class="control-label string required" for="startTime" aria-required="true"><abbr title="required">*</abbr> Start</label>
           <div class="form-group">
-            <%= select_tag :options, options_for_select([['Chose Type',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), class: 'form-control'  %> <br /> 
+            <%= select_tag :options, options_for_select([['To continue select',0],['Custom',1],['Training',2],['Transfer', 3],['Visit',4]], 0), class: 'form-control'  %> <br /> 
           </div>
         <% end %> 
       </div>
@@ -48,28 +48,21 @@
 <% end %> 
 <script>
 
-function displaySubmit(elem) {
-  var length;
-  length = elem.parents('ul').find('li').size();
-  if(elem.index() == length-2) {
+function nextTab(elem) {
+  $(elem).next().find('a[data-toggle="tab"]').click();
+  if(elem.next().is(":last-of-type")) {
     $("#event-submit").css("display", "initial");
   } else {
     $("#event-submit").css("display", "none");
   }
 }
-function nextTab(elem) {
-  $(elem).next().find('a[data-toggle="tab"]').click();
-  displaySubmit(elem);
-}
 function prevTab(elem) {
   $(elem).prev().find('a[data-toggle="tab"]').click();
-  displaySubmit(elem);
+    $("#event-submit").css("display", "none");
 }
 $(".next-step").on('click', function() {
   if ($("#new_event").valid()) {
-    let x;
     x = $(this).parents().prev('.nav-tabs').find('li.active');
-    debugger;
     nextTab(x);
   }
 });
@@ -127,6 +120,8 @@ $("#new_event").validate({
     "training_attributes_other": {
       require_from_group: [1, ".training-description"]
     },
+    "event[training_attributes][other]": {
+    },
 
     "trainee_id": {
       required: true
@@ -140,18 +135,26 @@ $("#new_event").validate({
   },
 
   errorPlacement: function(error, element) {
-    if(element.attr("type") == "checkbox") {
-      error.appendTo($("#training-description-tab:first-child"));
+    if($(element).attr("type") == "checkbox" || $(element).attr("type") == "radio") {
+      error.appendTo($(element).parents('table').prev());
     } else {
       error.insertAfter(element);
     }
   },
 
   highlight: function(element, errorClass) {
-    $(element).css({"border": "red 1px solid", "box-shadow": "0 0 7px rgba(255, 0, 0, 0.6)"});
+    if($(element).attr("type") == "checkbox" || $(element).attr("type") == "radio") {
+      $(element).parents('table').prev().prev().css("color", "red");
+    } else {
+      $(element).css({"border": "red 1px solid", "box-shadow": "0 0 7px rgba(255, 0, 0, 0.6)"});
+    }
   },
   unhighlight: function(element, errorClass, validClass) {
-    $(element).css({"border": "#ccc 1px solid", "box-shadow": "none"});
+    if($(element).attr("type") == "checkbox" || $(element).attr("type") == "radio") {
+      $(element).parents('table').prev().prev().css("color", "inherit");
+    } else {
+      $(element).css({"border": "#ccc 1px solid", "box-shadow": "none"});
+    }
   }
 
 });
