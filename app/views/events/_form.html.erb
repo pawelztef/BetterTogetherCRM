@@ -1,7 +1,6 @@
 <%= simple_form_for @event, remote: true, html: {class: 'form-horizontal'} do |f| %>
 
   <fieldset id="core-event">
-    
     <div class="row">
       <div class="col-md-12">
         <%= f.input :title, input_html: {class: "form-control" } %> 
@@ -38,7 +37,7 @@
   <fieldset id="transfer"> <%= render "transfer", event: f %> </fieldset>
   <fieldset id="visit"> <%= render "visit", event: f %> </fieldset>
 
-  <%= f.button :submit, id: 'event-submit' %> 
+  <%= f.button :submit, class: 'event-submit' %> 
 
   <%= link_to 'Delete', event_path, method: :delete, 
     class: 'btn btn-danger', 
@@ -51,14 +50,14 @@
 function nextTab(elem) {
   $(elem).next().find('a[data-toggle="tab"]').click();
   if(elem.next().is(":last-of-type")) {
-    $("#event-submit").css("display", "initial");
+    $(".event-submit").css("display", "initial");
   } else {
-    $("#event-submit").css("display", "none");
+    $(".event-submit").css("display", "none");
   }
 }
 function prevTab(elem) {
   $(elem).prev().find('a[data-toggle="tab"]').click();
-    $("#event-submit").css("display", "none");
+    $(".event-submit").css("display", "none");
 }
 $(".next-step").on('click', function() {
   if ($("#new_event").valid()) {
