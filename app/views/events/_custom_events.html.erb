@@ -1,126 +1,124 @@
-<h3>
-  <p>custom</p>
-</h3>
-<div>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active disabledTab"><a href="#custom-event-description-tab" aria-controls="custom-event-description-tab" role="tab" data-toggle="tab">Description</a></li>
-    <li role="presentation" class="disabledTab"><a href="#custom-event-dog-tab" aria-controls="custom-event-dog-tab" role="tab" data-toggle="tab">Dogs</a></li>
-    <li role="presentation" class="disabledTab"><a href="#custom-event-clients-tab" aria-controls="custom-event-clients-tab" role="tab" data-toggle="tab">Clients</a></li>
-    <li role="presentation" class="disabledTab"><a href="#custom-event-voluteer-tab" aria-controls="custom-event-voluteer-tab" role="tab" data-toggle="tab">Volunteers</a></li>
-    <li role="presentation" class="disabledTab"><a href="#custom-event-note-tab" aria-controls="training-note-tab" role="tab" data-toggle="tab">Note</a></li>
-  </ul>
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <%= event.simple_fields_for :custom_event do |custom_event| %>
-      <div role="tabpanel" class="tab-pane active" id="custom-event-description-tab">
-        <h3> Describe event </h3>
-        <div class="form-group">
-          <%= custom_event.label :description %><br /> 
-          <%= custom_event.text_area :description, class: 'required form-control' %> 
-        </div>
-        <button type="button" class="btn btn-default next-step">Save and continue</button>
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active disabledTab"><a href="#custom-event-description-tab" aria-controls="custom-event-description-tab" role="tab" data-toggle="tab">Description</a></li>
+        <li role="presentation" class="disabledTab"><a href="#custom-event-dog-tab" aria-controls="custom-event-dog-tab" role="tab" data-toggle="tab">Dogs</a></li>
+        <li role="presentation" class="disabledTab"><a href="#custom-event-clients-tab" aria-controls="custom-event-clients-tab" role="tab" data-toggle="tab">Clients</a></li>
+        <li role="presentation" class="disabledTab"><a href="#custom-event-voluteer-tab" aria-controls="custom-event-voluteer-tab" role="tab" data-toggle="tab">Volunteers</a></li>
+        <li role="presentation" class="disabledTab"><a href="#custom-event-note-tab" aria-controls="training-note-tab" role="tab" data-toggle="tab">Note</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <%= event.simple_fields_for :custom_event do |custom_event| %>
+          <div role="tabpanel" class="tab-pane active" id="custom-event-description-tab">
+            <h4> Describe event </h4>
+            <%= custom_event.label :description %><br /> 
+            <%= custom_event.text_area :description, class: 'required form-control' %> 
+            <button type="button" class="btn btn-default next-step">Save and continue</button>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="custom-event-dog-tab">
+            <h4>Add Dogs</h4>
+            <table class="table table-striped table-responsive table-hover">
+              <thead>
+                <tr>
+                  <th>Add:</th>
+                  <th>Name:</th>
+                  <th>Chip id:</th>
+                  <th>Age:</th>
+                  <th>Breed:</th>
+                  <th>Sex:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= hidden_field_tag "dog_ids[]", nil %> 
+                <% @dogs.each do |dog| %>
+                  <tr>
+                    <td> <%= check_box_tag "dog_ids[]", dog.id, @event.custom_event.dog_ids.include?(dog.id) %> </td>
+                    <td> <%= dog.name %> </td>
+                    <td> <%= dog.chip_id %> </td>
+                    <td> <%= dog.age %> </td>
+                    <td> <%= dog.breed %> </td>
+                    <td> <%= dog.sex %> </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-default prev-step">Prevoious</button>
+            <button type="button" class="btn btn-default next-step">Save and continue</button>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="custom-event-clients-tab">
+            <h4>Add Clients</h4>
+            <table class="table table-striped table-responsive table-hover">
+              <thead>
+                <tr>
+                  <th>Add:</th>
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Email</th>
+                  <th>Phone1</th>
+                  <th>Phone2</th>
+                  <th>Institution</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= hidden_field_tag "client_ids[]", nil %> 
+                <% @clients.each do |client| %>
+                  <tr>
+                    <td> <%= check_box_tag "client_ids[]", client.id, @event.custom_event.client_ids.include?(client.id) %> </td>
+                    <td><%= client.first_name %></td>
+                    <td><%= client.last_name %></td>
+                    <td><%= client.email %></td>
+                    <td><%= client.phone1 %></td>
+                    <td><%= client.phone2 %></td>
+                    <td><%= client.institution %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-default prev-step">Prevoious</button>
+            <button type="button" class="btn btn-default next-step">Save and continue</button>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="custom-event-voluteer-tab">
+            <h4>Add Volunteers</h4>
+            <table class="table table-striped table-responsive table-hover">
+              <thead>
+                <tr>
+                  <th>Add</th>
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Email</th>
+                  <th>Phone1</th>
+                  <th>Phone2</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= hidden_field_tag "volunteer_ids[]", nil %> 
+                <% @volunteers.each do |volunteer| %>
+                  <tr>
+                    <td> <%= check_box_tag "volunteer_ids[]", volunteer.id, @event.custom_event.volunteer_ids.include?(volunteer.id) %> </td>
+                    <td><%= volunteer.first_name %></td>
+                    <td><%= volunteer.last_name %></td>
+                    <td><%= volunteer.email %></td>
+                    <td><%= volunteer.phone1 %></td>
+                    <td><%= volunteer.phone2 %></td>
+                    <td><%= volunteer.location.full_street_address %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-default prev-step">Prevoious</button>
+            <button type="button" class="btn btn-default next-step">Save and continue</button>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="custom-event-note-tab">
+            <h4> Add Note </h4>
+            <%= render "note", f: custom_event  %>
+            <button type="button" class="btn btn-default prev-step">Prevoious</button>
+          </div>
+        <% end %> 
       </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-dog-tab">
-        <h3>Add Dogs</h3>
-        <table class="table table-striped table-responsive table-hover">
-          <thead>
-            <tr>
-              <th>Add:</th>
-              <th>Name:</th>
-              <th>Chip id:</th>
-              <th>Age:</th>
-              <th>Breed:</th>
-              <th>Sex:</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= hidden_field_tag "dog_ids[]", nil %> 
-            <% @dogs.each do |dog| %>
-              <tr>
-                <td> <%= check_box_tag "dog_ids[]", dog.id, @event.custom_event.dog_ids.include?(dog.id) %> </td>
-                <td> <%= dog.name %> </td>
-                <td> <%= dog.chip_id %> </td>
-                <td> <%= dog.age %> </td>
-                <td> <%= dog.breed %> </td>
-                <td> <%= dog.sex %> </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <button type="button" class="btn btn-default prev-step">Prevoious</button>
-      <button type="button" class="btn btn-default next-step">Save and continue</button>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-clients-tab">
-        <h3>Add Clients</h3>
-        <table class="table table-striped table-responsive table-hover">
-          <thead>
-            <tr>
-              <th>Add:</th>
-              <th>First name</th>
-              <th>Last name</th>
-              <th>Email</th>
-              <th>Phone1</th>
-              <th>Phone2</th>
-              <th>Institution</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <%= hidden_field_tag "client_ids[]", nil %> 
-            <% @clients.each do |client| %>
-              <tr>
-                <td> <%= check_box_tag "client_ids[]", client.id, @event.custom_event.client_ids.include?(client.id) %> </td>
-                <td><%= client.first_name %></td>
-                <td><%= client.last_name %></td>
-                <td><%= client.email %></td>
-                <td><%= client.phone1 %></td>
-                <td><%= client.phone2 %></td>
-                <td><%= client.institution %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <button type="button" class="btn btn-default prev-step">Prevoious</button>
-        <button type="button" class="btn btn-default next-step">Save and continue</button>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-voluteer-tab">
-        <h3>Add Volunteers</h3>
-        <table class="table table-striped table-responsive table-hover">
-          <thead>
-            <tr>
-              <th>Add</th>
-              <th>First name</th>
-              <th>Last name</th>
-              <th>Email</th>
-              <th>Phone1</th>
-              <th>Phone2</th>
-              <th>Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= hidden_field_tag "volunteer_ids[]", nil %> 
-            <% @volunteers.each do |volunteer| %>
-              <tr>
-                <td> <%= check_box_tag "volunteer_ids[]", volunteer.id, @event.custom_event.volunteer_ids.include?(volunteer.id) %> </td>
-                <td><%= volunteer.first_name %></td>
-                <td><%= volunteer.last_name %></td>
-                <td><%= volunteer.email %></td>
-                <td><%= volunteer.phone1 %></td>
-                <td><%= volunteer.phone2 %></td>
-                <td><%= volunteer.location.full_street_address %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <button type="button" class="btn btn-default prev-step">Prevoious</button>
-        <button type="button" class="btn btn-default next-step">Save and continue</button>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="custom-event-note-tab">
-        <h3> Add Note </h3>
-        <%= render "note", f: custom_event  %>
-      <button type="button" class="btn btn-default prev-step">Prevoious</button>
-      </div>
-    <% end %> 
+    </div>
   </div>
 </div>
