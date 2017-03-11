@@ -102,6 +102,16 @@ jQuery.validator.addMethod('optionsCheck', function(value){
   return (value != '0');
 }, 'event type required');
 
+jQuery.validator.addMethod('dateCheck', function(value) {
+  sd = new Date($("#startTime").val());
+  ed = new Date($("#endTime").val());
+  if(sd <= ed) {
+    return true;
+  } else {
+    return false;
+  }
+}, 'End date should came after start date');
+
 
 $(".simple_form").validate({
   debug: true,
