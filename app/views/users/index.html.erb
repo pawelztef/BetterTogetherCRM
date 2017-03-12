@@ -30,7 +30,9 @@
         <% end %> 
       </tbody>
     </table>
-    <br />
+    <%= page_entries_info @users %> <br>
+    <%= will_paginate @users %>  
+    <br >
     <%= if current_moderator.owner? then link_to 'New User', new_user_path end %> 
     </div>
 </div>

@@ -96,7 +96,9 @@ end
                           latitude: 1.11,
                           longitude: 2.22)
   don.location = loc
-  donation = Donation.create(transaction_id: Faker::Code.asin,
-                             amount: Faker::Number.decimal(2))
-  don.donations << donation
+  20.times do |n|
+    donation = Donation.create(transaction_id: Faker::Code.asin,
+                               amount: Faker::Number.decimal(2))
+    don.donations << donation
+  end
 end
