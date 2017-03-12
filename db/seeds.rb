@@ -33,7 +33,7 @@ end
 end
 
 
-10.times do |n|
+50.times do |n|
   volunteer = Volunteer.create( first_name: Faker::Name.first_name,
                                last_name: Faker::Name.last_name,
                                email: Faker::Internet.email,
@@ -52,7 +52,7 @@ end
   volunteer.location = loc
 end
 
-5.times do |n|
+50.times do |n|
   clt = Client.create( first_name: Faker::Name.first_name,
                          last_name: Faker::Name.last_name,
                          email: Faker::Internet.email,
@@ -81,7 +81,7 @@ end
 
  
 end
-5.times do |n| 
+50.times do |n| 
  don = Donator.create( first_name: Faker::Name.first_name,
                          last_name: Faker::Name.last_name,
                          email: Faker::Internet.email,
