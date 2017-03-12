@@ -2,7 +2,7 @@
 
 <h1>Listing Volunteers Groups</h1>
 
-<table>
+<table class="table table-striped table-responsive table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -23,7 +23,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @volunteers_groups %>
 <br>
 
 <%= link_to 'New Volunteers group', new_volunteers_group_path %>

@@ -2,8 +2,7 @@ class VolunteersGroupsController < ApplicationController
   before_action :set_volunteers_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @volunteers_groups = VolunteersGroup.all
-  
+    @volunteers_groups = VolunteersGroup.paginate(page: params[:page], per_page: 5).order('id DESC')
   end
 
   def show
