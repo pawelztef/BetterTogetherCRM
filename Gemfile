@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem "simple_form"
 gem 'jquery-validation-rails'
+gem 'will_paginate'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
