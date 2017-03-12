@@ -1,6 +1,6 @@
 class Business::DonatorsController < ApplicationController
   def index
-    @donators = Donator.all
+    @donators = Donator.paginate(page: params[:page], per_page: 10).order('id DESC')
   end
 
   def show
