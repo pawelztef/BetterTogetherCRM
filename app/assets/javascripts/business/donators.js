@@ -1,0 +1,3 @@
+$(function() {
+  $("#donators-table").dataTable();
+})

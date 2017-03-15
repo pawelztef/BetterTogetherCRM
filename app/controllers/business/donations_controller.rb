@@ -2,7 +2,7 @@ class Business::DonationsController < ApplicationController
   before_action :set_business_donation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @business_donations = Donation.paginate(page: params[:page], per_page: 10).order('id DESC')
+    @business_donations = Donation.all
   end
 
   def show

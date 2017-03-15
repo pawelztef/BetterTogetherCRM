@@ -2,7 +2,7 @@ class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dogs = Dog.search(params[:search]).paginate(page: params[:page], per_page: 10).order('id DESC')
+    @dogs = Dog.all
   end
 
   def show

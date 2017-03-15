@@ -2,7 +2,7 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @volunteers = Volunteer.includes(:location).paginate(page: params[:page], per_page: 10).order('id DESC')
+    @volunteers = Volunteer.includes(:location)
   end
 
   def show

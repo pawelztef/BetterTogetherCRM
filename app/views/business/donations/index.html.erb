@@ -2,14 +2,14 @@
 
 <h1>Listing Business Donations</h1>
 
-<table class="table table-striped table-responsive table-hover">
+<table id="donations-table" class="table table-striped table-responsive table-hover">
   <thead>
     <tr>
       <th>Transaction id </th>
       <th>Amount </th>
       <th>Donator </th>
       <th>Date </th>
-      <th colspan="3">Actions </th>
+      <th>Actions </th>
     </tr>
   </thead>
 
@@ -29,7 +29,6 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @business_donations %> 
 <br>
 
 <%= link_to 'New Donation', new_business_donation_path %>
