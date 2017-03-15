@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     usr = User.find current_moderator.id 
-    @users = usr.owner? ? User.includes(:location).paginate(page: params[:page], per_page: 10).order('id DESC') : [usr]
+    @users = usr.owner? ? User.includes(:location).all.order('id DESC') : [usr]
   end
 
   def show
