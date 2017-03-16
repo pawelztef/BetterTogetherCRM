@@ -1,3 +1,3 @@
 $(function() {
   $("#volunteers-table").dataTable();
-})
+});
