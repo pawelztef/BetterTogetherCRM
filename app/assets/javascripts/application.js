@@ -22,10 +22,31 @@
 //= require moment
 //= require fullcalendar
 //= require bootstrap-datetimepicker
-//= require turbolinks
 //= require jquery.validate
 //= require jquery.validate.additional-methods
-//= require_tree .
-//
+//= require turbolinks
+//= require clients
+//= require common-scripts
+//= require dashboard
+//= require dogs
+//= require events
+//= require full_calendar
+//= require jquery.backstretch.min
+//= require jquery
+//= require jquery.nicescroll
+//= require jquery.scrollTo.min
+//= require jquery.ui.touch-punch.min
+//= require sessions
+//= require users
+//= require volunteers 
+//= require volunteers_groups 
+//= require business/donations
+//= require business/donators
+
+
+
+
+
+
 
 

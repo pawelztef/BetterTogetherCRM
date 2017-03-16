@@ -1,8 +1,8 @@
-var hide = function(...selectors) {
+function hide(...selectors) {
   return selectors.map(function(selector) {
     selector.slideUp();
   });
-};
+}
 
 
 $(document).on('change load', '#options', function() {
