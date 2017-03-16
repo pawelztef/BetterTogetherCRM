@@ -1,3 +1,3 @@
 $(function() {
   $("#users-table").dataTable();
-})
+});

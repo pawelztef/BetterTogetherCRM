@@ -46,7 +46,7 @@ $(document).on('change', '[name="dog_id"]', function() {
     url: '/events/transfer',
     data: data,
     dataType: 'script'
-  })
+  });
 });
 
 
