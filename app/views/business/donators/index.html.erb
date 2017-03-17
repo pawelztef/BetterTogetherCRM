@@ -12,7 +12,6 @@
       <th>Actions </th>
     </tr>
   </thead>
-
   <tbody>
     <% @donators.each do |donator| %>
       <tr>
@@ -29,5 +28,10 @@
   </tbody>
 </table>
 <br>
-
 <%= link_to 'New Donation', new_business_donation_path %>
+
+<script>
+  $(document).on("turbolinks:load", function() {
+    $("#donators-table").dataTable();
+  });
+</script>

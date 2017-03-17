@@ -35,5 +35,12 @@
   </tbody>
 </table>
 <br>
-
 <%= link_to 'New Volunteer', new_volunteer_path %>
+
+
+
+<script>
+  $(document).on("turbolinks:load", function() {
+    $("#volunteers-table").dataTable();
+  });
+</script>

@@ -24,5 +24,13 @@
   </tbody>
 </table>
 <br>
-
 <%= link_to 'New Volunteers group', new_volunteers_group_path %>
+
+
+
+
+<script>
+  $(document).on("turbolinks:load", function() {
+    $("#volunteers-group-table").dataTable();
+  });
+</script>
