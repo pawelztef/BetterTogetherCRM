@@ -1,9 +1,8 @@
-function hide(...selectors) {
-  return selectors.map(function(selector) {
-    selector.slideUp();
-  });
-}
-
+  function hide(selectors) {
+    return selectors.map(function(selector) {
+      selector.slideUp();
+    });
+  }
 
 $(document).on('change load', '#options', function() {
   var customEvent = $('#custom-event');
