@@ -34,5 +34,11 @@
   </tbody>
 </table>
 <br>
-
 <%= link_to 'New Client', new_client_path %>
+
+
+<script>
+  $(document).on("turbolinks:load", function() {
+    $('#clients-table').DataTable();
+  });
+</script>
