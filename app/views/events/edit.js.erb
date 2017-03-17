@@ -18,6 +18,17 @@ $(e.target).removeData('bs.modal');
 $('.modal').remove();
 });
 
+$('#dogs-custom-table').DataTable();
+$('#dogs-training-table').DataTable();
+$('#dogs-transfer-table').DataTable();
+$('#clients-custom-table').DataTable();
+$('#clients-transfer-table').DataTable();
+$('#clients-visit-table').DataTable();
+$('#volunteers-custom-table').DataTable();
+$('#volunteers-training-table').DataTable();
+$('#volunteers-transfer-table').DataTable();
+$('#volunteers-visit-table').DataTable();
+
 <% if @sender %>
   let fullname;
   let email;
