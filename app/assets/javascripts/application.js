@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery_ujs
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
-//= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require bootstrap
 //= require underscore

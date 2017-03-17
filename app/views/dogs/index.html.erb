@@ -31,3 +31,11 @@
 <br>
 
 <%= link_to 'New Dog', new_client_path %>
+<script>
+$(document).on("turbolinks:load", function(){
+  $("body").on("click", "#showOwnerBtn", function(){
+    $("#owner").toggle();
+  });
+  $("#dogs-table").dataTable();
+});
+</script>
