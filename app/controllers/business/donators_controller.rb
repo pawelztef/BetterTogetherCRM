@@ -5,7 +5,7 @@ class Business::DonatorsController < ApplicationController
 
   def show
     @donator = Donator.find params[:id]
-    @donations = @donator.donations.paginate(page: params[:page], per_page: 10).order('id DESC')
+    @donations = @donator.donations.all
     respond_to do |format|
       format.html
       format.js

@@ -9,10 +9,8 @@
       <th>Last name</th>
       <th>Email</th>
       <th>Phone1</th>
-      <th>Phone2</th>
       <th>Address</th>
-      <%# <th colspan="2">Coordinates</th> %>
-      <%# <th colspan="3">Actions</th> %>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -23,13 +21,10 @@
         <td><%= volunteer.last_name %></td>
         <td><%= volunteer.email %></td>
         <td><%= volunteer.phone1 %></td>
-        <td><%= volunteer.phone2 %></td>
         <td><%= volunteer.location.full_street_address %></td>
-        <%# <td><%= volunteer.location.latitude %1></td> %>
-        <%# <td><%= volunteer.location.longitude %1></td> %>
-        <%# <td><%= link_to 'Show', volunteer, remote: true %1></td> %>
-        <%# <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %1></td> %>
-        <%# <td><%= link_to 'Destroy', volunteer, method: :delete, data: { confirm: 'Are you sure?' } %1></td> %>
+        <td><%= link_to 'Show', volunteer, remote: true %>
+        <%= link_to 'Edit', edit_volunteer_path(volunteer) %>
+        <%= link_to 'Destroy', volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

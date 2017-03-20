@@ -10,8 +10,7 @@
       <th>Phone1</th>
       <th>Phone2</th>
       <th>Institution</th>
-      <%# <th colspan="2">Coordinates</th> %>
-      <%# <th colspan="3">Actions</th> %>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -24,11 +23,9 @@
         <td><%= client.phone1 %></td>
         <td><%= client.phone2 %></td>
         <td><%= client.institution %></td>
-        <%# <td><%= client.location.latitude %1></td> %>
-        <%# <td><%= client.location.longitude %1></td> %>
-        <%# <td><%= link_to 'Show', client, remote: true %1></td> %>
-        <%# <td><%= link_to 'Edit', edit_client_path(client) %1></td> %>
-        <%# <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %1></td> %>
+        <td><%= link_to 'Show', client, remote: true %>
+        <%= link_to 'Edit', edit_client_path(client) %>
+        <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
