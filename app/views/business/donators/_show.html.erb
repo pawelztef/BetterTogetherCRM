@@ -23,13 +23,13 @@
                     <p> <strong>Coordinates:</strong> <%= @donator.location.latitude %> <%= @donator.location.longitude %> </p>
 
                     <h3> Donator Donations </h3>
-                    <table class="table table-striped table-responsive table-hover">
+                    <table  id="donations-modal-table" class="table table-striped table-responsive table-hover">
                       <thead>
                         <tr>
                           <th>Transaction id </th>
                           <th>Amount </th>
                           <th>Date </th>
-                          <th colspan="2">Actions </th>
+                          <th>Actions </th>
                         </tr>
                       </thead>
                       <tbody>

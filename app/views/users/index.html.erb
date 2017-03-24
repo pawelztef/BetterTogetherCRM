@@ -32,7 +32,9 @@
     </div>
 </div>
 <script>
-  $(document).on("turbolinks:load", function() {
-    $("#users-table").dataTable();
-  });
+$(document).on("turbolinks:load", function() {
+  if ($(".dataTables_wrapper").length == 0) {
+    $("#users-table").DataTable();
+  }
+});
 </script>

@@ -1,11 +1,13 @@
 $('body').append('<%= j render("show") %>');
 $("#donatorShowModal").modal('show');
 $(".closeDonatorShowModal").on("click", function() {
-$("#donatorShowModal").modal('hide');
+  $("#donatorShowModal").modal('hide');
 });
 $('body').on('hidden.bs.modal', '.modal', function (e) {
   $(e.target).removeData('bs.modal');
   $('.modal').remove();
 });
 
+var tableSelect = [5, 10, 25];
+$("#donations-modal-table").DataTable({"lengthMenu": tableSelect});
 
