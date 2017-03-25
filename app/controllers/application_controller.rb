@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_moderator
-      gflash notice: "Please login before go to view pages"
+      # gflash notice: "Please login before go to view pages"
       redirect_to '/login'
     end
   end
