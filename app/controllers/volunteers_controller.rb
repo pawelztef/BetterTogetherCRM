@@ -3,6 +3,10 @@ class VolunteersController < ApplicationController
 
   def index
     @volunteers = Volunteer.includes(:location)
+    respond_to do |format|
+      format.html
+      format.csv{ send_data @volunteers.to_csv }
+    end
   end
 
   def show
