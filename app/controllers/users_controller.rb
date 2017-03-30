@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @users = usr.owner? ? User.includes(:location).all.order('id DESC') : [usr]
     respond_to  do |format| 
       format.html
-      format.csv{ send_data @users.to_csv }
+      format.csv{ send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
     end
   end
 

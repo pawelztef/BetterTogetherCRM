@@ -3,7 +3,7 @@ class Business::DonatorsController < ApplicationController
     @donators = Donator.all
     respond_to do |format|
       format.html
-      format.csv { send_data @donators.to_csv }
+      format.csv { send_data @donators.to_csv, filename: "donators-#{Date.today}.csv" }
     end
   end
 

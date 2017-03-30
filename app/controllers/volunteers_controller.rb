@@ -5,7 +5,7 @@ class VolunteersController < ApplicationController
     @volunteers = Volunteer.includes(:location)
     respond_to do |format|
       format.html
-      format.csv{ send_data @volunteers.to_csv }
+      format.csv{ send_data @volunteers.to_csv, filename: "volunteers-#{Date.today}.csv" }
     end
   end
 

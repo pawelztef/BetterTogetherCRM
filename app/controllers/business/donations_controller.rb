@@ -5,7 +5,7 @@ class Business::DonationsController < ApplicationController
     @business_donations = Donation.all
     respond_to do |format|
       format.html
-      format.csv { send_data @business_donations.to_csv }
+      format.csv { send_data @business_donations.to_csv, filename: "donations-#{Date.today}.csv" }
     end
   end
 

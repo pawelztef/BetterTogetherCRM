@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
     @clients = Client.includes(:dogs)
     respond_to do |format|
       format.html
-      format.csv { send_data @clients.to_csv }
+      format.csv { send_data @clients.to_csv, filename: "dog-owners-#{Date.today}.csv" }
     end
   end
 
