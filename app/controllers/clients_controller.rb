@@ -3,6 +3,10 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.includes(:dogs)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @clients.to_csv }
+    end
   end
 
   def show

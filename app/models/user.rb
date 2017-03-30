@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, uniqueness: {scope: :last_name}
   validates :last_name, presence: true, uniqueness: {scope: :first_name}
   validates :email, presence: true,
-                    uniqueness: true,
-                    # format: {with: EMAIL_REGEX},
-                    confirmation: true
+    uniqueness: true,
+    # format: {with: EMAIL_REGEX},
+    confirmation: true
 
   has_secure_password
   has_one :location, as: :localizable, dependent: :destroy
@@ -25,6 +25,22 @@ class User < ActiveRecord::Base
       return true 
     else
       return false
+    end
+  end
+
+  def self.to_csv
+    col_names = %w{id first_name last_name email phone1 phone2 address }
+    CSV.generate(headers: true) do |csv|
+      csv << col_names
+      all.each do |user|
+        if user.location.present?
+          row = user.attributes.values_at(*col_names)
+          row[-1] = user.location.full_street_address
+          csv << row
+        else
+          csv << user.attributes.values_at(*col_names)
+        end
+      end
     end
   end
 

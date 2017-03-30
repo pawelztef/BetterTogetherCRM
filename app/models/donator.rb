@@ -8,9 +8,9 @@ class Donator < ActiveRecord::Base
   validates :first_name, presence: true, uniqueness: {scope: :last_name}
   validates :last_name, presence: true, uniqueness: {scope: :first_name}
   validates :email, presence: true,
-                    uniqueness: true,
-                    # format: {with: EMAIL_REGEX},
-                    confirmation: true
+    uniqueness: true,
+    # format: {with: EMAIL_REGEX},
+    confirmation: true
   validates :phone1, presence: true
 
   accepts_nested_attributes_for :location
@@ -18,5 +18,17 @@ class Donator < ActiveRecord::Base
   def self.initialize_or_update attributes
     Reusable.init_or_update Donator, attributes
   end
-  
+
+  def self.to_csv
+    col_names = %w{id first_name last_name email phone1 phone2 institution address }
+    CSV.generate(headers: true) do |csv|
+      csv << col_names
+      all.each do |donator|
+        row = donator.attributes.values_at(*col_names)
+        row[-1] = donator.location.full_street_address
+        csv << row
+      end
+    end
+  end
 end
+

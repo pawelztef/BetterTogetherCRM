@@ -9,9 +9,9 @@ class Client < ActiveRecord::Base
   validates :first_name, presence: true, uniqueness: {scope: :last_name}
   validates :last_name, presence: true, uniqueness: {scope: :first_name}
   validates :email, presence: true,
-                    uniqueness: true,
-                    # format: {with: EMAIL_REGEX},
-                    confirmation: true
+    uniqueness: true,
+    # format: {with: EMAIL_REGEX},
+    confirmation: true
   validates :phone1, presence: true
 
   accepts_nested_attributes_for :dogs
@@ -20,5 +20,27 @@ class Client < ActiveRecord::Base
   def self.initialize_or_update attributes
     Reusable.init_or_update Client, attributes
   end
+  def self.to_csv
+    col_names = %w{id first_name last_name email phone1 phone2 institution address dogs}
+    CSV.generate(headers: true) do |csv|
+      csv << col_names
+      all.each do |client|
+        if client.location.present?
+          row = client.attributes.values_at(*col_names)
+          row[-2] = client.location.full_street_address
+          row[-1] = client.dogs.map { |n| n.name }.join(" ")
+          csv << row
+        else
+          csv << client.attributes.values_at(*col_names)
+        end
+      end
+    end
+  end
+
+  # def self.to_csv
+  #   col_names = %w{id first_name last_name email phone1 phone2 address }
+  #   CsvExport.generate(all, col_names)
+  # end
+
 
 end

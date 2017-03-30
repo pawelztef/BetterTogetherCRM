@@ -32,7 +32,7 @@ class Volunteer < ActiveRecord::Base
           row[-2] = volunteer.location.full_street_address
           row[-1] = volunteer.volunteers_groups.map { |n| n.name }.join(" ")
           csv << row
-        elsif
+        else
           csv << volunteer.attributes.values_at(*col_names)
         end
       end

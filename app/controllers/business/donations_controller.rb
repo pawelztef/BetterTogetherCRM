@@ -3,6 +3,10 @@ class Business::DonationsController < ApplicationController
 
   def index
     @business_donations = Donation.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @business_donations.to_csv }
+    end
   end
 
   def show

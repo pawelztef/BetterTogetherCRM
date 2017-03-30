@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   def index
     usr = User.find current_moderator.id 
     @users = usr.owner? ? User.includes(:location).all.order('id DESC') : [usr]
+    respond_to  do |format| 
+      format.html
+      format.csv{ send_data @users.to_csv }
+    end
   end
 
   def show
