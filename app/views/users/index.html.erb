@@ -29,7 +29,5 @@
     </table>
     <br >
     <%= if current_moderator.owner? then link_to 'New User', new_user_path end %> 
-      <br>
-      <%= link_to 'Download data in CSV format', users_path(format: "csv") %> 
   </div>
 </div>

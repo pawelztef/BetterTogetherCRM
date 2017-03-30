@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
 
-  resources :users
-  resources :volunteers
+  resources :users 
+  resources :volunteers do
+    collection do
+      post :import
+    end
+  end
   resources :clients, path: "dogowners"
 
   namespace :business do
