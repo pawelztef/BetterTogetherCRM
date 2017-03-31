@@ -28,6 +28,8 @@ gem 'faker'
 gem  'geocoder'
 gem "gritter", "1.2.0"
 
+gem 'csv-importer'
+
 
 
 group :development, :test do
@@ -46,6 +48,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   gem "rack-livereload"
   gem 'spring'
+  gem 'pry'
 end
 
 group :production do
