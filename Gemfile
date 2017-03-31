@@ -38,7 +38,6 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "rspec-rails"
-  gem "shoulda"
   gem 'rack-mini-profiler'
 end
 
@@ -48,7 +47,8 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   gem "rack-livereload"
   gem 'spring'
-  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :production do
