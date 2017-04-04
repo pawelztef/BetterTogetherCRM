@@ -41,14 +41,17 @@ class VolunteerImport
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
+      # if volunteer = Volunteer.where(email: row["email"], last_name: row["last_name"])
       if volunteer = Volunteer.find_by_id(row["id"])
 	@import_updates+=1
       else
 	volunteer = Volunteer.new
+        volunteer.location = Location.new
 	@import_creates+=1
       end
-      # volunteer = Volunteer.find_by_id(row["id"]) || Volunteer.new 
-      volunteer.attributes = row.to_hash.slice(*columns)
+      # binding.pry
+      volunteer.location.attributes = row.to_hash.slice!(*volunteer_columns)
+      volunteer.attributes = row
       volunteer
     end
   end
@@ -61,7 +64,13 @@ class VolunteerImport
   end
 
   def columns
-    ['id', 'first_name', 'last_name', 'phone1', 'email', 'phone2']
+    volunteer_columns + location_columns
+  end
+  def volunteer_columns
+    ['id', 'first_name', 'last_name', 'email', 'phone1', 'phone2']
+  end
+  def location_columns
+    ['line1', 'line2', 'city', 'county', 'code']
   end
 
 

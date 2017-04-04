@@ -1,19 +1,13 @@
 <h1>Import</h1>
 
-<p>A CSV or Excel file can be used to import records. The first row should be the column name. The following columns are allowed.</p>
-
-<ul>
-  <% Volunteer.columns.each do |column| %>
-    <% if column.name.in? ["id", *Volunteer.attribute_names] %>
-      <li>
-        <strong><%= column.name %></strong> -
-        <%= column.type.to_s.titleize %> type
-      </li>
-    <% end %>
+<p>A CSV file can be used to import records. The first row should be the column name. The following columns are required.</p>
+<p>
+  <% @volunteer_import.columns.each_with_index do |column, i| %>
+    <strong><%= column %> <%= "," unless i == @volunteer_import.columns.length-1 %> </strong> 
   <% end %>
-</ul>
-
+</p>
 <p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>
+
 
 
 <%= form_for @volunteer_import do |f| %>
@@ -38,10 +32,4 @@
   </div>
   <div class="buttons"><%= f.submit "Import" %></div>
 <% end %>
-
-<%# <%= form_tag volunteer_imports_path  ,multipart: true do %1> %>
-<%#   <%= file_field_tag :file %1> %> 
-<%#   <%= submit_tag "Import" %1> %> 
-<%# <% end %1> %> 
-
 
