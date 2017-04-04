@@ -9,11 +9,13 @@ Rails.application.routes.draw do
 
 
   resources :users 
-  resources :volunteers do
+  resources :volunteers 
+  resources :volunteer_imports do
     collection do
       post :import
     end
   end
+
   resources :clients, path: "dogowners"
 
   namespace :business do

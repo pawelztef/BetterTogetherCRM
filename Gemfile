@@ -27,9 +27,7 @@ gem 'jquery-minicolors-rails'
 gem 'faker'
 gem  'geocoder'
 gem "gritter", "1.2.0"
-
-gem 'csv-importer'
-
+gem 'roo'
 
 
 group :development, :test do

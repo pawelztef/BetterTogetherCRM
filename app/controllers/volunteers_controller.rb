@@ -52,12 +52,6 @@ class VolunteersController < ApplicationController
     redirect_to volunteers_url
   end
 
-  def import 
-      Volunteer.import_csv(params[:file])
-      gflash :success => 'Data was succesfully imported.'
-      redirect_to volunteers_url 
-  end
-
   private
   def set_volunteer
     @volunteer = Volunteer.find(params[:id])

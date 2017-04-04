@@ -21,7 +21,7 @@
         <td><%= volunteer.last_name %></td>
         <td><%= volunteer.email %></td>
         <td><%= volunteer.phone1 %></td>
-        <td><%= volunteer.location.full_street_address %></td>
+        <td><%= volunteer.location.full_street_address if volunteer.location %></td>
         <td><%= link_to 'Show', volunteer, remote: true %>
         <%= link_to 'Edit', edit_volunteer_path(volunteer) %>
         <%= link_to 'Destroy', volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,6 +33,8 @@
 <%= link_to 'New Volunteer', new_volunteer_path %>
 <br>
 <%= link_to 'Download data in CSV format', volunteers_path(format: "csv") %> 
+<br>
+<%= link_to 'Import data in CSV format', new_volunteer_import_path %> 
 
 <script>
 </script>
