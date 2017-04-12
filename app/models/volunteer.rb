@@ -1,6 +1,5 @@
 class Volunteer < ActiveRecord::Base
   include Reusable
-  include Exports 
 
   before_validation :remove_white_spaces, only: [:first_name, :last_name, :email]
 

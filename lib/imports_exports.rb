@@ -1,0 +1,65 @@
+module ImportsExports 
+  class CsvImport
+    include ActiveModel::Model
+    extend ActiveModel::Naming
+    include ActiveModel::Conversion
+    include ActiveModel::Validations
+
+
+    attr_accessor :file, :import_updates, :import_creates, :notice
+
+
+    def initialize(attributes = {})
+      attributes.each do |name, value| 
+        send("#{name}=", value)
+      end
+      @import_updates = @import_creates = 0
+    end
+
+    def persisted?
+      false
+    end
+
+    def save
+      if imported_objects.map(&:valid?).all?
+        imported_objects.each(&:save!)
+        @notice = "Import completed. #{@import_creates} created, #{@import_updates} updated"
+        true
+      else
+        imported_objects.each_with_index do |generic_object, index|
+          generic_object.errors.full_messages.each do |message|
+            errors.add :base, "Row #{index+2}: #{message}"
+          end
+        end
+        false
+      end
+    end
+
+    def imported_objects
+      @imported_objects ||= load_imported_objects
+    end
+
+    def load_imported_objects
+      raise "waiting for implementation"
+    end
+
+    def open_spreadsheet
+      case File.extname(file.original_filename)
+      when ".csv" then Roo::CSV.new(file.path)
+      else raise "Unknown file type: #{file.original_filename}"
+      end
+    end
+
+    def columns
+      core_columns + location_columns
+    end
+    def core_columns
+      ['id', 'first_name', 'last_name', 'email', 'phone1', 'phone2']
+    end
+    def location_columns
+      ['line1', 'line2', 'city', 'county', 'code']
+    end
+
+
+  end
+end

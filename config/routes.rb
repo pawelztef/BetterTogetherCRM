@@ -10,12 +10,7 @@ Rails.application.routes.draw do
 
   resources :users 
   resources :volunteers 
-  resources :volunteer_imports do
-    collection do
-      post :import
-    end
-  end
-
+  resources :volunteer_imports
   resources :clients, path: "dogowners"
 
   namespace :business do
@@ -31,5 +26,6 @@ Rails.application.routes.draw do
     end
   end
   resources :dogs, except: [:new, :create]
+  resources :dog_imports
 
 end
