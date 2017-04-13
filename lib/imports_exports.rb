@@ -39,10 +39,6 @@ module ImportsExports
       @imported_objects ||= load_imported_objects
     end
 
-    def load_imported_objects
-      raise "waiting for implementation"
-    end
-
     def open_spreadsheet
       case File.extname(file.original_filename)
       when ".csv" then Roo::CSV.new(file.path)
@@ -50,16 +46,13 @@ module ImportsExports
       end
     end
 
-    def columns
-      core_columns + location_columns
-    end
-    def core_columns
-      ['id', 'first_name', 'last_name', 'email', 'phone1', 'phone2']
-    end
-    def location_columns
-      ['line1', 'line2', 'city', 'county', 'code']
+    def load_imported_objects
+      raise "This method should be over-ridden by a sub-class"
     end
 
+    def columns
+      raise "This method should be over-ridden by a sub-class"
+    end
 
   end
 end
