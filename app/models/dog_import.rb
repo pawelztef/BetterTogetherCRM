@@ -22,7 +22,7 @@ class DogImport < ImportsExports::CsvImport
   def load_imported_objects
     sheet = open_spreadsheet
 
-    dogs = sheet.parse(id: 'id', name: 'name', chip_id: 'chip_id', breed: 'breed', sex: 'sex')
+    dogs = sheet.parse(id: 'id', name: 'name', chip_id: 'chip_id', age: 'age', breed: 'breed', sex: 'sex')
     dogHeader = dogs.delete_at(0)
 
     owners = sheet.parse(first_name: 'first_name', last_name: 'last_name', email: 'email', phone1: 'phone1', phone2: 'phone2')
