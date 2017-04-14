@@ -3,6 +3,10 @@ class DogsController < ApplicationController
 
   def index
     @dogs = Dog.all
+    respond_to do |format|
+      format.html
+      format.csv{ send_data @dogs.to_csv, filename: "dogs-#{Date.today}.csv" }
+    end
   end
 
   def show

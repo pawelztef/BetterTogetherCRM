@@ -38,9 +38,5 @@ class Volunteer < ActiveRecord::Base
     end
   end
 
-  # def self.to_csv
-  #   col_names = %w{id first_name last_name email phone1 phone2 address }
-  #   CsvExport.generate(all, col_names)
-  # end
 
 end

@@ -14,7 +14,6 @@ class DogImport < ImportsExports::CsvImport
 
     dogs.map do |dog|
       index = dogs.index(dog)
-      binding.pry
       if entry = Dog.find_by_id(dog[:id])
         @import_updates+=1
       else

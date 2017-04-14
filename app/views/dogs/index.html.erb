@@ -32,7 +32,10 @@
 
 <%= link_to 'New Dog', new_client_path %>
 <br>
+<%= link_to 'Download data in CSV format', dogs_path(format: "csv") %> 
+<br>
 <%= link_to 'Import data in CSV format', new_dog_import_path %> 
+
 <script>
 $(document).on("turbolinks:load", function(){
   $("body").on("click", "#showOwnerBtn", function(){
