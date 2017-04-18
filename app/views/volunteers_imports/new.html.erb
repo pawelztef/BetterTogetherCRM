@@ -1,0 +1,31 @@
+<h1>Import</h1>
+
+<p>A CSV file can be used to import records. The first row should be the column name. The following columns are required</p>
+<p> <strong> <%= @volunteers_import.columns.to_sentence(last_word_connector: ', ') %> </strong>.</p>
+<p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>
+
+
+
+<%= form_for @volunteers_import do |f| %>
+  <% if @volunteers_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@volunteers_import.errors.count, "error") %> prohibited this import from completing:</h2>
+      <ul>
+      <% @volunteers_import.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% elsif @volunteers_import.notice %>
+    <div id="notice_explanation">
+      <h2>Import completed.</h2>
+      <div> <%= @volunteers_import.notice %> </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.file_field :file %>
+  </div>
+  <div class="buttons"><%= f.submit "Import" %></div>
+<% end %>
+

@@ -21,13 +21,14 @@ class Client < ActiveRecord::Base
     Reusable.init_or_update Client, attributes
   end
   def self.to_csv
-    col_names = %w{id first_name last_name email phone1 phone2 institution address dogs}
-    CSV.generate(headers: true) do |csv|
+    col_names = %w{id first_name last_name email phone1 phone2 institution line1 line2 city county code dogs}
+    client_col = col_names[0, 7]
+    location_col = col_names[7, 5]
+    CSV.generate() do |csv|
       csv << col_names
       all.each do |client|
         if client.location.present?
-          row = client.attributes.values_at(*col_names)
-          row[-2] = client.location.full_street_address
+          row = client.attributes.values_at(*client_col) + client.location.attributes.values_at(*location_col)
           row[-1] = client.dogs.map { |n| n.name }.join(" ")
           csv << row
         else

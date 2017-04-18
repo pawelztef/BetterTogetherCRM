@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resource :sessions, only: [:new, :create, :destroy]
 
-  root 'users#index'
+  root 'dashboard#index'
 
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   resources :users 
   resources :volunteers 
-  resources :volunteer_imports
-  resources :clients, path: "dogowners"
+  resources :volunteers_imports
+  resources :clients, path: "dogs_owners"
+  resources :dogs_owners_imports
 
   namespace :business do
     resources :donations
@@ -26,6 +27,6 @@ Rails.application.routes.draw do
     end
   end
   resources :dogs, except: [:new, :create]
-  resources :dog_imports
+  resources :dogs_imports
 
 end

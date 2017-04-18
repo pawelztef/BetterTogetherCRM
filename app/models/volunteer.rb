@@ -22,17 +22,21 @@ class Volunteer < ActiveRecord::Base
 
 
   def self.to_csv
-    col_names = %w{id first_name last_name email phone1 phone2 address groups}
-    CSV.generate(headers: true) do |csv|
+    col_names = %w{id first_name last_name email phone1 phone2 line1 line2 city county code groups}
+    volunteer_col = col_names[0, 6]
+    location_col = col_names[6, 7]
+    CSV.generate() do |csv|
       csv << col_names
       all.each do |volunteer|
         if volunteer.location.present?
-          row = volunteer.attributes.values_at(*col_names)
-          row[-2] = volunteer.location.full_street_address
+          row = volunteer.attributes.values_at(*volunteer_col) +
+            volunteer.location.attributes.values_at(*location_col)
           row[-1] = volunteer.volunteers_groups.map { |n| n.name }.join(" ")
           csv << row
         else
-          csv << volunteer.attributes.values_at(*col_names)
+          row = volunteer.attributes.values_at(*volunteer_col)
+          row[-1] = volunteer.volunteers_groups.map { |n| n.name }.join(" ")
+          csv << row
         end
       end
     end
