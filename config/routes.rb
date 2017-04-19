@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :business do
     resources :donations
+    resources :donations_imports
     resources :donators, only: [:index, :show]
   end
   

@@ -1,0 +1,31 @@
+<h1>Donations Import</h1>
+
+<p>A CSV file can be used to import records. The first row should be the column name. The following columns are required</p>
+<p> <strong> <%= @donations_import.columns.to_sentence( last_word_connector: ', ') %> </strong> .</p>
+<p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>
+
+
+
+<%= form_for [:business, @donations_import] do |f| %>
+  <% if @donations_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@donations_import.errors.count, "error") %> prohibited this import from completing:</h2>
+      <ul>
+      <% @donations_import.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% elsif @donations_import.notice %>
+    <div id="notice_explanation">
+      <h2>Import completed.</h2>
+      <div> <%= @donations_import.notice %> </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.file_field :file %>
+  </div>
+  <div class="buttons"><%= f.submit "Import" %></div>
+<% end %>
+

@@ -27,9 +27,8 @@ class DogsImport < ImportsExports::CsvImport
   end
 
   def columns
-    ['id', 'name', 'chip_id', 'age', 'breed', 'sex',
-     'first_name', 'last_name', 'email', 'phone1', 'phone2',
-     'line1', 'line2', 'city', 'county', 'code']
+    %w[id name chip_id age breed sex first_name last_name
+    email phone1 phone2 line1 line2 city county code]
   end
 
 end
