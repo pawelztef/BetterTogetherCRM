@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20170301130000) do
   add_index "custom_events_dogs", ["custom_event_id", "dog_id"], name: "index_custom_events_dogs_on_custom_event_id_and_dog_id", using: :btree
   add_index "custom_events_dogs", ["dog_id", "custom_event_id"], name: "index_custom_events_dogs_on_dog_id_and_custom_event_id", using: :btree
 
+  create_table "custom_events_events", id: false, force: :cascade do |t|
+    t.integer "event_id",        limit: 4, null: false
+    t.integer "custom_event_id", limit: 4, null: false
+  end
+
+  add_index "custom_events_events", ["custom_event_id", "event_id"], name: "index_custom_events_events_on_custom_event_id_and_event_id", using: :btree
+  add_index "custom_events_events", ["event_id", "custom_event_id"], name: "index_custom_events_events_on_event_id_and_custom_event_id", using: :btree
+
   create_table "custom_events_volunteers", id: false, force: :cascade do |t|
     t.integer "volunteer_id",    limit: 4, null: false
     t.integer "custom_event_id", limit: 4, null: false
@@ -97,6 +105,14 @@ ActiveRecord::Schema.define(version: 20170301130000) do
     t.string   "title",      limit: 255
     t.string   "color",      limit: 255
   end
+
+  create_table "events_visits", id: false, force: :cascade do |t|
+    t.integer "event_id", limit: 4, null: false
+    t.integer "visit_id", limit: 4, null: false
+  end
+
+  add_index "events_visits", ["event_id", "visit_id"], name: "index_events_visits_on_event_id_and_visit_id", using: :btree
+  add_index "events_visits", ["visit_id", "event_id"], name: "index_events_visits_on_visit_id_and_event_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "line1",            limit: 255, null: false
