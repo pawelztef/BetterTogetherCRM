@@ -10,14 +10,15 @@ Rails.application.routes.draw do
 
   resources :users 
   resources :volunteers 
-  resources :volunteers_imports
+  resources :volunteers_imports, only: [:new, :create]
   resources :clients, path: "dogs_owners"
-  resources :dogs_owners_imports
+  resources :dogs_owners_imports, only: [:new, :create]
 
   namespace :business do
     resources :donations
-    resources :donations_imports
+    resources :donations_imports, only: [:new, :create]
     resources :donators, only: [:index, :show]
+    resources :donators_imports, only: [:new, :create]
   end
   
   get '/dashboard' => 'dashboard#index'
@@ -28,6 +29,6 @@ Rails.application.routes.draw do
     end
   end
   resources :dogs, except: [:new, :create]
-  resources :dogs_imports
+  resources :dogs_imports, only: [:new, :create]
 
 end

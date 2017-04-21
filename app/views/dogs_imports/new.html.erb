@@ -1,31 +1,10 @@
-<h1>Import</h1>
+<h1>Dogs Import</h1>
 
-<p>A CSV file can be used to import records. The first row should be the column name. The following columns are required</p>
-<p> <strong> <%= @dogs_import.columns.to_sentence( last_word_connector: ', ') %> </strong> .</p>
-<p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>
-
-
+<%= render "application_partials/import_info", klass: 'DogsImport' %>
 
 <%= form_for @dogs_import do |f| %>
-  <% if @dogs_import.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@dogs_import.errors.count, "error") %> prohibited this import from completing:</h2>
-      <ul>
-      <% @dogs_import.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-    <% elsif @dogs_import.notice %>
-    <div id="notice_explanation">
-      <h2>Import completed.</h2>
-      <div> <%= @dogs_import.notice %> </div>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.file_field :file %>
-  </div>
+  <%= render "application_partials/imports_flashes", import_objects: @dogs_import %>
+  <div class="field"> <%= f.file_field :file %> </div>
   <div class="buttons"><%= f.submit "Import" %></div>
 <% end %>
 

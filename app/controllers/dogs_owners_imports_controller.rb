@@ -1,10 +1,22 @@
 class DogsOwnersImportsController < ApplicationController
+  before_action :set_owners_import
+  
   def new
-    @owners_import = DogsOwnersImport.new
   end
+  
   def create
-    @owners_import = DogsOwnersImport.new(params[:dogs_owners_import])
-    @owners_import.save
-    render :new
+    if params[:dogs_owners_import].blank?
+      raise Exceptions::NoFileException
+    else
+      @owners_import = DogsOwnersImport.new(params[:dogs_owners_import])
+      @owners_import.save
+      render :new
+    end
+  end
+  
+  private
+  
+  def set_owners_import
+    @owners_import = DogsOwnersImport.new
   end
 end

@@ -9,7 +9,6 @@ class DogsOwnersImport < ImportsExports::CsvImport
 
     owners.map do |owner|
       index = owners.index(owner)
-      # binding.pry
       if entry = Client.find_by_id(owner[:id])
         @import_updates+=1  
       else
@@ -21,9 +20,8 @@ class DogsOwnersImport < ImportsExports::CsvImport
     end
   end
 
-  def columns
-    ['id', 'first_name', 'last_name', 'email', 'phone1', 'phone2',
-     'line1', 'line2', 'city', 'county', 'code']
+  def self.columns
+    %w[id first_name last_name email phone1 phone2 line1 line2 city county code]
   end
 
 end

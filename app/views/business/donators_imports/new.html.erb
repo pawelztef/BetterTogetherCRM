@@ -1,0 +1,10 @@
+<h1>Donators Import</h1>
+
+<%= render "application_partials/import_info", klass: 'DonatorsImport' %>
+
+<%= form_for [:business, @donators_import] do |f| %>
+  <%= render "application_partials/imports_flashes", import_objects: @donators_import %>
+  <div class="field"> <%= f.file_field :file %> </div>
+  <div class="buttons"><%= f.submit "Import" %></div>
+<% end %>
+

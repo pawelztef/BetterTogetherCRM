@@ -26,7 +26,7 @@ class DonationsImport < ImportsExports::CsvImport
     end
   end
 
-  def columns
+  def self.columns
     %w[id transaction_id amount first_name last_name email phone1 phone2
     line1 line2 city county code]
   end

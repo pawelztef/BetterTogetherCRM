@@ -21,4 +21,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from Exceptions::FileExtensionException do |exception|
+    flash[:file_exceptions] = exception.message
+    render :new
+  end
+
+  rescue_from Exceptions::NoFileException do |exception|
+    flash[:file_exceptions] = exception.message
+    render :new
+  end
+
 end

@@ -1,0 +1,3 @@
+<p>A CSV file can be used to import records. The first row should be the column name. The following columns are required</p>
+<p> <strong> <%= klass.constantize.columns.to_sentence( last_word_connector: ', ') %> </strong> .</p>
+<p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>

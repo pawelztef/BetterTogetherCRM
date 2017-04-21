@@ -1,0 +1,20 @@
+<% if import_objects.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(import_objects.errors.count, "error") %> prohibited this import from completing:</h2>
+    <ul>
+      <% import_objects.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% elsif import_objects.notice %>
+  <div id="notice_explanation">
+    <h2>Import completed.</h2>
+    <div> <%= import_objects.notice %> </div>
+  </div>
+<% elsif flash[:file_exceptions] %>
+  <div id="exception_explanation">
+    <h2>Some errors occured while trying import data:</h2>
+    <div> <%= flash[:file_exceptions] %> </div>
+  </div>
+<% end %>

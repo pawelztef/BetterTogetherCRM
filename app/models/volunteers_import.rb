@@ -20,15 +20,14 @@ class VolunteersImport < ImportsExports::CsvImport
         entry.location = Location.new
         @import_creates+=1
       end
-      entry.attributes = volunteers[index]
+      entry.attributes = volunteer
       entry.location.attributes =  locations[index]
       entry
     end
   end
 
-  def columns
-    ['id', 'first_name', 'last_name', 'email', 'phone1', 'phone2',
-    'line1', 'line2', 'city', 'county', 'code']
+  def self.columns
+    %w[id first_name last_name email phone1 phone2 line1 line2 city county code]
   end
 
 end

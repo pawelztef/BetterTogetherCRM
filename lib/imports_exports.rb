@@ -4,6 +4,7 @@ module ImportsExports
     extend ActiveModel::Naming
     include ActiveModel::Conversion
     include ActiveModel::Validations
+    include Exceptions
 
 
     attr_accessor :file, :import_updates, :import_creates, :notice
@@ -42,7 +43,8 @@ module ImportsExports
     def open_spreadsheet
       case File.extname(file.original_filename)
       when ".csv" then Roo::CSV.new(file.path)
-      else raise "Unknown file type: #{file.original_filename}"
+      else 
+        raise Exceptions::FileExtensionException.new("Unknown file type: #{file.original_filename}")
       end
     end
 
@@ -50,7 +52,7 @@ module ImportsExports
       raise "This method should be over-ridden by a sub-class"
     end
 
-    def columns
+    def self.columns
       raise "This method should be over-ridden by a sub-class"
     end
 

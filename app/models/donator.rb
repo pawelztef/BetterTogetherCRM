@@ -20,13 +20,18 @@ class Donator < ActiveRecord::Base
   end
 
   def self.to_csv
-    col_names = %w{id first_name last_name email phone1 phone2 institution address }
-    CSV.generate(headers: true) do |csv|
+    col_names = %w[id first_name last_name email phone1 phone2 institution line1 line2 city county code]
+    donator_col = col_names[0, 7]
+    location_col = col_names[7, 5]
+    CSV.generate() do |csv|
       csv << col_names
       all.each do |donator|
-        row = donator.attributes.values_at(*col_names)
-        row[-1] = donator.location.full_street_address
-        csv << row
+        if donator.location.present?
+          row = donator.attributes.values_at(*donator_col) + donator.location.attributes.values_at(*location_col)
+          csv << row
+        else
+          csv << client.attributes.values_at(*col_names)
+        end
       end
     end
   end
