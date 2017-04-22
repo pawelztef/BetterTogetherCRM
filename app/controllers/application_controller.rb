@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_moderator
-      # gflash notice: "Please login before go to view pages"
       redirect_to '/login'
     end
   end
@@ -27,6 +26,10 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from Exceptions::NoFileException do |exception|
+    flash[:file_exceptions] = exception.message
+    render :new
+  end
+  rescue_from Exceptions::InvalidHeadersException do |exception|
     flash[:file_exceptions] = exception.message
     render :new
   end

@@ -52,6 +52,10 @@ module ImportsExports
       raise "This method should be over-ridden by a sub-class"
     end
 
+    def self.check_headers(sheet)
+      raise Exceptions::InvalidHeadersException unless (sheet.row(1)-columns).empty?
+    end
+
     def self.columns
       raise "This method should be over-ridden by a sub-class"
     end
