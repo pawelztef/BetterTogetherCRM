@@ -289,7 +289,7 @@ ul.sidebar-menu li
       display: block
 
   /*line-height: 20px !important;
-  margin-bottom: 5px
+    margin-bottom: 5px
   margin-left: 10px
   margin-right: 10px
 
@@ -360,10 +360,6 @@ ul.sidebar-menu li
   display: inline-block
   margin-top: 60px
   padding: 10px 30px
-  // padding-left: 15px
-  // padding-right: 15px
-  // padding-bottom: 15px
-  // padding-top: 0px
   width: 100%
 
 a.logo
@@ -833,6 +829,35 @@ ul.top-menu > li > a
     font-weight: 700
     font-size: 16px
 
+/*TABLES CONFIGURATION
+
+.tables-wrapper
+  .nav
+    margin-top: 30px
+    text-align: left
+    display: flex
+    justify-content: flex-end
+
+.paginate_button.current
+  background: transparent !important
+  color: inherit !important
+  &:hover
+    background: $gray-light !important
+    color: white
+    border: $gray-light 1px solid !important
+
+.paginate_button:hover
+  background: $gray-light !important
+  color: white
+  border: $gray-light 1px solid !important
+
+.dataTables_info, .dataTables_length, .dataTables_filter, .paginate_button.next, .nav-link
+  color: inherit !important
+
+table.dataTable.no-footer
+  margin-bottom: 30px
+  padding-top: 20px
+
 /* *************************************************************************************
  *PANELS CONFIGURATIONS
  ****************************************************************************************
@@ -929,8 +954,8 @@ ul.top-menu > li > a
 .white-panel
   text-align: center
   background: #ffffff
-  color: #ccd1d9
-
+  height: 100%
+  padding: 50px 50px 40px 
   p
     margin-top: 5px
     font-weight: 700
@@ -939,8 +964,9 @@ ul.top-menu > li > a
   .white-header
     background: #f4f4f4
     padding: 3px
-    margin-bottom: 15px
     color: #c6c6c6
+    margin: -50px -50px 50px -50px
+    text-align: left
 
   .small
     font-size: 10px
@@ -949,7 +975,8 @@ ul.top-menu > li > a
   i
     color: $turq
     padding-right: 4px
-    font-size: 14px
+    font-size: .9em
+    padding-left: 10px
 
 /*STOCK CARD Panel
 
