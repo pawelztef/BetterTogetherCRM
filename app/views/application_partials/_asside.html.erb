@@ -52,6 +52,17 @@
         </div>
         <div class="panel">
           <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#events_submenu"><i class="fa fa-calendar"></i>Events</a> 
+          </div>
+          <div id="events_submenu" class="panel-collapse collapse">
+            <ul class="sub">
+              <li> <%= link_to "Calendar", events_path %> </li>
+              <li> <%= link_to "List of events", business_donators_path %> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#side_accordion" href="#logs_submenu"><i class="fa fa-gears"></i>Settings</a> 
           </div>
           <div id="logs_submenu" class="panel-collapse collapse">

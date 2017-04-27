@@ -833,10 +833,20 @@ ul.top-menu > li > a
 
 .tables-wrapper
   .nav
-    margin-top: 30px
+    margin-bottom: 40px
+    margin-right: -50px
     text-align: left
     display: flex
     justify-content: flex-end
+    a
+      background-color: #eee
+      text-shadow: 0 1px 0 rgba(1,1,1,.2)
+      padding-right: 50px
+      padding-left: 25px
+
+      &:hover
+        color: $turq !important
+        text-shadow: 0px 1px 0px rgba(1,1,1,.2)
 
 .paginate_button.current
   background: transparent !important
@@ -965,8 +975,10 @@ table.dataTable.no-footer
     background: #f4f4f4
     padding: 3px
     color: #c6c6c6
-    margin: -50px -50px 50px -50px
+    margin: -50px -50px 25px -50px
     text-align: left
+    h1
+      text-shadow: 0 1px 0 rgba(1,1,1,.4)
 
   .small
     font-size: 10px
