@@ -30,6 +30,7 @@
 //= require volunteers_groups 
 //= require business/donations
 //= require business/donators
+//= require datepicker.js 
 
 
 
