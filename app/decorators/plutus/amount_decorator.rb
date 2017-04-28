@@ -1,13 +1,17 @@
 class Plutus::AmountDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  decorates_association :entry, with: Plutus::EntryDecorator
 
+  def amount
+    h.number_to_accounting object.amount
+  end
+
+  def credit_amount?
+    object.is_a? Plutus::CreditAmount
+  end
+
+  def debit_amount?
+    object.is_a? Plutus::DebitAmount
+  end
 end
