@@ -14,7 +14,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
-gem "simple_form"
+gem 'simple_form'
 gem 'jquery-validation-rails'
 gem 'jquery-datatables-rails'
 
@@ -26,16 +26,17 @@ gem 'jquery-minicolors-rails'
 
 gem 'faker'
 gem  'geocoder'
-gem "gritter", "1.2.0"
+gem 'gritter', '1.2.0'
 gem 'roo'
+gem 'plutus'
 
 
 group :development, :test do
   gem 'byebug'
   gem 'guard-rspec'
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "rspec-rails"
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'rspec-rails'
   gem 'rack-mini-profiler'
 end
 
@@ -43,7 +44,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'guard-livereload', '~> 2.5', require: false
-  gem "rack-livereload"
+  gem 'rack-livereload'
   gem 'spring'
   gem 'pry-rails'
   gem 'pry-byebug'

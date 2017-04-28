@@ -163,6 +163,10 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     pg (0.20.0)
+    plutus (0.12.2)
+      jquery-rails (>= 3.0)
+      jquery-ui-rails (>= 4.0)
+      rails (~> 4.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -309,6 +313,7 @@ DEPENDENCIES
   momentjs-rails
   mysql2 (>= 0.3.13, < 0.5)
   pg
+  plutus
   pry-byebug
   pry-rails
   rack-livereload
@@ -326,4 +331,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.14.5
+   1.14.6

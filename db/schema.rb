@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301130000) do
+ActiveRecord::Schema.define(version: 20170427104511) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -148,6 +148,39 @@ ActiveRecord::Schema.define(version: 20170301130000) do
   end
 
   add_index "notes", ["notable_type", "notable_id"], name: "index_notes_on_notable_type_and_notable_id", using: :btree
+
+  create_table "plutus_accounts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "type",       limit: 255
+    t.boolean  "contra"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plutus_accounts", ["name", "type"], name: "index_plutus_accounts_on_name_and_type", using: :btree
+
+  create_table "plutus_amounts", force: :cascade do |t|
+    t.string  "type",       limit: 255
+    t.integer "account_id", limit: 4
+    t.integer "entry_id",   limit: 4
+    t.decimal "amount",                 precision: 20, scale: 10
+  end
+
+  add_index "plutus_amounts", ["account_id", "entry_id"], name: "index_plutus_amounts_on_account_id_and_entry_id", using: :btree
+  add_index "plutus_amounts", ["entry_id", "account_id"], name: "index_plutus_amounts_on_entry_id_and_account_id", using: :btree
+  add_index "plutus_amounts", ["type"], name: "index_plutus_amounts_on_type", using: :btree
+
+  create_table "plutus_entries", force: :cascade do |t|
+    t.string   "description",              limit: 255
+    t.date     "date"
+    t.integer  "commercial_document_id",   limit: 4
+    t.string   "commercial_document_type", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plutus_entries", ["commercial_document_id", "commercial_document_type"], name: "index_entries_on_commercial_doc", using: :btree
+  add_index "plutus_entries", ["date"], name: "index_plutus_entries_on_date", using: :btree
 
   create_table "tracelogs", force: :cascade do |t|
     t.string "trace_id",   limit: 255, null: false
