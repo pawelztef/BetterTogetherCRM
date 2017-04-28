@@ -29,7 +29,7 @@ gem  'geocoder'
 gem 'gritter', '1.2.0'
 gem 'roo'
 gem 'plutus'
-
+gem 'draper'
 
 group :development, :test do
   gem 'byebug'
