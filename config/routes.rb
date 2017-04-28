@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :donations_imports, only: [:new, :create]
     resources :donators, only: [:index, :show]
     resources :donators_imports, only: [:new, :create]
+    resources :accounts
   end
   
   get '/dashboard' => 'dashboard#index'
