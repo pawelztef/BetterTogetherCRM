@@ -1,5 +1,47 @@
 Rails.application.routes.draw do
 
+  namespace :plutus do
+  get 'entries/index'
+  end
+
+  namespace :plutus do
+  get 'entries/show'
+  end
+
+  namespace :plutus do
+  get 'entries/new'
+  end
+
+  namespace :plutus do
+  get 'entries/edit'
+  end
+
+  namespace :plutus do
+  get 'entries/create'
+  end
+
+  namespace :plutus do
+  get 'entries/update'
+  end
+
+  namespace :plutus do
+  get 'entries/destroy'
+  end
+
+  get 'entries/index'
+
+  get 'entries/show'
+
+  get 'entries/new'
+
+  get 'entries/edit'
+
+  get 'entries/create'
+
+  get 'entries/update'
+
+  get 'entries/destroy'
+
   resource :sessions, only: [:new, :create, :destroy]
 
   root 'dashboard#index'

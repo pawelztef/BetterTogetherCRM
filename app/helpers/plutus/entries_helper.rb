@@ -1,0 +1,2 @@
+module Plutus::EntriesHelper
+end
