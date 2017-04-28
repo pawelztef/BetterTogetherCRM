@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
-  <li><%= link_to "Accounts", accounts_path %></li>
-  <li><%= link_to @account.type.pluralize, account_path(@account.type.pluralize.parameterize) %></a></li>
+  <li><%= link_to "Accounts", business_accounts_path %></li>
+  <li><%= link_to @account.type.pluralize, business_account_path(@account.type.pluralize.parameterize) %></a></li>
   <li class="active"><%= @account.name %></li>
 </ol>
 
@@ -30,12 +30,12 @@
       </tr>
       <tr>
         <td colspan='6' class='text-right'>
-          <%= link_to account_path(@account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
-            <%= glyphicon('trash') %> Delete
+          <%= link_to business_account_path(@account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
+            <%= icon('trash') %> Delete
           <% end if @account.deletable? %>
 
-          <%= link_to edit_account_path(@account), class: 'btn btn-sm btn-primary' do %>
-            <%= glyphicon('edit') %> Edit
+          <%= link_to edit_business_account_path(@account), class: 'btn btn-sm btn-primary' do %>
+            <%= icon('edit') %> Edit
           <% end %>
         </td>
       </tr>

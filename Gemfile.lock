@@ -316,6 +316,7 @@ DEPENDENCIES
   jquery-minicolors-rails
   jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   jquery-validation-rails
   momentjs-rails
   mysql2 (>= 0.3.13, < 0.5)

@@ -24,4 +24,5 @@ class Plutus::EntryDecorator < Draper::Decorator
 
     rows
   end
+
 end

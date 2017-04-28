@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427104511) do
+ActiveRecord::Schema.define(version: 20170428134355) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -155,9 +155,12 @@ ActiveRecord::Schema.define(version: 20170427104511) do
     t.boolean  "contra"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "code",       limit: 255
   end
 
+  add_index "plutus_accounts", ["code"], name: "index_plutus_accounts_on_code", using: :btree
   add_index "plutus_accounts", ["name", "type"], name: "index_plutus_accounts_on_name_and_type", using: :btree
+  add_index "plutus_accounts", ["name"], name: "index_plutus_accounts_on_name", using: :btree
 
   create_table "plutus_amounts", force: :cascade do |t|
     t.string  "type",       limit: 255

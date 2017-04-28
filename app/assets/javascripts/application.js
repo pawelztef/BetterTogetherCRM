@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery-ui
 //= require jquery_ujs
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
@@ -20,7 +21,6 @@
 //= require events
 //= require full_calendar
 //= require jquery.backstretch.min
-//= require jquery
 //= require jquery.nicescroll
 //= require jquery.scrollTo.min
 //= require jquery.ui.touch-punch.min

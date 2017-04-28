@@ -1,46 +1,6 @@
 Rails.application.routes.draw do
+  mount Plutus::Engine => "/plutus", :as => "plutus"
 
-  namespace :plutus do
-  get 'entries/index'
-  end
-
-  namespace :plutus do
-  get 'entries/show'
-  end
-
-  namespace :plutus do
-  get 'entries/new'
-  end
-
-  namespace :plutus do
-  get 'entries/edit'
-  end
-
-  namespace :plutus do
-  get 'entries/create'
-  end
-
-  namespace :plutus do
-  get 'entries/update'
-  end
-
-  namespace :plutus do
-  get 'entries/destroy'
-  end
-
-  get 'entries/index'
-
-  get 'entries/show'
-
-  get 'entries/new'
-
-  get 'entries/edit'
-
-  get 'entries/create'
-
-  get 'entries/update'
-
-  get 'entries/destroy'
 
   resource :sessions, only: [:new, :create, :destroy]
 
@@ -61,7 +21,16 @@ Rails.application.routes.draw do
     resources :donations_imports, only: [:new, :create]
     resources :donators, only: [:index, :show]
     resources :donators_imports, only: [:new, :create]
-    resources :accounts
+    resources :accounts do
+      collection do
+        get :assets
+        get :liabilities
+        get :expenses
+        get :revenue
+        get :equity
+      end
+    end
+    resources :entries
   end
   
   get '/dashboard' => 'dashboard#index'
