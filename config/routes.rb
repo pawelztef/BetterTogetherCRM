@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount Plutus::Engine => "/plutus", :as => "plutus"
+  # mount Plutus::Engine => "/plutus", :as => "plutus"
 
 
   resource :sessions, only: [:new, :create, :destroy]
