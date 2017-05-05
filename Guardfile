@@ -58,59 +58,61 @@ guard 'livereload' do
   # file needing a full reload of the page anyway
   watch(%r{app/views/.+\.(#{rails_view_exts * '|'})$})
   watch(%r{app/helpers/.+\.rb})
+  watch(%r{app/controllers/.+\.rb})
+  watch(%r{app/models/.+\.rb})
   watch(%r{config/locales/.+\.yml})
 
 end
 
-guard :rspec, cmd: "bundle exec rspec" do
-  require "guard/rspec/dsl"
-  dsl = Guard::RSpec::Dsl.new(self)
-  notification :off
+# guard :rspec, cmd: "bundle exec rspec" do
+#   require "guard/rspec/dsl"
+#   dsl = Guard::RSpec::Dsl.new(self)
+#   notification :off
 
-  # Feel free to open issues for suggestions and improvements
+#   # Feel free to open issues for suggestions and improvements
 
-  # Factory Girl
-  begin
-  require 'active_support/inflector'
-  watch(%r{^spec/factories/(.+)\.rb$}) { |m| ["app/models/#{m[1].singularize}.rb", "spec/models/#{m[1].singularize}_spec.rb"] }
-  rescue LoadError
-  end
+#   # Factory Girl
+#   begin
+#   require 'active_support/inflector'
+#   watch(%r{^spec/factories/(.+)\.rb$}) { |m| ["app/models/#{m[1].singularize}.rb", "spec/models/#{m[1].singularize}_spec.rb"] }
+#   rescue LoadError
+#   end
 
-  # RSpec files
-  rspec = dsl.rspec
-  watch(rspec.spec_helper) { rspec.spec_dir }
-  watch(rspec.spec_support) { rspec.spec_dir }
-  watch(rspec.spec_files)
+#   # RSpec files
+#   rspec = dsl.rspec
+#   watch(rspec.spec_helper) { rspec.spec_dir }
+#   watch(rspec.spec_support) { rspec.spec_dir }
+#   watch(rspec.spec_files)
 
-  # Ruby files
-  ruby = dsl.ruby
-  dsl.watch_spec_files_for(ruby.lib_files)
+#   # Ruby files
+#   ruby = dsl.ruby
+#   dsl.watch_spec_files_for(ruby.lib_files)
 
-  # Rails files
-  rails = dsl.rails(view_extensions: %w(erb haml slim))
-  dsl.watch_spec_files_for(rails.app_files)
-  dsl.watch_spec_files_for(rails.views)
+#   # Rails files
+#   rails = dsl.rails(view_extensions: %w(erb haml slim))
+#   dsl.watch_spec_files_for(rails.app_files)
+#   dsl.watch_spec_files_for(rails.views)
 
-  watch(rails.controllers) do |m|
-    [
-      rspec.spec.call("routing/#{m[1]}_routing"),
-      rspec.spec.call("controllers/#{m[1]}_controller"),
-      rspec.spec.call("acceptance/#{m[1]}")
-    ]
-  end
+#   watch(rails.controllers) do |m|
+#     [
+#       rspec.spec.call("routing/#{m[1]}_routing"),
+#       rspec.spec.call("controllers/#{m[1]}_controller"),
+#       rspec.spec.call("acceptance/#{m[1]}")
+#     ]
+#   end
 
-  # Rails config changes
-  watch(rails.spec_helper)     { rspec.spec_dir }
-  watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
-  watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
+#   # Rails config changes
+#   watch(rails.spec_helper)     { rspec.spec_dir }
+#   watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
+#   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
 
-  # Capybara features specs
-  watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
-  watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
+#   # Capybara features specs
+#   watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
+#   watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
 
-  # Turnip features and steps
-  watch(%r{^spec/acceptance/(.+)\.feature$})
-  watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
-    Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
-  end
-end
+#   # Turnip features and steps
+#   watch(%r{^spec/acceptance/(.+)\.feature$})
+#   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
+#     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
+#   end
+# end
