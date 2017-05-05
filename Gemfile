@@ -23,6 +23,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'jquery-minicolors-rails'
+gem 'kaminari'
 
 
 gem 'faker'

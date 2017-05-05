@@ -1,4 +1,4 @@
-<%= simple_form_for @entry do |f| %>
+<%= simple_form_for [:business, @entry] do |f| %>
   <%= f.error_notification %>
 
   <%# <%= f.input :date, wrapper: :vertical_input_group, wrapper_html: { class: 'date' } do %1> %>

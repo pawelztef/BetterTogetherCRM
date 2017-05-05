@@ -1,0 +1,9 @@
+<% if current_page.first? %>
+  <li class="disabled">
+    <%= link_to 'Previous', url, :rel => 'prev', :remote => remote, class: 'paginate_button previous' %>
+  </li>
+<% else %>
+  <li class="waves-effect">
+    <%= link_to 'Previous', url, :rel => 'prev', :remote => remote, class: 'paginate_button previous' %>
+  </li>
+<% end %>
