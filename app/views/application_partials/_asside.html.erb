@@ -19,7 +19,8 @@
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#side_accordion" href="#volunteers_submenu"><i class="fa fa-users"></i>Volunteers</a> 
+            <%# <a data-toggle="collapse" data-parent="#side_accordion" href="#volunteers_submenu"><i class="fa fa-users"></i>Volunteers</a> %> 
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#volunteers_submenu"> <%= icon('users') %> Volunteers</a> 
           </div>
           <div id="volunteers_submenu" class="panel-collapse collapse">
             <ul class="sub">
@@ -30,7 +31,8 @@
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#side_accordion" href="#dogs_submenu"><i class="fa fa-paw"></i>Dogs</a> 
+            <%# <a data-toggle="collapse" data-parent="#side_accordion" href="#dogs_submenu"><i class="fa fa-paw"></i>Dogs</a> %> 
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#dogs_submenu"> <%= icon('paw') %> Dogs</a> 
           </div>
           <div id="dogs_submenu" class="panel-collapse collapse">
             <ul class="sub">
@@ -41,7 +43,8 @@
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#side_accordion" href="#business_submenu"><i class="fa fa-handshake-o"></i>Business</a> 
+            <%# <a data-toggle="collapse" data-parent="#side_accordion" href="#business_submenu"><i class="fa fa-handshake-o"></i>Business</a> %> 
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#business_submenu"> <%= icon('handshake-o') %> Business</a> 
           </div>
           <div id="business_submenu" class="panel-collapse collapse">
             <ul class="sub">
@@ -52,7 +55,8 @@
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#side_accordion" href="#events_submenu"><i class="fa fa-calendar"></i>Events</a> 
+            <%# <a data-toggle="collapse" data-parent="#side_accordion" href="#events_submenu"><i class="fa fa-calendar"></i>Events</a> %> 
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#events_submenu"> <%= icon('calendar') %> Events</a> 
           </div>
           <div id="events_submenu" class="panel-collapse collapse">
             <ul class="sub">
@@ -63,7 +67,20 @@
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#side_accordion" href="#logs_submenu"><i class="fa fa-gears"></i>Settings</a> 
+            <%# <a data-toggle="collapse" data-parent="#side_accordion" href="#events_submenu"><i class="fa fa-calendar"></i>Accounting</a> %> 
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#booking_submenu"> <%= icon('book') %> Accounting</a> 
+          </div>
+          <div id="booking_submenu" class="panel-collapse collapse">
+            <ul class="sub">
+              <li> <%= link_to "Calendar", events_path %> </li>
+              <li> <%= link_to "List of events", business_donators_path %> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+            <%# <a data-toggle="collapse" data-parent="#side_accordion" href="#logs_submenu"><i class="fa fa-gears"></i>Settings</a> %> 
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#logs_submenu"> <%= icon('gears') %> Settings</a> 
           </div>
           <div id="logs_submenu" class="panel-collapse collapse">
             <ul class="sub">

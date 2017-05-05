@@ -26,8 +26,8 @@ Rails.application.routes.draw do
         get :assets
         get :liabilities
         get :expenses
-        get :revenue
-        get :equity
+        get :revenues
+        get :equities
       end
     end
     resources :entries

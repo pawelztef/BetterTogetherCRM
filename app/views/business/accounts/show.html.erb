@@ -1,79 +1,90 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Accounts", business_accounts_path %></li>
-  <li><%= link_to @account.type.pluralize, business_account_path(@account.type.pluralize.parameterize) %></a></li>
-  <li class="active"><%= @account.name %></li>
-</ol>
+<p id="notice"><%= notice %></p>
 
-<h1><%= @account.type %> Account: <%= @account.name %></h1>
+<div class="tables-wrapper">
+  <div class="white-panel pn">
+    <div class="white-header">
+      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> <%= @account.type %> Account: <%= @account.name %></h1>
+    </div>
+    
+    <ol class="breadcrumb">
+      <li><%= link_to "Accounts", business_accounts_path %></li>
+      <li><%= link_to @account.type.pluralize, business_account_path(@account.type.pluralize.parameterize) %></a></li>
+      <li class="active"><%= @account.name %></li>
+    </ol>
 
-<div class="panel panel-default">
-  <table id="" class='table'>
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Transactions</th>
-        <th>Last Transaction</th>
-        <th>Balance</th>
-      </tr>
-    </thead>
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to 'New Volunteer', new_volunteer_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Download data in CSV format', volunteers_path(format: "csv"), class: "nav-link" %> 
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Import data in CSV format', new_volunteers_import_path, class: "nav-link" %> 
+      </li>
+    </ul>
 
-    <tbody>
-      <tr>
-        <td><%= @account.code %></td>
-        <td><%= @account.name %></td>
-        <td><%= @account.type %></td>
-        <td><%= @account.transactions %></td>
-        <td><%= @account.last_transaction_date %></td>
-        <td><%= @account.balance %></td>
-      </tr>
-      <tr>
-        <td colspan='6' class='text-right'>
-          <%= link_to business_account_path(@account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
-            <%= icon('trash') %> Delete
-          <% end if @account.deletable? %>
-
-          <%= link_to edit_business_account_path(@account), class: 'btn btn-sm btn-primary' do %>
-            <%= icon('edit') %> Edit
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<h3>Transactions</h3>
-
-<% if @account.amounts.empty? %>
-  There are no transactions in this account.
-
-<% else %>
-  <table id="transactions" class='table table-striped'>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Description</th>
-        <th class='text-right'>Debit</th>
-        <th class='text-right'>Credit</th>
-        <th class='text-right'>Balance</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @account.amounts.each do |amount| %>
+    <h1></h1>
+    <table id="volunteers-table" class="table table-striped table-responsive table-hover">
+      <thead>
         <tr>
-          <td><%= amount.entry.date %></td>
-          <td><%= amount.entry.description %></td>
-          <td class='text-right'><%= amount.amount if amount.debit_amount? %></td>
-          <td class='text-right'><%= amount.amount if amount.credit_amount? %></td>
-          <td class='text-right'><%= number_to_accounting amount.entry.balance %></td>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Transactions</th>
+          <th>Last Transaction</th>
+          <th>Balance</th>
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <div class='clearfix'></div>
+      <tbody>
+        <tr>
+          <td><%= @account.code %></td>
+          <td><%= @account.name %></td>
+          <td><%= @account.type %></td>
+          <td><%= @account.transactions %></td>
+          <td><%= @account.last_transaction_date %></td>
+          <td><%= @account.balance %></td>
+          <td>
+            <%= link_to business_account_path(@account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
+              <%= icon('trash') %> Delete
+              <% end if @account.deletable? %>
 
-  <%= link_to "Back to top", '#top' %>
-<% end %>
+              <%= link_to edit_business_account_path(@account), class: 'btn btn-sm btn-primary' do %>
+                <%= icon('edit') %> Edit
+              <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Transactions</h3>
+    <% if @account.amounts.empty? %>
+      There are no transactions in this account.
+    <% else %>
+      <table id="volunteers-table" class="table table-striped table-responsive table-hover">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th class='text-right'>Debit</th>
+            <th class='text-right'>Credit</th>
+            <th class='text-right'>Balance</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <% @account.amounts.each do |amount| %>
+            <tr>
+              <td><%= amount.entry.date %></td>
+              <td><%= amount.entry.description %></td>
+              <td class='text-right'><%= amount.amount if amount.debit_amount? %></td>
+              <td class='text-right'><%= amount.amount if amount.credit_amount? %></td>
+              <td class='text-right'><%= number_to_accounting amount.entry.balance %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %> 
+  </div>
+</div>

@@ -10,8 +10,8 @@ class Business::AccountsController < ApplicationController
 
     define_method method_name do
       @accounts = Plutus.const_get(account_type.capitalize).all
-        .includes([:credit_amounts, :debit_amounts])
-        .decorate
+      .includes([:credit_amounts, :debit_amounts])
+      .decorate
 
       render :index
     end
@@ -22,53 +22,52 @@ class Business::AccountsController < ApplicationController
 
   def new
     @account = Plutus::Account.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
     @account = Plutus::Account.new(account_params)
-
-    respond_to do |format|
       if @account.save
-        format.html { redirect_to account_path(@account), notice: 'Account was successfully created.' }
-        format.json { render :show, status: :created, location: @account }
+         redirect_to business_account_path(@account) 
+         gflash notice: 'Account was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
+         render action: 'new' 
       end
-    end
   end
 
   def update
-    respond_to do |format|
-      if @account.update(account_params)
-        format.html { redirect_to account_path(@account), notice: 'Account was successfully updated.' }
-        format.json { render :show, status: :ok, location: @account }
-      else
-        format.html { render :edit }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    if @account.update(account_params)
+      redirect_to business_account_path(@account)
+      gflash notice: 'Account was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
   def destroy
     @account.destroy
-    respond_to do |format|
-      format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to business_accounts_url
+    gflash notice: 'Account was successfully destroyed.' 
   end
 
   private
 
-    def set_account
-      @account = Plutus::Account.includes([credit_amounts: :entry, debit_amounts: :entry])
-        .find(params[:id]).decorate
-    end
+  def set_account
+    @account = Plutus::Account.includes([credit_amounts: :entry, debit_amounts: :entry])
+    .find(params[:id]).decorate
+  end
 
-    def account_params
-      params.require(:account).permit(:name, :code, :type)
-    end
+  def account_params
+    params.require(:account).permit(:name, :code, :type)
+  end
 end

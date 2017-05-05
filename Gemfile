@@ -29,7 +29,7 @@ gem 'faker'
 gem  'geocoder'
 gem 'gritter', '1.2.0'
 gem 'roo'
-gem 'plutus'
+gem 'plutus', git: 'https://github.com/pawelztef/plutus.git' 
 gem 'draper'
 
 group :development, :test do

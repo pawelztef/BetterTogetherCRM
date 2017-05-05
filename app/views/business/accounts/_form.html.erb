@@ -1,4 +1,4 @@
-<%= simple_form_for @account, as: :account, url: @account.persisted? ? account_path(@account) : accounts_path  do |f| %>
+<%= simple_form_for @account, as: :account, url: @account.persisted? ? business_account_path(@account) : business_accounts_path  do |f| %>
   <%= f.error_notification %>
 
   <% types = %w(Asset Liability Equity Expense Revenue).map{ |type| [type, "Plutus::#{type}"] } %>
@@ -11,3 +11,7 @@
   <%= link_to 'Cancel', :back, data: { confirm: "Discard changes?" } %>
 
 <% end %>
+<script>
+$('#new_account').validate();
+
+</script>

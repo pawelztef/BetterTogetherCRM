@@ -1,0 +1,10 @@
+$('body').append('<%= j render("edit") %>');
+$("#accountEditModal").modal('show');
+$(".closeAccountEditModal").on("click", function() {
+  $("#accountEditModal").modal('hide');
+});
+$('body').on('hidden.bs.modal', '.modal', function (e) {
+  $(e.target).removeData('bs.modal');
+  $('.modal').remove();
+});
+
