@@ -1,42 +1,76 @@
-					<div class="row">
-						<!-- TWITTER PANEL -->
-						<div class="col-lg-4 col-md-4 col-sm-4 mb">
-							<div class="twitter-panel pn">
-								<i class="fa fa-twitter fa-4x"></i>
-								<p>Dashgum is here! Take a look and enjoy this new Bootstrap Dashboard theme.</p>
-								<p class="user">@Alvrz_is</p>
-							</div>
-						</div><!-- /col-md-4 -->
-						
-						<div class="col-lg-4 col-md-4 col-sm-4 mb">
-							<!-- WHITE PANEL - TOP USER -->
-							<div class="white-panel pn">
-								<div class="white-header">
-									<h5>TOP USER</h5>
-								</div>
-								<p><img src="assets/img/ui-zac.jpg" class="img-circle" width="50"></p>
-								<p><b>Zac Snider</b></p>
-									<div class="row">
-										<div class="col-md-6">
-											<p class="small mt">MEMBER SINCE</p>
-											<p>2012</p>
-										</div>
-										<div class="col-md-6">
-											<p class="small mt">TOTAL SPEND</p>
-											<p>$ 47,60</p>
-										</div>
-									</div>
-							</div>
-						</div><!-- /col-md-4 -->
-						
-						<div class="col-lg-4 col-md-4 col-sm-4 mb">
-							<!-- INSTAGRAM PANEL -->
-							<div class="instagram-panel pn">
-								<i class="fa fa-instagram fa-4x"></i>
-								<p>@THISISYOU<br/>
-									5 min. ago
-								</p>
-								<p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
-							</div>
-						</div><!-- /col-md-4 -->
-					</div><! --/END 1ST ROW OF PANELS -->
+<%# <div class="row"> %>
+<%#   <!-- TWITTER PANEL --> %>
+<%#   <div class="col-lg-4 col-md-4 col-sm-4 mb"> %>
+<%#     <div class="twitter-panel pn"> %>
+<%#       <i class="fa fa-twitter fa-4x"></i> %>
+<%#       <p>Dashgum is here! Take a look and enjoy this new Bootstrap Dashboard theme.</p> %>
+<%#       <p class="user">@Alvrz_is</p> %>
+<%#     </div> %>
+<%#   </div><!-- /col-md-4 --> %>
+
+<%#   <div class="col-lg-4 col-md-4 col-sm-4 mb"> %>
+<%#     <!-- WHITE PANEL - TOP USER --> %>
+<%#     <div class="white-panel pn"> %>
+<%#       <div class="white-header"> %>
+<%#         <h5>TOP USER</h5> %>
+<%#       </div> %>
+<%#       <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="50"></p> %>
+<%#       <p><b>Zac Snider</b></p> %>
+<%#       <div class="row"> %>
+<%#         <div class="col-md-6"> %>
+<%#           <p class="small mt">MEMBER SINCE</p> %>
+<%#           <p>2012</p> %>
+<%#         </div> %>
+<%#         <div class="col-md-6"> %>
+<%#           <p class="small mt">TOTAL SPEND</p> %>
+<%#           <p>$ 47,60</p> %>
+<%#         </div> %>
+<%#       </div> %>
+<%#     </div> %>
+<%#   </div><!-- /col-md-4 --> %>
+
+<%#   <div class="col-lg-4 col-md-4 col-sm-4 mb"> %>
+<%#     <!-- INSTAGRAM PANEL --> %>
+<%#     <div class="instagram-panel pn"> %>
+<%#       <i class="fa fa-instagram fa-4x"></i> %>
+<%#       <p>@THISISYOU<br/> %>
+<%#       5 min. ago %>
+<%#       </p> %>
+<%#       <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p> %>
+<%#     </div> %>
+<%#   </div><!-- /col-md-4 --> %>
+<%# </div><! --/END 1ST ROW OF PANELS --> %>
+
+<%# <div class="row"> %>
+<%#   <div class="col-md-4 col-sm-4 mb"> %>
+<%#     <!-- REVENUE PANEL --> %>
+<%#     <div class="green-panel pn"> %>
+<%#       <div class="green-header"> %>
+<%#         <h5>REVENUE</h5> %>
+<%#       </div> %>
+<%#       <div class="chart mt"> %>
+<%#         <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div> %>
+<%#       </div> %>
+<%#       <p class="mt"><b>$ 17,980</b><br/>Month Income</p> %>
+<%#     </div> %>
+<%#   </div><!-- /col-md-4 --> %>
+<%# </div> %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="content-panel">
+      <h4><i class="fa fa-angle-right"></i> Chart Example 1</h4>
+      <div class="panel-body">
+          <%= pie_chart @data %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="content-panel">
+      <h4><i class="fa fa-angle-right"></i> Chart Example 2</h4>
+      <div class="panel-body">
+          <%= column_chart Volunteer.group_by_quarter(:created_at, format: "%b %Y").count %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

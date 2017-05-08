@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+<div class="tables-wrapper">
+  <div class="white-panel pn">
+    <div class="white-header">
+      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> Listing Volunteers</h1>
+    </div>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to 'New Volunteer', new_volunteer_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Download data in CSV format', volunteers_path(format: "csv"), class: "nav-link" %> 
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Import data in CSV format', new_volunteers_import_path, class: "nav-link" %> 
+      </li>
+    </ul>
+
+
+    <div class="row">
+      <div class="col-md-4 col-sm-4 mb">
+        <!-- REVENUE PANEL -->
+        <div class="green-panel pn">
+          <div class="green-header"> <h5>REVENUE</h5> </div>
+          <%= column_chart Volunteer.group_by_quarter(:created_at, format: "%b").count %>
+        </div>
+      </div><!-- /col-md-4 -->
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-md-4 col-sm-4 mb">
+        <!-- REVENUE PANEL -->
+        <div class="green-panel pn">
+          <div class="green-header">
+            <h5>REVENUE</h5>
+          </div>
+          <%= pie_chart @data, library: { 
+            backgroundColor: "#43b1a9",
+            title: 'My super chart',
+            is3D: true  
+          } %>
+      </div>
+      </div><!-- /col-md-4 -->
+
+      <div class="col-md-4 col-sm-4 mb">
+        <div class="stock card">
+          <div class="stock-chart">
+            <div id="chart"></div>
+          </div>
+          <div class="stock current-price">
+            <div class="row">
+              <div class="info col-sm-6 col-xs-6"><abbr>AAPL</abbr>
+                <time>Yesterday</time>
+              </div>
+              <div class="changes col-sm-6 col-xs-6">
+                <div class="value up"><i class="fa fa-caret-up hidden-sm hidden-xs"></i> 694.00</div>
+                <div class="change hidden-sm hidden-xs">+4.95 (3.49%)</div>
+              </div>
+            </div>
+          </div>
+          <div class="summary">
+            <strong>18.3 M</strong> <span>SHARES TRADED</span>
+          </div>
+        </div>
+      </div><! -- /col-md-4 -->
+
+      <div class="col-md-4 col-sm-4 mb">
+        <div class="darkblue-panel pn">
+          <div class="darkblue-header">
+            <h5>SITE STATICS</h5>
+          </div>
+          <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
+          <p>+ 1,789 NEW VISITS</p>
+          <footer>
+            <div class="centered">
+              <h5><i class="fa fa-trophy"></i> 17,988</h5>
+            </div>
+          </footer>
+        </div><! -- /darkblue panel -->
+      </div><!-- /col-md-4 -->
+    </div>
+  </div>
+</div>

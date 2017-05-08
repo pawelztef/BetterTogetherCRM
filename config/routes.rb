@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   # mount Plutus::Engine => "/plutus", :as => "plutus"
-
-
   resource :sessions, only: [:new, :create, :destroy]
 
   root 'dashboard#index'
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
   resources :volunteers_imports, only: [:new, :create]
   resources :clients, path: "dogs_owners"
   resources :dogs_owners_imports, only: [:new, :create]
-
+  resources :stats, only: [:index]
   namespace :business do
     resources :donations
     resources :donations_imports, only: [:new, :create]
@@ -32,8 +30,6 @@ Rails.application.routes.draw do
     end
     resources :entries
   end
-  
-  get '/dashboard' => 'dashboard#index'
   resources :volunteers_groups
   resources :events do
     collection do

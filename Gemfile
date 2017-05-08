@@ -24,7 +24,8 @@ gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'jquery-minicolors-rails'
 gem 'kaminari'
-
+gem 'chartkick'
+gem 'groupdate'
 
 gem 'faker'
 gem  'geocoder'
@@ -35,6 +36,7 @@ gem 'draper'
 
 group :development, :test do
   gem 'byebug'
+  gem 'awesome_print'
   gem 'guard-rspec'
   gem 'factory_girl_rails'
   gem 'capybara'

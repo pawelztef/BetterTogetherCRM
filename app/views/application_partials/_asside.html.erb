@@ -3,18 +3,14 @@
     <!-- sidebar menu start-->
     <ul class="sidebar-menu" id="nav-accordion">
 
+      <%= link_to image_tag('logo-asside', size: 32), root_path %> 
+      <br>
+
       <div id="side_accordion" class="sidebar-menu sub-menu">
         <div class="panel">
           <div class="panel-heading">
-            <%= link_to "<i class='fa fa-desktop'></i> Dashbard".html_safe, dashboard_path %> 
+            <%= link_to "<i class='fa fa-desktop'></i> Dashbard".html_safe, root_path %> 
           </div>
-          <%# <div id="dashboard_submenu" class="panel-collapse collapse"> %>
-          <%#   <ul class="sub"> %>
-          <%#     <li><a  href="#">General</a></li> %>
-          <%#     <li><a  href="#">Buttons</a></li> %>
-          <%#     <li><a  href="#">Panels</a></li> %>
-          <%#   </ul> %>
-          <%# </div> %>
         </div>
         <div class="panel">
           <div class="panel-heading">
@@ -68,6 +64,16 @@
             <ul class="sub">
               <li> <%= link_to "Accounts", business_accounts_path %> </li>
               <li> <%= link_to "Entries Journal", business_entries_path %> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#logs_submenu"> <%= icon('line-chart') %> Statistics</a> 
+          </div>
+          <div id="logs_submenu" class="panel-collapse collapse">
+            <ul class="sub">
+              <li> <%= link_to "All Charts", stats_path %> </li>
             </ul>
           </div>
         </div>

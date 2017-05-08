@@ -33,24 +33,24 @@
 # end
 
 
-# 10.times do |n|
-#   volunteer = Volunteer.create( first_name: Faker::Name.first_name,
-#                                last_name: Faker::Name.last_name,
-#                                email: Faker::Internet.email,
-#                                phone1: Faker::PhoneNumber.cell_phone)
-#   volunteer.volunteers_groups << VolunteersGroup.find(1)
-#   volunteer.volunteers_groups << VolunteersGroup.find(2)
+30.times do |n|
+  volunteer = Volunteer.create( first_name: Faker::Name.unique.first_name,
+                               last_name: Faker::Name.unique.last_name,
+                               email: Faker::Internet.unique.email,
+                               phone1: Faker::PhoneNumber.cell_phone)
+  volunteer.volunteers_groups << VolunteersGroup.find(1)
+  volunteer.volunteers_groups << VolunteersGroup.find(2)
 
-#   loc = Location.new(line1: "#{127 + n}",
-#                           line2: "Newhaven Bay",
-#                           city: "Balbriggan",
-#                           county: "Dublin",
-#                           code: "XYZ",
-#                           latitude: 1.11,
-#                           longitude: 2.22)
+  loc = Location.new(line1: "#{127 + n}",
+                          line2: "Newhaven Bay",
+                          city: "Balbriggan",
+                          county: "Dublin",
+                          code: "XYZ",
+                          latitude: 1.11,
+                          longitude: 2.22)
 
-#   volunteer.location = loc
-# end
+  volunteer.location = loc
+end
 
 # 10.times do |n|
 #   clt = Client.create( first_name: Faker::Name.first_name,
@@ -103,5 +103,5 @@
 #   end
 # end
 
-Rake::Task['seeds:chart_of_accounts'].execute
-Rake::Task['seeds:journal_entries'].execute
+# Rake::Task['seeds:chart_of_accounts'].execute
+# Rake::Task['seeds:journal_entries'].execute

@@ -31,6 +31,8 @@
 //= require business/donations
 //= require business/donators
 //= require datepicker.js 
+// require Chart.bundle
+//= require chartkick
 
 
 
