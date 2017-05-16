@@ -70,4 +70,9 @@ module ApplicationHelper
     end
   end
 
+
+  def date d=Date.today
+    d.strftime('%d %b %Y')
+  end
+
 end

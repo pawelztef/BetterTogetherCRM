@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="stat-panel pn">
+      <div class="stat-header">
+        <div class="row">
+          <div class="col-sm-6 col-xs-6">
+            <div class="stats-info">
+              <h3>New Volunteers</h3>
+              <p class="small"> <%= date %> </p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-6 goright">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="stats-controls-wrapper">
+            <%= form_tag '/stats/volunteers', method: :get, class: 'form-inline ' do  %>
+              <div class="form-group">
+                <%= label_tag :period, 'period', class: 'stats-controls-label' %> 
+                <%= select_tag :period, options_for_select(%w[month quarter year], params[:period]), class: 'stats-controls form-control' %> 
+              </div>
+              <div class="form-group">
+                <%= label_tag :last, 'time span', class: 'stats-controls-label' %> 
+                <%= select_tag :last, options_for_select(%w[12 6 3], params[:last]), class: 'stats-controls form-control' %> 
+              </div>
+              <div class="form-group">
+                <%= label_tag :redraw, 'redraw chart', class: 'stats-controls-label' %> 
+                <%= submit_tag "redraw", class: 'btn btn-default btn-small stats-controls' %> 
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="chart-wrapper">
+            <%= column_chart Volunteer.group_by_period(params[:period], :created_at, last: params[:last], format: '%b %Y', permit: %w[month quarter year]).count %> 
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="volunteers-groups-stats-wrapper">
+            <h4>Groups Summary</h4>
+            <table class="table-striped">
+              <thead>
+                <tr>
+                  <th>Group name</th>
+                  <th>Participants</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% volunteers_groups_stats.each do |name, number| %> 
+                  <tr>
+                    <td> <%= name %> </td>
+                    <td> <%= number %> </td>
+                  </tr>
+                <% end %> 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

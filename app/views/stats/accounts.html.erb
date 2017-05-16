@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="stat-panel pn">
+      <div class="stat-header">
+        <div class="row">
+          <div class="col-sm-6 col-xs-6">
+            <div class="stats-info">
+              <p>Accounts</p>
+              <p class="small"> <%= date %> </p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-6 goright">
+          </div>
+        </div>
+      </div>
+      <br>
+      <%# Navigation Start %>
+      <div class="row">
+        <div class="col-md-7 ">
+          <div class="stats-controls-wrapper">
+            <%= form_tag '/stats/volunteers', method: :get, class: 'form-inline ' do  %>
+              <div class="form-group">
+                <%= label_tag :period, 'period', class: 'stats-controls-label' %> 
+                <%= select_tag :period, options_for_select(%w[month quarter year], params[:period]), class: 'stats-controls form-control' %> 
+              </div>
+              <div class="form-group">
+                <%= label_tag :last, 'time span', class: 'stats-controls-label' %> 
+                <%= select_tag :last, options_for_select(%w[12 6 3], params[:last]), class: 'stats-controls form-control' %> 
+              </div>
+              <div class="form-group">
+                <%= label_tag :redraw, 'redraw chart', class: 'stats-controls-label' %> 
+                <%= submit_tag "redraw", class: 'btn btn-default btn-small stats-controls' %> 
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%# Navigation End %>
+
+      <div class="row">
+        <div class="col-md-15">
+          <%# <%= area_chart Plutus::Asset.group_by_monthg  %1> %> 
+        </div>
+        <div class="col-md-15">
+        </div>
+        <div class="col-md-15">
+        </div>
+        <div class="col-md-15">
+        </div>
+        <div class="col-md-15">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

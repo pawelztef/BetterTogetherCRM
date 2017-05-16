@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT - Stats</title>
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <%= favicon_link_tag 'favicon.png' %> 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <%= gflash %> 
+    <section id="container" >
+
+      <%= render "application_partials/header" %>
+      <%= render "application_partials/asside" %>
+
+      <section id="main-content">
+        <section class="wrapper site-min-height">
+          <p id="notice"><%= notice %></p>
+          <div class="tables-wrapper">
+            <div class="white-panel pn">
+              <div class="white-header">
+                <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> Statistics</h1>
+              </div>
+              <%= render "stats_nav"  %> 
+              <%= yield %>
+            </div>
+          </div>
+          </div>
+
+        </section>
+      </section>
+
+      <footer class="site-footer">
+        <div class="text-center">
+          2016 - BetterTogether
+          <a href="#" class="go-top">
+            <i class="fa fa-angle-up"></i>
+          </a>
+        </div>
+      </footer>
+
+    </section>
+
+
+    <script>
+    </script>
+
+  </body>
+</html>

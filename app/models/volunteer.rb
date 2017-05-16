@@ -42,5 +42,8 @@ class Volunteer < ActiveRecord::Base
     end
   end
 
+  def group_name
+    self.volunteers_groups.pluck(:name)
+  end
 
 end

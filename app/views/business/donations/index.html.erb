@@ -34,7 +34,7 @@
             <td> <%= business_donation.transaction_id %> </td>
             <td> <%= business_donation.amount %> </td>
             <td> <%= business_donation.donator.fullname %> </td>
-            <td> <%= business_donation.created_at %> </td>
+            <td> <%= date(business_donation.created_at) %> </td>
             <td>
               <div class="dropdown">
                 <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
