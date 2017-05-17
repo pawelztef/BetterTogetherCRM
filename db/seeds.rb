@@ -103,5 +103,5 @@ end
 #   end
 # end
 
-# Rake::Task['seeds:chart_of_accounts'].execute
-# Rake::Task['seeds:journal_entries'].execute
+Rake::Task['seeds:chart_of_accounts'].execute
+Rake::Task['seeds:journal_entries'].execute
