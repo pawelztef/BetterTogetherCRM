@@ -11,6 +11,16 @@ class Stat < ActiveRecord::Base
     x
   end
 
+  def self.chart_data(data)
+    x = []
+    data.map do |n|
+      if n.balance != 0
+        x << [n.name, n.balance.truncate(2).to_s]
+      end
+    end
+    x
+  end
+
   #Liabilites
   
   def self.liabilities

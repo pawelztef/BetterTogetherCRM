@@ -11,6 +11,20 @@ class StatsController < ApplicationController
   end
 
   def accounts
+    case params[:accounts_group]
+    when "Assets"
+      @data = Plutus::Asset.all
+    when "Liabilities"
+      @data = Plutus::Liability.all
+    when "Equities"
+      @data = Plutus::Equity.all
+    when "Revenues"
+      @data = Plutus::Revenue.all
+    when "Expenses"
+      @data = Plutus::Expense.all
+    else
+      @data = Plutus::Revenue.all
+    end
   end
 
   def donations
@@ -24,6 +38,7 @@ class StatsController < ApplicationController
   def set_params
     params[:period] ||= 'quarter'
     params[:last] ||= '6'
+    params[:accounts_group] ||= 'Revenues'
   end
 
 end
