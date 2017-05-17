@@ -11,8 +11,14 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
+<<<<<<< 8f3b92095b5d4606ee88df013d8420d7f2d63202
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
+=======
+  # config.consider_all_requests_local       = true
+  config.action_controller.consider_all_requests_local = true
+
+>>>>>>> change in config/prod
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
