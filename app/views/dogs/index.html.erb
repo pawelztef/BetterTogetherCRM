@@ -8,13 +8,16 @@
 
     <ul class="nav">
       <li class="nav-item">
-        <%= link_to 'New Dog', new_client_path %>
+        <%= link_to 'New Dog', new_client_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Download data in CSV format', dogs_path(format: "csv") %> 
+        <%= link_to 'Download data in CSV format', dogs_path(format: "csv"), class: 'nav-link' %> 
       </li>
       <li class="nav-item">
-        <%= link_to 'Import data in CSV format', new_dogs_import_path %> 
+        <%= link_to 'Import data in CSV format', new_dogs_import_path, class: 'nav-link' %> 
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Home', root_path, class: 'nav-link' %> 
       </li>
     </ul>
 

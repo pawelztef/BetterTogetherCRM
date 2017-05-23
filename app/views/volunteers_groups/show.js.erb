@@ -3,3 +3,5 @@ $("#volunteersGroupShowModal").modal('show');
 $(".closeVolunteer").on("click", function() {
   $("#volunteersGroupShowModal").modal('hide');
 });
+var tableSelect = [5, 10, 25];
+$('#volunteers-table').DataTable({ "lengthMenu": tableSelect });

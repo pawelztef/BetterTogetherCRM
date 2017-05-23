@@ -1,20 +1,28 @@
 <% if import_objects.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(import_objects.errors.count, "error") %> prohibited this import from completing:</h2>
-    <ul>
-      <% import_objects.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div id="error-explanation">
+      <h3><%= pluralize(import_objects.errors.count, "error") %> prohibited this import from completing:</h3>
+      <ul>
+        <% import_objects.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div> 
 <% elsif import_objects.notice %>
-  <div id="notice_explanation">
-    <h2>Import completed.</h2>
-    <div> <%= import_objects.notice %> </div>
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div id="notice-explanation">
+      <h3>Import completed</h3>
+      <div> <%= import_objects.notice %> </div>
+    </div>
   </div>
 <% elsif flash[:file_exceptions] %>
-  <div id="exception_explanation">
-    <h2>Some errors occured while trying import data:</h2>
-    <div> <%= flash[:file_exceptions] %> </div>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <div id="exception-explanation">
+      <h3>Some errors occured while trying import data:</h3>
+      <div> <%= flash[:file_exceptions] %> </div>
+    </div><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   </div>
 <% end %>

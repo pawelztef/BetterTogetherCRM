@@ -1,21 +1,30 @@
-<div class="imports-panel">
-
-  <div class="col-md-12">
-    <div class="white-panel pn">
-      <div class="white-header">
-        <h1>Volunteers Import</h1>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <%= render "application_partials/import_info", klass: 'VolunteersImport' %>
-          <%= form_for @volunteers_import do |f| %>
-            <%= render "application_partials/imports_flashes", import_objects: @volunteers_import %>
-            <div class="field"> <%= f.file_field :file %> </div>
-            <div class="buttons"><%= f.submit "Import" %></div>
-          <% end %>
+<div class="tables-wrapper">
+  <div class="imports-panel">
+    <div class="col-md-12">
+      <div class="white-panel pn">
+        <div class="white-header">
+          <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> Volunteers Import <h1>
+        </div>
+        <ul class="nav">
+          <li class="nav-item">
+            <%= link_to "Back", volunteers_path %> 
+          </li>
+        </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <%= form_for @volunteers_import do |f| %>
+              <%= render "application_partials/imports_flashes", import_objects: @volunteers_import %>
+              <div class="well">
+                <div class="row">
+                  <%= render "application_partials/import_info", klass: 'VolunteersImport' %>
+                  <%= f.file_field :file, class: "file-selection" %> 
+                </div>
+              </div>
+              <%= f.submit "Import Volunteers", class: 'btn btn-default import' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>

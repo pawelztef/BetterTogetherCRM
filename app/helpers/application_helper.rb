@@ -1,12 +1,12 @@
 module ApplicationHelper
   def flash_class(name)
     case name
-      when :success then 'alert-success'
-      when :error   then 'alert-danger'
-      when :warn    then 'alert-warning'
-      when :info    then 'alert-info'
-      when :alert   then 'alert-info'
-      else 'alert-info'
+    when :success then 'alert-success'
+    when :error   then 'alert-danger'
+    when :warn    then 'alert-warning'
+    when :info    then 'alert-info'
+    when :alert   then 'alert-info'
+    else 'alert-info'
     end
   end
 
@@ -70,6 +70,9 @@ module ApplicationHelper
     end
   end
 
+  def go_back
+    link_to "Back", request.referer.present? ? request.referer : root_path, class: "nav-link"
+  end
 
   def date d=Date.today
     d.strftime('%d %b %Y')

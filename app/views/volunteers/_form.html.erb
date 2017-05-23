@@ -1,7 +1,6 @@
 <%= simple_form_for @volunteer, html: {class: 'form-horizontal'} do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :email %>
@@ -11,9 +10,8 @@
     <%= render "application_partials/location_form", f: f  %>
     
     <%= f.association :volunteers_groups, as: :check_boxes %>
-  </div>
 
   <div class="form-group">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'import' %>
   </div>
 <% end %>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users 
   resources :volunteers 
   resources :volunteers_imports, only: [:new, :create]
+  get 'volunteers_imports', to: 'volunteers_imports#new' 
   resources :clients, path: "dogs_owners"
   resources :dogs_owners_imports, only: [:new, :create]
   resources :stats, only: [:index] do

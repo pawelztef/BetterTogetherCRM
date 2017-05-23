@@ -1,6 +1,19 @@
-<h1>New Volunteer</h1>
-<h2>volunteers#new</h2>
+<div class="tables-wrapper">
+  <div class="white-panel pn">
+    <div class="white-header">
+      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> New Volunteer</h1>
+    </div>
 
-<%= render 'form' %>
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to 'Import data in CSV format', new_volunteers_import_path, class: "nav-link back" %> 
+      </li>
+      <li class="nav-item">
+        <%= go_back %> 
+      </li>
+    </ul>
 
-<%= link_to 'Back', volunteers_path %>
+    <%= render 'form' %>
+
+  </div>
+</div>
