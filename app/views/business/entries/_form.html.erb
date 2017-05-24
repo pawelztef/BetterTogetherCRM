@@ -24,6 +24,6 @@
     <%= p.input :account_id, collection: Plutus::Account.all %>
   <% end %>
 
-  <%= f.button :submit, "Save", class: "btn-primary" %>
-  <%= link_to 'Cancel', :back, data: { confirm: "Discard changes?" } %>
+  <%= f.button :submit, "Save", class: "btn btn-default import" %>
+  <%= link_to 'Cancel', :back, data: { confirm: "Discard changes?" }, class: "btn btn-default import" %>
 <% end %>

@@ -64,6 +64,9 @@ module Plutus
       entry
     end
 
+
+
+
     private
       def has_credit_amounts?
         errors[:base] << "Entry must have at least one credit amount" if self.credit_amounts.blank?

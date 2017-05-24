@@ -7,11 +7,10 @@
   <%= f.input :code, placeholder: "Code (e.g. 101)" %>
   <%= f.input :type, as: :select, collection: types, selected: "Plutus::#{f.object.type}" %>
 
-  <%= f.button :submit, "Save", class: "btn-primary" %>
-  <%= link_to 'Cancel', :back, data: { confirm: "Discard changes?" } %>
+  <%= f.button :submit, "Save", class: "btn btn-default import" %>
+  <%= link_to 'Cancel', :back, data: { confirm: "Discard changes?" }, class: 'btn btn-default import' %>
 
 <% end %>
 <script>
 $('#new_account').validate();
-
 </script>

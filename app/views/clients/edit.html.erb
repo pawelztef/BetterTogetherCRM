@@ -1,6 +1,12 @@
-<h1>Editing Client</h1>
+<p id="notice"><%= notice %></p>
+<div class="tables-wrapper">
+  <div class="white-panel pn">
+    <div class="white-header">
+      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i>Edit Dog Owner</h1>
+    </div>
+    <%= render 'panel_navigation' %>  
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>

@@ -77,5 +77,13 @@ module ApplicationHelper
   def date d=Date.today
     d.strftime('%d %b %Y')
   end
+  
+  def institution_check(client)
+    if client.institution
+      "<span>yes</span>".html_safe
+    else 
+      "<span>no</span>".html_safe
+    end
+  end
 
 end

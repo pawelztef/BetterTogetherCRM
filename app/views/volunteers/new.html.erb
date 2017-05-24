@@ -3,17 +3,7 @@
     <div class="white-header">
       <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> New Volunteer</h1>
     </div>
-
-    <ul class="nav">
-      <li class="nav-item">
-        <%= link_to 'Import data in CSV format', new_volunteers_import_path, class: "nav-link back" %> 
-      </li>
-      <li class="nav-item">
-        <%= go_back %> 
-      </li>
-    </ul>
-
+    <%= render 'panel_navigation' %>
     <%= render 'form' %>
-
   </div>
 </div>

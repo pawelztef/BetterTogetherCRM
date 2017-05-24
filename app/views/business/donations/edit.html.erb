@@ -1,6 +1,9 @@
-<h1>Editing Business Donation</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', business_donation_path(@business_donation), remote: true %> |
-<%= link_to 'Back', business_donations_path %>
+<div class="tables-wrapper">
+  <div class="white-panel pn">
+    <div class="white-header">
+      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> Edit Donation</h1>
+    </div>
+    <%= render 'panel_navigation' %>
+    <%= render 'form' %>
+  </div>
+</div>

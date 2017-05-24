@@ -11,11 +11,9 @@
         <%= link_to  'Add Account', new_business_account_path, remote: true, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Download data in CSV format', volunteers_path(format: "csv"), class: "nav-link" %> 
+        <%= link_to  'Home', root_path, class: 'nav-link' %>
       </li>
-      <li class="nav-item">
-        <%= link_to 'Import data in CSV format', new_volunteers_import_path, class: "nav-link" %> 
-      </li>
+
     </ul>
 
     <ul class="nav nav-tabs" role="tablist">
@@ -50,13 +48,13 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li>
+                    <%= link_to 'Edit', edit_business_account_path(account), class: 'drop-item' %>
+                  </li>
+                  <li>
                     <%= link_to 'Delete', business_account_path(account), 
                       method: :delete, 
                       data: { confirm: 'Are you sure?' },
                       class: 'drop-item' if account.deletable? %>
-                </li>
-                <li>
-                  <%= link_to 'Edit', edit_business_account_path(account), remote: true, class: 'drop-item' %>
                 </li>
                 </ul>
               </div>

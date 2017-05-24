@@ -16,13 +16,32 @@
                     <div class="panel panel-default">
                       <div class="panel-heading"><h4> Donator Details </h4></div>
                       <div class="panel-body">
-                        <p> <strong>First name:</strong> <%= @donator.first_name %> </p>
-                        <p> <strong>Last name:</strong> <%= @donator.last_name %> </p>
-                        <p> <strong>Email:</strong> <%= @donator.email %> </p>
-                        <p> <strong>Phone1:</strong> <%= @donator.phone1 %> </p>
-                        <p> <strong>Phone2:</strong> <%= @donator.phone2 %> </p>
-                        <p> <strong>Address:</strong> <%= @donator.location.full_street_address %> </p>
-                        <p> <strong>Coordinates:</strong> <%= @donator.location.latitude %> <%= @donator.location.longitude %> </p>
+                        <table class='table-hover'>
+                          <tr>
+                            <td><strong>First name</strong></td>
+                            <td> <%= @donator.first_name %> </td>
+                          </tr>
+                          <tr>
+                            <td><strong>Last name</strong></td>
+                            <td> <%= @donator.last_name %> </td>
+                          </tr>
+                          <tr>
+                            <td><strong>Email</strong></td>
+                            <td> <%= @donator.email %> </td>
+                          </tr>
+                          <tr>
+                            <td><strong>Phone 1</strong></td>
+                            <td> <%= @donator.phone1 %> </td>
+                          </tr>
+                          <tr>
+                            <td> <strong>Phone 2</strong></td>
+                            <td> <%= @donator.phone2 %> </td>
+                          </tr>
+                          <tr>
+                            <td> <strong>Address</strong></td>
+                            <td> <%= @donator.location.full_street_address %> </td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </div>

@@ -12,71 +12,70 @@
                   <button type="button" class="closeDogShowModal close">x</button>
                 </div>
               </div>
-              <br />
+              <p id="notice"><%= notice %></p>
               <div class="row">
-
                 <div class="col-md-12">
-                  <p id="notice"><%= notice %></p>
-                  <p>
-                  <strong>Name:</strong>
-                  <%= @dog.name %>
-                  </p>
-                  <p>
-                  <strong>Chip id:</strong>
-                  <%= @dog.chip_id%>
-                  </p>
-                  <p>
-                  <strong>Age:</strong>
-                  <%= @dog.age %>
-                  </p>
-                  <p>
-                  <strong>Breed:</strong>
-                  <%= @dog.breed %>
-                  </p>
-                  <p>
-                  <strong>Sex:</strong>
-                  <%= @dog.sex %>
-                  </p>
-
-                  <p>
-                  <strong>Owner:</strong>
-                  <a herf="#" id="showOwnerBtn"> <%= cli.fullname %> </a>
-                  </p>
-
-                  <div id="owner" style="display: none">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <p>
-                        <strong>Email:</strong>
-                        <%= cli.email %>
-                        </p>
-                        <p>
-                        <strong>Phone1:</strong>
-                        <%= cli.phone1 %>
-                        </p>
-                        <p>
-                        <strong>Phone2:</strong>
-                        <%= cli.phone2 %>
-                        </p>
-                      </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading"> <h4>Dog Detials</h4> </div>
+                    <div class="panel-body">
+                      <table class="table-hover">
+                        <tr>
+                          <td><strong>Name:</strong></td>
+                          <td><%= @dog.name %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Chip id:</strong></td>
+                          <td><%= @dog.chip_id%></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Age:</strong></td>
+                          <td><%= @dog.age %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Breed:</strong></td>
+                          <td><%= @dog.breed %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Sex:</strong></td>
+                          <td><%= @dog.sex %></td>
+                        </tr>
+                      </table>
                     </div>
-                    <p>
-                    <strong>Address:</strong>
-                    <%= @dog.client.location.full_street_address %>
-                    </p>
-                    <p>
-                    <strong>Coordinates:</strong>
-                    <%= @dog.client.location.latitude %>
-                    <%= @dog.client.location.longitude %>
-                    </p>
                   </div>
-                  <%= link_to 'Edit', edit_dog_path(@dog) %> |
-                  <%= link_to 'Back', dogs_path %>
+                  <div class="panel panel-default">
+                    <div class="panel-heading"> <h4>Owner Detials</h4> </div>
+                    <div class="panel-body">
+                      <table class="table-hover">
+                        <tr>
+                          <td><strong>Owner</strong></td>
+                          <td> <%= cli.fullname %></td>
+                        </tr>
+                        <tr>
+                          <td> <strong> Email </strong></td>
+                          <td> <%= cli.email %> </td>
+                        </tr>
+                        <tr>
+                          <td> <strong> Phone 1</strong></td>
+                          <td> <%= cli.phone1 %> </td>
+                        </tr>
+                        <tr>
+                          <td> <strong> Phone 2</strong></td>
+                          <td> <%= cli.phone2 %> </td>
+                        </tr>
+                        <tr>
+                          <td> <strong> Address</strong></td>
+                          <td> <%= cli.location.full_street_address %> </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-12">
                   <button type="button" class="closeDogShowModal btn btn-default">close</button>
+                  <%= link_to 'Edit', edit_dog_path(@dog), class: 'btn btn-default' %> 
+                  <%= link_to  'Back', dogs_path, class: 'btn btn-default' %> 
                 </div>
               </div>
             </div>

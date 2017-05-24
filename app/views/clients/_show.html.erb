@@ -13,48 +13,84 @@
                 </div>
                 <div class="row content">
                   <div class="col-md-12">
-
-                    <h3> Personal Details </h3>
-                    <p> <strong>First name:</strong> <%= @client.first_name %> </p>
-                    <p> <strong>Last name:</strong> <%= @client.last_name %> </p>
-                    <p> <strong>Email:</strong> <%= @client.email %> </p>
-                    <p> <strong>Phone1:</strong> <%= @client.phone1 %> </p>
-                    <p> <strong>Phone2:</strong> <%= @client.phone2 %> </p>
-                    <p> <strong>Address:</strong> <%= @client.location.full_street_address %> </p>
-                    <p> <strong>Coordinates:</strong> <%= @client.location.latitude %> <%= @client.location.longitude %> </p>
-
-                    <h3> Dogs owned </h3>
-                    <div id="accordion">
-                      <% @client.dogs.each_with_index do |dog, index| %>
-                        <div class="panel">
-                          <div class="panel-heading">
-                            <h4 class="panel-title">
-                              <p> <strong>Name:</strong> <a data-toggle="collapse" data-parent="#accordion" href="#dog_<%= index %>"> <%= dog.name %> </a> </p>
-                            </h4>
-                          </div>
-                          <div id="dog_<%= index %>" class="panel-collapse collapse">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <p> <strong>Chip id:</strong> <%= dog.chip_id %> </p>
-                                <p> <strong>Age:</strong> <%= dog.age %> </p>
-                                <p> <strong>Breed:</strong> <%= dog.breed %> </p>
-                                <p> <strong>Sex:</strong> <%= dog.sex %> </p>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><h4> Owner Details </h4></div>
+                      <div class="panel-body">
+                        <table class='table-hover'>
+                          <tr>
+                            <td><strong>First name</strong></td>
+                            <td> <%= @client.first_name %> </td>
+                          </tr>
+                          <tr>
+                            <td><strong>Last name</strong></td>
+                            <td> <%= @client.last_name %> </td>
+                          </tr>
+                          <tr>
+                            <td><strong>Email</strong></td>
+                            <td> <%= @client.email %> </td>
+                          </tr>
+                          <tr>
+                            <td><strong>Phone 1</strong></td>
+                            <td> <%= @client.phone1 %> </td>
+                          </tr>
+                          <tr>
+                            <td> <strong>Phone 2</strong></td>
+                            <td> <%= @client.phone2 %> </td>
+                          </tr>
+                          <tr>
+                            <td> <strong>Address</strong></td>
+                            <td> <%= @client.location.full_street_address %> </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div> 
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><h4> Dogs Owned </h4></div>
+                      <div class="panel-body">
+                        <div id="accordion">
+                          <% @client.dogs.each_with_index do |dog, index| %>
+                            <div class="panel">
+                              <div class="panel-heading">
+                                <h4 class="panel-title">
+                                  <p> <strong>Name:</strong> <a data-toggle="collapse" data-parent="#accordion" href="#dog_<%= index %>"> <%= dog.name %> </a> </p>
+                                </h4>
+                              </div>
+                              <div id="dog_<%= index %>" class="panel-collapse collapse">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <table class="table-hover owner-modal-dog-table">
+                                      <tr>
+                                        <td class="td-side"><strong>Chip id:</strong></td>
+                                        <td><%= dog.chip_id%></td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td-side"><strong>Age:</strong></td>
+                                        <td><%= dog.age %></td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td-side"><strong>Breed:</strong></td>
+                                        <td><%= dog.breed %></td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td-side"><strong>Sex:</strong></td>
+                                        <td><%= dog.sex %></td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      <% end %> 
-                    </div> 
-                    <p> 
-                      <%= link_to 'Edit', edit_client_path(@client), class: "closeClientShowModal" %> 
-                      | <%= link_to 'Back', clients_path, class: "closeClientShowModal" %>
-                    </p>
-                    <br />
+                          <% end %> 
+                        </div>   
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
                     <button type="button" class="closeClientShowModal btn btn-default">close</button>
+                    <%= link_to 'Edit', edit_client_path(@client), class: "closeClientShowModal btn btn-default" %> 
+                    <%= link_to 'Back', clients_path, class: "closeClientShowModal btn btn-default" %>
                   </div>
                 </div>
               </div>

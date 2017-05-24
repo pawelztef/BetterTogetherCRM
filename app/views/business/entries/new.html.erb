@@ -1,22 +1,17 @@
 <p id="notice"><%= notice %></p>
-
 <div class="tables-wrapper">
   <div id="entries-panel" class="white-panel pn">
     <div class="white-header">
-      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i>New Entry</h1>
+      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i>New Journal Entry</h1>
     </div>
-
     <ul class="nav">
       <li class="nav-item">
         <%= link_to 'Journal Entries', business_entries_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Back', business_entries_path, class: 'nav-link' %>
+        <%= link_to 'Home', root_path, class: 'nav-link' %>
       </li>
     </ul>
-    
-<%= render 'form' %>
-
-    
+    <%= render 'form' %>
   </div>
 </div>

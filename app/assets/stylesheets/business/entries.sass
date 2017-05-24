@@ -9,3 +9,24 @@
 
 .paginate_button
   color: initial !important
+  border: none !important
+  text-decoration: none !important
+  padding: 0.5em 1em !important
+ul.pagination
+  li
+    a
+      border: none !important
+      color: initial !important
+  li.active
+    a
+      color: initial !important
+      background-color: transparent !important
+      border: 1px solid #cacaca !important
+      &:hover
+        background: #ddd !important
+
+.pagination 
+  li:first-child, li:last-child
+    a:hover
+      border-radius: 0 !important
+

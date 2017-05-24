@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
 
-  resources :users 
+  resources :users, except: [:show]
   resources :volunteers 
   resources :volunteers_imports, only: [:new, :create]
   get 'volunteers_imports', to: 'volunteers_imports#new' 

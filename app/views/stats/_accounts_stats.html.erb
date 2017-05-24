@@ -8,14 +8,7 @@
     <div class="volunteers-groups-stats-wrapper">
       <h4> <%= name %> Summary</h4>
       <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
         <% if accounts.count > 0%>
-          <tbody>
             <% running_total = 0 %>
             <% accounts.each do |account| %>
               <% balance = account.balance(:from_date => @from_date, :to_date => @to_date) %>
@@ -31,7 +24,6 @@
                 <td class='total'><%= running_total.round(2) %></td>
               </strong>
             </tr>
-          </tbody>
         <% end %>
       </table>
     </div>
