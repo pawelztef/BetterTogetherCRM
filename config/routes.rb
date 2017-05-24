@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount Plutus::Engine => "/plutus", :as => "plutus"
+  # mount Plutus::Engine => "/plutus", :as => "plutus"
   resource :sessions, only: [:new, :create, :destroy]
 
   root 'dashboard#index'
@@ -47,5 +47,6 @@ Rails.application.routes.draw do
   end
   resources :dogs, except: [:new, :create]
   resources :dogs_imports, only: [:new, :create]
+  resources :settings, only: [:index]
 
 end

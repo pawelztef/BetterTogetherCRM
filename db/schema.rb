@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506101742) do
+ActiveRecord::Schema.define(version: 20170524110854) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -184,6 +184,11 @@ ActiveRecord::Schema.define(version: 20170506101742) do
 
   add_index "plutus_entries", ["commercial_document_id", "commercial_document_type"], name: "index_entries_on_commercial_doc", using: :btree
   add_index "plutus_entries", ["date"], name: "index_plutus_entries_on_date", using: :btree
+
+  create_table "settings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stats", force: :cascade do |t|
     t.string   "index",      limit: 255
