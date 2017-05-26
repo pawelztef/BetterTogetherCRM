@@ -86,4 +86,8 @@ module ApplicationHelper
     end
   end
 
+  def menu_switch attr
+    Setting.pull.read_attribute attr
+  end
+
 end

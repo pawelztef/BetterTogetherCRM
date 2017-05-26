@@ -1,0 +1,64 @@
+<%= form_for @volunteer, url: '/front', method: :post, html:{ class: 'form-login form-register'} do |f| %>
+  <h2 class="form-login-heading">
+    <%= image_tag 'logo-asside', class: 'login-logo' %> 
+    Volunteer Registration Form 
+  </h2>
+
+
+  <div class="login-wrap">
+    <h3>Personal Details</h3>
+    <div class="form-group">
+      <%= f.label :first_name %> 
+      <%= f.text_field :first_name, class: 'form-control', required: true %> 
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name %> 
+      <%= f.text_field :last_name, class: 'form-control', required: true %> 
+    </div>
+    <div class="form-group">
+      <%= f.label :email %> 
+      <%= f.text_field :email, class: 'form-control', required: true %> 
+    </div>
+    <div class="form-group">
+      <%= f.label :phone1 %> 
+      <%= f.text_field :phone1, class: 'form-control', required: true %> 
+    </div>
+    <div class="form-group">
+      <%= f.label :phone2 %> 
+      <%= f.text_field :phone2, class: 'form-control', required: true %> 
+    </div>
+
+    <h3>Address</h3>
+    <%= f.fields_for :location do |loc| %> 
+      <div class="form-group">
+        <%= loc.label :line1 %> 
+        <%= loc.text_field :line1, class: 'form-control', required: true %> 
+      </div>
+      <div class="form-group">
+        <%= loc.label :line2 %> 
+        <%= loc.text_field :line2, class: 'form-control', required: true %> 
+      </div>
+      <div class="form-group">
+        <%= loc.label :city %> 
+        <%= loc.text_field :city, class: 'form-control', required: true %> 
+      </div>
+      <div class="form-group">
+        <%= loc.label :county %> 
+        <%= loc.text_field :county, class: 'form-control', required: true %> 
+      </div>
+      <div class="form-group">
+        <%= loc.label :code %> 
+        <%= loc.text_field :code, class: 'form-control', required: true %> 
+      </div>
+    <% end %> 
+    <div class="form-group">
+      <%= f.submit class: 'btn btn-default import', required: true %> 
+    </div>
+  </div>
+
+<% end %>
+
+<script>
+  console.log("in");
+  $(".form-register").validate();
+</script>

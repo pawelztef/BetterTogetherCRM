@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<div class="tables-wrapper">
+  <div class="white-panel pn">
+    <div class="white-header">
+      <h1> <i class="fa fa-chevron-right" aria-hidden="true"></i> App Settings</h1>
+    </div>
+
+    <%= simple_form_for @settings, url: edit_setting_path(@settings), html: {class: 'form-horizontal'} do |f| %> 
+      <%= f.input :dashboard, as: :boolean  %> 
+      <%= f.button :submit, class: 'import' %> 
+    <% end %> 
+
+  </div>
+</div>
+

@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'jquery-validation-rails'
 gem 'jquery-datatables-rails'
 
+
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'

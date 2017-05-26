@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524110854) do
+ActiveRecord::Schema.define(version: 20170525114838) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "first_name",  limit: 255,                 null: false
@@ -186,8 +186,18 @@ ActiveRecord::Schema.define(version: 20170524110854) do
   add_index "plutus_entries", ["date"], name: "index_plutus_entries_on_date", using: :btree
 
   create_table "settings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "task",       limit: 255
+    t.string   "message",    limit: 255
+    t.string   "dashboard",  limit: 255
+    t.string   "volunteer",  limit: 255
+    t.string   "dog",        limit: 255
+    t.string   "business",   limit: 255
+    t.string   "account",    limit: 255
+    t.string   "statistic",  limit: 255
+    t.string   "event",      limit: 255
+    t.string   "setting",    limit: 255
   end
 
   create_table "stats", force: :cascade do |t|
