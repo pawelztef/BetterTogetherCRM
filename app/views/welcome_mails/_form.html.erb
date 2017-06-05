@@ -1,0 +1,10 @@
+<%= simple_form_for @mail, html: {class: 'from-horizontal'} do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :subject %>
+  <%= f.input :body %>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-default import' %> 
+  </div>
+<% end %> 

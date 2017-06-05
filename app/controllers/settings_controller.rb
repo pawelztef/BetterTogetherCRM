@@ -1,6 +1,7 @@
 class SettingsController < ApplicationController
   def index 
     @settings = Setting.pull
+    @mail = WelcomeMail.pull
   end
   def edit 
     @settings = Setting.pull

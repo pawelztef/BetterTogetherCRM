@@ -37,6 +37,7 @@ gem 'plutus', git: 'https://github.com/pawelztef/plutus.git'
 gem 'draper'
 
 group :development, :test do
+  gem 'letter_opener'
   gem 'byebug'
   gem 'awesome_print'
   gem 'guard-rspec'

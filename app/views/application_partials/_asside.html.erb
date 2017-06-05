@@ -74,7 +74,7 @@
         </div>
         <div class="panel">
           <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#side_accordion" href="#logs_submenu"> <%= icon('gears') %> Settings</a> 
+            <a data-toggle="collapse" data-parent="#side_accordion" href="#logs_submenu"> <%= icon('user-circle-o') %> Admin</a> 
           </div>
           <div id="logs_submenu" class="panel-collapse collapse">
             <ul class="sub">
@@ -82,6 +82,11 @@
                 <li> <%= link_to "All Users", users_path %> </li>
               <% end %> 
             </ul>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+            <%= link_to "<i class='fa fa-gears'></i> Settings".html_safe, settings_path %> 
           </div>
         </div>
       </div> 

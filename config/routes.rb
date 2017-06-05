@@ -52,5 +52,6 @@ Rails.application.routes.draw do
   resources :dogs_imports, only: [:new, :create]
   resources :settings
   resources :front
+  resources :welcome_mails
   # get 'front/create'
 end
