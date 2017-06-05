@@ -11,7 +11,53 @@
       right: 25px
 .form-register
   margin: 20px auto
-  max-width: 550px
+  max-width: 860px
   .login-wrap
-    padding: 40px
-  .login-heading
+    padding: 10px 70px 40px
+  h2.form-login-heading
+    background: white
+    color: $turq !important
+    font-size: 26px
+    padding-top: 40px
+    font-weight: bold
+    .login-logo
+      width: 27%
+      position: relative
+      top: -6px
+#register
+  padding: 7px 15px
+  background: $turq
+  font-size: 18px
+  color: $gray-dark
+  &:hover
+    background: lighten($turq, 10%)
+
+.registration-notice
+  color: red
+  font-size: 14px  
+  margin-bottom: 35px
+  text-align: center
+  text-transform: uppercase
+
+.registration-errors
+  margin-top: 10px
+  margin-bottom: 60px
+
+.form-login.form-register.registerd
+  max-width: 500px
+  height: 30vh
+  margin-top: 70px
+  .login-wrap
+    padding-bottom: 11px
+    p
+      margin: 0
+      font-size: 19px
+      color: $turq
+      text-align: center
+      text-shadow: 0px 0px 1px rgba(0,0,0,.25)
+  .form-group
+    margin: 20px
+  .form-login-heading
+    img
+      width: 37%
+      top: -5px

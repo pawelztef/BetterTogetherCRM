@@ -4,9 +4,9 @@
       <div class="col-md-15 col-sm-15 box0">
         <div class="box1">
           <span class="icon-heart liveness-icon"></span>
-          <h3>933</h3>
+          <h3> <%= @donations %> </h3>
         </div>
-        <p>933 People liked your page the last 24hs. Whoohoo!</p>
+        <p> <%= @donations %> People donate your foundation. Whoohoo!</p>
       </div>
       <div class="col-md-15 col-sm-15 box0">
         <div class="box1">
@@ -17,10 +17,10 @@
       </div>
       <div class="col-md-15 col-sm-15 box0">
         <div class="box1">
-          <span class="icon-globe liveness-icon"></span>
-          <h3>23</h3>
+          <span class="icon-user-follow liveness-icon"></span>
+          <h3> <%= @volunteers %> </h3>
         </div>
-        <p>You have 23 unread messages in your inbox.</p>
+        <p>You have <%= @volunteers %> new volunteers in your team that waiting for own group assign.</p>
       </div>
       <div class="col-md-15 col-sm-15 box0">
         <div class="box1">

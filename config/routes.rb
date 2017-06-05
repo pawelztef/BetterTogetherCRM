@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # mount Plutus::Engine => "/plutus", :as => "plutus"
   resource :sessions, only: [:new, :create, :destroy]
 
-  root 'dashboard#index'
+  root 'front#new'
 
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
+  get '/front' => "front#new"
+  get '/dashboard' => 'dashboard#index'
 
 
   resources :users, except: [:show]
@@ -50,6 +52,5 @@ Rails.application.routes.draw do
   resources :dogs_imports, only: [:new, :create]
   resources :settings
   resources :front
-  # get 'front/new'
   # get 'front/create'
 end

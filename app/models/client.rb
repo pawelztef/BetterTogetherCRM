@@ -4,6 +4,7 @@ class Client < ActiveRecord::Base
   has_many :dogs, dependent: :destroy
   has_many :visits, dependent: :destroy
   has_one :location, as: :localizable, dependent: :destroy
+  
 
   # EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   validates :first_name, presence: true, uniqueness: {scope: :last_name}

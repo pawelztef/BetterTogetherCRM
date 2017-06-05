@@ -23,4 +23,8 @@ module Reusable
     return object 
   end
 
+  def serial_number prefix
+    "#{prefix}%.6d" % self.id
+  end
+
 end

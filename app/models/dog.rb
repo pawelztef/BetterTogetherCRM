@@ -1,4 +1,5 @@
 class Dog < ActiveRecord::Base
+  include Reusable
   belongs_to :client, validate: false
   has_and_belongs_to_many :custom_events 
   validates :name, :sex, :age, :breed, :chip_id, presence: true
@@ -23,6 +24,10 @@ class Dog < ActiveRecord::Base
         end
       end
     end
+  end
+  
+  def id_no 
+    self.serial_number("DG")
   end
 
 end

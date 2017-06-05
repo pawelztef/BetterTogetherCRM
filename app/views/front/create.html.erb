@@ -1,13 +1,16 @@
-<div class="form-login">
+<div class="form-login form-register registerd">
   <h2 class="form-login-heading">
-    <%= image_tag 'logo-asside', class: 'login-logo' %> 
-    Thank You 
+    <%= image_tag 'logo', class: 'login-logo' %> 
+    Thank You!
   </h2>
 
   <div class="login-wrap">
+    <p>Registration Successful!</p>
+    <p>Welcome Email Sent.</p>
   </div>
 
   <div class="form-group">
+      <%= link_to 'OK', new_front_path,  class: 'btn btn-default btn-block import', id: 'register' %> 
   </div>
 </div>
 

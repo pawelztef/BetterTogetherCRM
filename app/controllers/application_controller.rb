@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authorize
   helper_method :current_moderator
+  before_filter :set_settings
 
   def current_moderator
     @moderator ||= User.find(session[:current_moderator]['id']) if session[:current_moderator]
@@ -32,6 +33,12 @@ class ApplicationController < ActionController::Base
   rescue_from Exceptions::InvalidHeadersException do |exception|
     flash[:file_exceptions] = exception.message
     render :new
+  end
+
+  private 
+
+  def set_settings
+    @settings = Setting.pull
   end
 
 end

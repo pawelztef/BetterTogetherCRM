@@ -34,6 +34,9 @@
 // require Chart.bundle
 //= require chartkick
 
+function function_name(argument) {
+  
+}
 
 
 

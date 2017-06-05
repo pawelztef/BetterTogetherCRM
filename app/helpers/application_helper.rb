@@ -87,7 +87,11 @@ module ApplicationHelper
   end
 
   def menu_switch attr
-    Setting.pull.read_attribute attr
+    if @settings.read_attribute(attr) == "1"
+      true
+    else
+      false
+    end
   end
 
 end

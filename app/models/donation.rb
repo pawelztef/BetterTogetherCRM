@@ -1,4 +1,6 @@
 class Donation < ActiveRecord::Base
+  include Reusable
+  
   belongs_to :donator
   validates :amount, presence: true, numericality: true
   accepts_nested_attributes_for :donator
@@ -21,5 +23,9 @@ class Donation < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def id_no
+    self.serial_number("DO")
   end
 end

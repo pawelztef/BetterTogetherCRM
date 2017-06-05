@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if @moderator
       session[:current_moderator] = @moderator
       # gflash success: 'You have succesfully sing in'
-      redirect_to root_url 
+      redirect_to dashboard_url
     else
       gflash notice: 'Username or password does not match'
       render 'new'
