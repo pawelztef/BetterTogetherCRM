@@ -5,11 +5,9 @@ class VolunteerMailer < ApplicationMailer
   #
   #   en.volunteer_mailer.welcome_mail.subject
   #
-  def welcome_mail
-    
-
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def welcome_mail(volunteer)
+    @volunteer = volunteer
+    @email_template = WelcomeMail.pull 
+    mail to: volunteer.email
   end
 end

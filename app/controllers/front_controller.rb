@@ -13,7 +13,7 @@ class FrontController < ActionController::Base
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save
       # send mail
-      VolunteerMailer.welcome_mail().deliver
+      VolunteerMailer.welcome_mail(@volunteer).deliver
       flash[:success] = 'Volunteer was successfully created.'
     else
       flash[:notice] = 'Some errors prohibited You from being registered!'
